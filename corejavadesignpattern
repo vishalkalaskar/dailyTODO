@@ -1,0 +1,117 @@
+Abstract factory :- providing interface for creating families of related or independ obj without specifiying their conceret class.
+interface GUIFactory
+    Button createButton();
+   
+class windowFactory implements GUIFactory
+         public Button createButton()
+                    return new WindowButton();
+             
+class MacFactory implements GUIFactory
+         public Button createButton()
+                return new MacFactory();
+
+interface Button
+   void render();
+
+GUIFactory factory = new WindowFactory();
+factory.createButton().render();
+
+
+Builder Pattern : sperate the conctruction of complex obj from its represention allowing construction process to create new reperesention for obj.
+class House
+    private String walls;
+    private String roof;
+
+   private House(String walls,String roof)
+          this.walls=walls;
+          this.roof =roof;
+ }
+
+ public class Builder{
+           private String walls;
+           private String roof;
+      
+          public Builder setWalls(String walls)
+                    this.walls =walls;
+                     return this;
+
+         public Builder setRoof(String roof)
+                 this.roof=roof;
+                 return this;
+
+         public House build()
+                     return new House(walls,roof);
+
+         public string toString()
+                   return "House [walls="+wall+",roof="+"]";
+
+ }
+
+  House house = new house.Builder()
+                         .setWalls("Bricks")
+                         .setRoof("concerete roof")
+                          .build();
+   sop(house);
+
+singleton :only one instace available for uses.
+public class Singleton
+        public static Singleton instance;
+        private Singleton(){};
+        public static synchronized Singleton getInstance()
+                if(intace==null)
+                    instance = new Singleton();
+              return intnace;
+
+composite : compose object in tree format and treat the indusivale object  and compisition for uniformally indivisually.
+
+interface component
+    void show();
+
+class leaf implements component
+         privat String name;
+         public leaf(String name)
+                this.name=name;
+         void show()
+               sop(name);
+class compiste implment component
+          Private List<Component> childern = new ArrayList<>();
+           
+        public void add(Component com)
+                   childern.add(com);
+         void show()
+                     childern.forEach(compoent::show);
+main{
+      component leaf1 = new leaf("leaf 1");
+      component leaf2 = new leaf("leaf 2");
+      component leaf3 = new leaf("leaf 3");
+
+      composite  comp1 = new comoposite();
+      comp1.add(leaf1);
+      comp1.add(leaf2);
+    
+       composite comp2 = new composite();
+       comp2.add(leaf3);
+       comp2.add(comp1);
+        
+       comp2.show();
+
+5.decorator : dyanmically adding bhehior to objcet without chanign in code.
+
+interface Text
+        String render();
+
+class PlanTesxt implment Text
+            String render()
+                  return "plane text format";
+class BolText implment Text   
+    private Text text;
+    public BolText(Text text)          
+            this.text = text;
+   void render()
+          return "<br>+text.render()+"</br>";
+main
+        Text text = new Plantext();
+        sop(text.render());
+
+        Text boldtext = new BoldText(new Plantext());
+          sop(boldtext.render());
