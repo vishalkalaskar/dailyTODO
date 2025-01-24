@@ -279,6 +279,25 @@ int substring(String s)
               maxlen= Math.max(maxlen,end-start+1);
     return maxlen;
 
+//duplicat element from the array
+public static int[] removeDuplicates(int[] arr) {
+        // Using HashSet to store unique elements
+        HashSet<Integer> uniqueElements = new HashSet<>();
+        
+        // Add elements to HashSet
+        for (int num : arr) {
+            uniqueElements.add(num);
+        }
+        
+        // Convert HashSet back to an array
+        int[] result = new int[uniqueElements.size()];
+        int index = 0;
+        for (int num : uniqueElements) {
+            result[index++] = num;
+        }
+        
+        return result; 
+
   
 13.write controller for user fetch from database.
     @RestController
