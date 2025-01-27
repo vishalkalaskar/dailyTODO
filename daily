@@ -224,6 +224,12 @@ method(int[] a)
            newstr=ch+newstr;
         sop(newstr);
 
+//alernative logic.
+method(String str)
+   StringBuilder ans = new StringBuilder();
+    for(int i=str.length()-1;i>=0;i--)
+           ans.append(str.charAt(i));
+     sop(ans);
 
 11.character element couting 
    method(String str)
