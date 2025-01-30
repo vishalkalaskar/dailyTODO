@@ -110,6 +110,17 @@ Integer maxcount =list.stream().max(Integer::compare).get();
 
 13. Count duplicates for String
         int[] array= {};
+String[] fruits = {"apple", "apple", "banana", "grapes", "berry"};
+
+        // Apply Stream to get distinct elements
+        List<String> distinctFruits = Arrays.stream(fruits).distinct().collect(Collectors.toList()); // Collect into a list
+
+      // Find duplicate elements
+        List<String> duplicates = Arrays.stream(fruits).collect(Collectors.groupingBy(s -> s, Collectors.counting())).entrySet().stream().filter(entry -> entry.getValue() > 1) // Keep only duplicates
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        System.out.println("Duplicate Elements: " + duplicates); // Output: [apple]
         Map<String,Long> count= Arrays.stream(array).collect(Collecors.groupingBy(Function.identity(),Collectors.counting());
         count.forEach((key,value)->system.out.println(key+'"+value+"occuers"));
    
