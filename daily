@@ -314,7 +314,23 @@ public static int[] removeDuplicates(int[] arr) {
         }
         
         return result; 
+//print odd and even 
+method(String str)
+  StringBuilder even = new StringBuilder();
+  StringBuilder odd = new StringBuilder();
+  for(i=0;i<str.length();i++)
+      if(i%2==0)
+            even.add(str.charAt(i));
+       else
+           odd.add(str.charAt(i));
 
+//swaping element in array
+for(i=0;i<array.length/2;i++)
+   int temp =array[i];
+   array[i]=array[array.length-i-1];
+   array[array.length-i-1]=temp;
+ 
+ sop(Arrays.toString(array));
   
 13.write controller for user fetch from database.
     @RestController
