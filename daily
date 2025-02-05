@@ -333,6 +333,12 @@ for(i=0;i<array.length/2;i++)
    array[array.length-i-1]=temp;
  
  sop(Arrays.toString(array));
+
+//map iterate
+ Map<String,Intege> map = new HashMap<>();
+ for(map.Entry<String,Integer> entry = map.entrySet())
+      sop(entry.getkey()+""entry.getValue());
+map.forEach((Key,value)->{ system.out.println(keys+""+value) });
   
 13.write controller for user fetch from database.
     @RestController
