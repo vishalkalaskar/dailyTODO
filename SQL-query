@@ -1,0 +1,43 @@
+1. Find the second highest salary from the "Employee" table:
+SELECT DISTINCT salary FROM Employee  ORDER BY salary DESC LIMIT 1 OFFSET 1;
+
+
+2. Find all duplicate records in a table:
+SELECT column1, column2, COUNT(*) FROM TableName GROUP BY column1, column2 HAVING COUNT(*) > 1;
+
+3. Fetch the nth highest salary from the "Employee" table:
+SELECT DISTINCT salary FROM Employee ORDER BY salary DESC LIMIT 1 OFFSET (n-1);
+
+
+4. Display the department-wise highest salary of employees:
+SELECT department, MAX(salary) AS highest_salary FROM Employee GROUP BY department;
+
+5. Find employees who earn more than the average salary in their department:
+SELECT e1.* FROM Employee e1 JOIN (
+    SELECT department, AVG(salary) AS avg_salary 
+    FROM Employee 
+    GROUP BY department
+) e2 ON e1.department = e2.department WHERE e1.salary > e2.avg_salary;
+
+
+6. Fetch common records between two tables:
+SELECT * FROM Table1 INTERSECT SELECT * FROM Table2;
+
+7. Fetch employees who have not received any bonuses:
+SELECT e.* FROM Employee e LEFT JOIN Bonus b ON e.emp_id = b.emp_id WHERE b.bonus IS NULL;
+
+8. Calculate the cumulative sum of a column in a table:
+SELECT emp_id, salary, SUM(salary) OVER (ORDER BY emp_id) AS cumulative_salary FROM Employee;
+
+9. Fetch the top 3 highest salaries department-wise:
+SELECT department, salary 
+FROM (
+    SELECT department, salary, 
+           RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS rnk
+    FROM Employee
+) ranked 
+WHERE rnk <= 3;
+
+10. Count the number of employees in each department:
+SELECT department, COUNT(*) AS employee_count FROM Employee GROUP BY department;
+
