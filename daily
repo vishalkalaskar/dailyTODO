@@ -338,6 +338,7 @@ for(i=0;i<array.length/2;i++)
  Map<String,Intege> map = new HashMap<>();
  for(map.Entry<String,Integer> entry = map.entrySet())
       sop(entry.getkey()+""entry.getValue());
+//java8
 map.forEach((Key,value)->{ system.out.println(keys+""+value) });
   
 13.write controller for user fetch from database.
