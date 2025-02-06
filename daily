@@ -115,7 +115,7 @@ String[] fruits = {"apple", "apple", "banana", "grapes", "berry"};
     // Apply Stream to get distinct elements
         List<String> distinctFruits = Arrays.stream(fruits).distinct().collect(Collectors.toList()); // Collect into a list
 
-        dp.entrySet().stream().filter(entry->entry.getValue()>1).forEach(entry->System.out.println(entry->System.out.println(entry.getKey)+""+entry.getValue()));
+        dp.entrySet().stream().filter(entry->entry.getValue()>1).forEach(entry->System.out.println(entry.getKey)+""+entry.getValue());
      
       // Find duplicate elements
         List<String> duplicates = Arrays.stream(fruits).collect(Collectors.groupingBy(s -> s, Collectors.counting())).entrySet().stream().filter(entry -> entry.getValue() > 1) // Keep only duplicates
