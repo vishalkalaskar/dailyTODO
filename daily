@@ -66,7 +66,7 @@ character,length-->
 Map<Character,Long> count= inputstring.chars().maptoObj(c->(char)c).collect(Collectros.goupingBy(Function.identity(),Collectors.counting());
 sop(count):
 longstring-->
-Optional<String> strlen=  stringList.stream().max(String::length).get()
+Optional<String> strlen=  stringList.stream().max(Comparator.camparingInt(String::length));
 sop(strlen)
 
 8. sort the given list of decimals in reverse order?
