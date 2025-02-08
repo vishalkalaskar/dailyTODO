@@ -189,7 +189,14 @@ method(int[] a)
         a[i]=a[end];
         a[end]=temp;
       end--;
-    
+
+  //swaping element in array
+for(i=0;i<array.length/2;i++)
+   int temp =array[i];
+   array[i]=array[array.length-i-1];
+   array[array.length-i-1]=temp;
+ 
+ sop(Arrays.toString(array));
 7.two arr merging and sorting.
    method(int[] a,int[] b)
      int n= a.length+b.length;
@@ -204,9 +211,7 @@ method(int[] a)
                   newarr[j]=newarr[j+1];
                    newarr[j+1]=temp;
  for(int num:newarr)
-       sop(num+"");
-
-    
+       sop(num+"");  
 
 
 8.String/removing specific string
@@ -325,14 +330,6 @@ method(String str)
             even.add(str.charAt(i));
        else
            odd.add(str.charAt(i));
-
-//swaping element in array
-for(i=0;i<array.length/2;i++)
-   int temp =array[i];
-   array[i]=array[array.length-i-1];
-   array[array.length-i-1]=temp;
- 
- sop(Arrays.toString(array));
 
 //map iterate
  Map<String,Intege> map = new HashMap<>();
