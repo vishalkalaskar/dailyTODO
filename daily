@@ -327,9 +327,9 @@ method(String str)
   StringBuilder odd = new StringBuilder();
   for(i=0;i<str.length();i++)
       if(i%2==0)
-            even.add(str.charAt(i));
+            even.append(str.charAt(i));
        else
-           odd.add(str.charAt(i));
+           odd.append(str.charAt(i));
 
 //map iterate
  Map<String,Intege> map = new HashMap<>();
