@@ -1,0 +1,135 @@
+//backend controller
+@PostMapping("/fotafilesupload")
+	public ResponseEntity<String> multipleFilesUpload(@RequestParam("files") MultipartFile[] files,
+	                                                  @RequestParam Map<String, String> fileDetails) throws IOException,
+	            NoSuchAlgorithmException, CertificateException, KeyStoreException {
+	    try {
+	        String urlfile = host + fileupload;
+	        System.out.println("lexi file multiple--- " + urlfile);
+	        System.out.println("fota payload--- " + fileDetails);
+ 
+	        // Convert the MultipartFile[] to ByteArrayResource for each file
+	        MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+	        for (MultipartFile file : files) {
+	            body.add("files", new ByteArrayResource(file.getBytes()) {
+	                @Override
+	                public String getFilename() {
+	                    return file.getOriginalFilename();
+	                }
+	            });
+	        }
+ 
+	        // Add other payload parameters
+	        for (Map.Entry<String, String> entry : fileDetails.entrySet()) {
+	            body.add(entry.getKey(), entry.getValue());
+	        }
+ 
+	        HttpHeaders headers = new HttpHeaders();
+	        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+	        headers.add("Authorization", "Bearer " + loginService.getToken());
+ 
+	        HttpEntity<MultiValueMap<String, Object>> entity = new HttpEntity<>(body, headers);
+	        RestTemplate restTemplate = getRestTemplate();
+	        String response = restTemplate.exchange(urlfile, HttpMethod.POST, entity, String.class).getBody();
+	        return new ResponseEntity<>(response, HttpStatus.OK);
+	    } catch (HttpStatusCodeException e) {
+	        return new ResponseEntity<>(e.getResponseBodyAsString(), HttpStatus.BAD_REQUEST);
+	    } catch (Exception e) {
+	        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+	    }
+	}
+
+
+//frontend controller.
+$scope.fileupload = function() {
+    // Log the selectedEcuId for debugging
+    console.log("Selected ECU-ID:", $scope.vcData.selectedEcuId);
+ 
+    // Log the vcData object to ensure it's populated
+    console.log("VC Data: ", $scope.vcData);
+ 
+    // Create the filedetails object
+    var filedetails = {
+        "vcs": [{
+            "vc": $scope.vcData.vc,
+            "vcDescription": $scope.vcData.vcDescription,
+            "ecuId": selectedEcuIdGlobal,
+            "ecuType": $scope.vcData.selectedEcuType,
+            "hwPartNo": $scope.vcData.hardWarePartNo,
+            "tmlPartNo": $scope.vcData.tmlPartNo,
+            "swVersion": $scope.vcData.softwareVersion,
+            "dmlNo": $scope.vcData.dmlNo,
+            "uvParaCount": $scope.vcData.uvParaCount,
+            "masterSlaveRel": $scope.vcData.masterSlaveRel,
+            "noOfECU": $scope.vcData.noOfECU,
+            "numOfFiles": $scope.selectedFiles.length,  // Update numOfFiles based on the selected files
+            "files": [] // Empty files array to be populated dynamically
+        }]
+    };
+ 
+    // Loop through selected files to add them to fileDetails
+    for (var i = 0; i < $scope.selectedFiles.length; i++) {
+        // Get the sequence number from the input (assuming it's created dynamically in the UI)
+        var sequence = document.getElementById('sequence-' + i).value;
+ 
+        filedetails.vcs[0].files.push({
+            "fileName": $scope.selectedFiles[i].name,
+            "sequenceNumber": sequence
+        });
+    }
+ 
+    // Prepare FormData to upload the file and filedetails
+    var formData = new FormData();
+    for (var i = 0; i < $scope.selectedFiles.length; i++) {
+        formData.append('files', $scope.selectedFiles[i]);
+    }
+ 
+    // Append filedetails (vcs object) to the FormData
+    formData.append('fileDetails', JSON.stringify(filedetails));
+ 
+    // Make the HTTP request to upload data
+    $http({
+        method: 'POST',
+        url: host + "/fota/fotafilesupload",
+        data: formData,
+        headers: { 'Content-Type': undefined, "Authorization": token },
+        transformRequest: angular.identity
+    })
+    .then(function(response) {
+        alert("File uploaded successfully!");  // Success alert
+        console.log('Success:', response.data);
+ 
+        // Reset the form and clear file input
+        $scope.selectedFiles = [];  // Clear selected files
+        document.getElementById('choseFile').value = '';  // Reset file input
+ 
+        // Optionally, reset form fields
+        $scope.vcData = {};  // Clear the model
+    })
+    .catch(function(error) {
+        alert("File upload error!");  // Error alert
+        console.error('Error:', error);
+    });
+};
+ 
+// Handle file input change event and show the sequence inputs
+$scope.handleFileSelection = function(event) {
+    const files = event.target.files;
+    $scope.selectedFiles = files;  // Store the selected files in the AngularJS scope
+ 
+    // Prepare the sequence inputs
+    $scope.sequenceInputs = [];
+    for (let i = 0; i < files.length; i++) {
+        $scope.sequenceInputs.push({ fileName: files[i].name, sequence: '' });
+    }
+ 
+    // Trigger the modal or sequence inputs container to be displayed
+    document.getElementById('sequenceModal').style.display = 'block';
+};
+ 
+// Close the modal
+$scope.closeModal = function() {
+    document.getElementById('sequenceModal').style.display = 'none';
+};
+
+has context menu
