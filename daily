@@ -142,11 +142,9 @@ System.out.println("Sum of squares of even numbers: " + sum);
   
 6.code singleton class 
 public class Singleton
-      public static Singleton  intance;
+      public static Singleton  intance=new Singleton();
      private Singleton(){};
-     public static sychnorized Singleton getInstance()
-            if(intance==null)
-                intance=new Singleton();
+     public static Singleton getInstance()
              return intance;
  
 1.intersection of array
