@@ -1,0 +1,35 @@
+package com.example.demo.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.service.CsvReaderService;
+
+@CrossOrigin("*")
+@RestController
+@RequestMapping("/api/excel")
+public class CsvController {
+
+    @Autowired
+    private CsvReaderService csvReaderService;
+
+    @GetMapping("/read")
+    public ResponseEntity<?> getExcelData() {
+        try {
+            List<Map<String, String>> data = csvReaderService.readExcel();
+            if (data.isEmpty()) {
+                return ResponseEntity.ok("No data found in the Excel file.");
+            }
+            return ResponseEntity.ok(data);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Failed to read the Excel file: " + e.getMessage());
+        }
+    }
+}
