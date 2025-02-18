@@ -41,3 +41,32 @@ WHERE rnk <= 3;
 10. Count the number of employees in each department:
 SELECT department, COUNT(*) AS employee_count FROM Employee GROUP BY department;
 
+11.Get employee earning more than the hgihest-paid HR Employee
+SELECT e1.emp_name, e1.salary 
+FROM Employee e1 
+WHERE e1.salary > (
+    SELECT MAX(e.salary) 
+    FROM Employee e 
+    JOIN Department d ON e.department = d.department_id 
+    WHERE d.department_name = 'HR'
+);
+
+12.list employee who do not earn the hgiest salary in their departmen.
+SELECT e.emp_id, e.emp_name, e.department 
+FROM Employee e 
+WHERE e.salary NOT IN (
+    SELECT MAX(e1.salary) 
+    FROM Employee e1 
+    GROUP BY e1.department
+);
+13.find employee earning above their department average salary
+SELECT e.emp_id, e.emp_name, e.department, e.salary
+FROM Employee e
+JOIN (
+    SELECT department, AVG(salary) AS avg_salary
+    FROM Employee
+    GROUP BY department
+) dept_avg 
+ON e.department = dept_avg.department
+WHERE e.salary > dept_avg.avg_salary;
+
