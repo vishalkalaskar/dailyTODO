@@ -130,6 +130,23 @@ String[] fruits = {"apple", "apple", "banana", "grapes", "berry"};
 int sum = IntStream.rangeClosed(1, 20).filter(n -> n % 2 == 0).map(n -> n * n).sum();
 System.out.println("Sum of squares of even numbers: " + sum);
 
+//remove string from string 
+import java.util.LinkedHashSet;
+
+        String s = "welcome hi to hi hello";
+        String[] words = s.split(" "); // Split by space
+        
+        StringBuilder ans = new StringBuilder();
+        LinkedHashSet<String> uniqueWords = new LinkedHashSet<>();
+        
+        for (String word : words) {
+            if (uniqueWords.add(word)) { // Ensures only unique words are added
+                ans.append(word).append(" ");
+            }
+        }
+        
+        System.out.println(ans.toString().trim()); // Output: welcome hi to hello
+
 14.Optimized Way to Count 1s in ArrayList java
    List<Integer> count = Arrays.asList();
    Integer oncecount= count.stream().filter(num->num==1).count().get();
