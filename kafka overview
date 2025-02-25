@@ -1,0 +1,37 @@
+producer - sends data to kafka topic
+comsumer - read msg from the kafka topic
+topic - a logical channel where data is published.
+borker - kafka server that store a data.
+partition - a topic is split into partitions for scalability.
+zookeeper - Manages metadata and leader 
+
+replication- to store copies of data across the multiple boroker.if borker fails follower take care.
+
+zookeeper- heps in borker cordintation,leader election and mainting metadata.
+
+retain the message based on time & size e.g. 7 days or size 10 GB. or log compaction keeps onlye the latest value for a key,
+
+kafkaTemplate or kafka client(producer and consumer);
+partition allow to coumser data parallel by multiple consumers,
+
+consumer offest - latest,earliset and committed.
+commit offset - commitSync() or commitAsync()
+
+at-most-once--no duplicat but loss data.
+at-least-once--no loss but duplicate possiable.
+Exactly-once--no loss no duplicates.
+
+secure kafka cluster--authenctions(ssl,SASL),authorization(ACLs),Encryption(TLS-transport layer security)
+
+handle large message pyload->use message compression(gzip,snappy) or store larges paylod in external storeage
+
+
+issue face while impl kafka--consumer lag,partition imbalance,rebalancing issue, duplicate message.
+
+for realtime processing use kafka stream api.
+
+best practise in production--replication = 3,multiple partitions, monitor lag,optimizze prod/consumer.
+
+suddent traffic spike in kafka--partitions,use load-balanced consumer and enable 
+
+data consistancy- transactional messaging,schema validation,idempotent consumers.
