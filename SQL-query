@@ -70,3 +70,5 @@ JOIN (
 ON e.department = dept_avg.department
 WHERE e.salary > dept_avg.avg_salary;
 
+14. modify the column length sotring capcity
+ ALTER TABLE table_name MODIFY column_name varchar(255);
