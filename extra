@@ -1,0 +1,62 @@
+SELECT * FROM Customers WHERE customer_id = 5;
+
+select salary from employee order by salary desc limit 1 OFFSET 1;
+
+//duplicate
+select column1,column2,count(*) from employee group by column1,column2 having count(*)>1;
+select column1,column2,count(*) from employee group by coloumn1,column2 having count(*)>1;
+
+//nth highest 
+select salary from employee order by salary desc limit 1  OFFSET N-1;
+
+//top three score or highest scoroes
+SELECT * from student order by marks desc limit 3;
+
+not place any order or not get bonus 
+select e.* from employee e left join order as o on e.employee_id = o.employee_id where o.order IS NULL;
+
+select e.* from employee e left join Bonus as b on e.employee_id=b.employee_id where b.bonus is null
+
+//highest salary departmetn wise
+select department,count(*) as highestemp from employee group by department order by employee_id desc limit 1; 
+
+select department,sum(salary) as dpsum from employee group by deparment;
+
+coalesce for first null value;
+
+select year,month,sum(saleamount) as totalsales from sales group by years,month order by year,month
+
+min()--> return small value from column
+max()--> return highest value from column
+sum()-->return sum of column
+avg()-->return avg fo column
+count()--return n of row count.
+
+duplicate 
+select column1,column2,count(*) from employee group by column1,column2 having count(*)>1;
+select department,MAX(salary) from employee group by department;
+select department,count(*) as highest from emp group by department order by higest desc limit 1;
+select distinct salary from employee order by salary desc limit 1;
+select e.* from employee e left join Bonus as b on e.employee_id =b.employee_id where b.bonus is NULL;
+select e.* from empoloyee e left join oreder as o on e.employe_id=o.employee_id where o.oders is NULL;
+
+
+11.Get employee earning more than the hgihest-paid HR Employee 
+select e1.emp_name,e1.salary,e1.department from employee e1 where e1.salary>(select MAX(e.Salary) from employee e join deparment d on e.department_id=d.dpeartment_id where d.dpeartment_name="HR");
+
+12.list employee who do not earn the hgiest salary in their departmen.
+select e1.emp_name,e1.salary,e1.deparment from employee e1 where e1.salary NOT IN (select MAX(e.salary) from empoyee group by e.deparment);
+
+13.find employee earning above their department average salary
+SELECT e.emp_id, e.emp_name, e.department, e.salary
+FROM Employee e
+JOIN (
+    SELECT department, AVG(salary) AS avg_salary
+    FROM Employee
+    GROUP BY department
+) dept_avg 
+ON e.department = dept_avg.department
+WHERE e.salary > dept_avg.avg_salary;
+
+14. modify the column length sotring capcity
+ ALTER TABLE table_name MODIFY column_name varchar(255);
