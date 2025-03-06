@@ -72,3 +72,6 @@ WHERE e.salary > dept_avg.avg_salary;
 
 14. modify the column length sotring capcity
  ALTER TABLE table_name MODIFY column_name varchar(255);
+
+15.write sql query to rank employee based on salary?
+select employee_id,employee_name,salary,RANK() OVER(ORDER BY salary DESC) AS salaryRank From employee;
