@@ -259,6 +259,15 @@ for(int i=0;i<str.length();i++)
       if(a[index]==1)//if(a[index]>1)
          sop(s.charAt(i)+"");
 
+//s="hello'-->helo;   
+method(String s) 
+ int[] a = new int[26];
+ StringBuilder ans = new StringBuiler();
+ for(int i=0;i<s.length();i++)
+      int index = s.charAt(i)-'a';
+       if(a[index]==1)
+          ans.append(c.charAt(i));
+ sop(ans);
 
 10.reverse string
   method(String str)
