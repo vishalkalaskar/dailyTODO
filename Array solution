@@ -1,0 +1,112 @@
+1.The program finds a pair of numbers in the sorted array whose sum is equal to the target.
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 5, 4, 6};
+        int n = arr.length;
+        int left = 0;
+        int right = n - 1;
+        int target = 9;
+
+        while (left < right) {
+            int sum = arr[left] + arr[right];
+            
+            if (sum == target) {
+                System.out.println("Pair found: (" + arr[left] + ", " + arr[right] + ")");
+                return; // Exit after finding the first pair
+            } else if (sum < target) {
+                left += 1;  // Move left pointer to increase sum
+            } else {
+                right -= 1; // Move right pointer to decrease sum
+            }
+        }
+
+        System.out.println("No pair found with sum " + target);
+    }
+}
+
+2.swap element in array.--using this logic k element sorting.
+method()
+ {
+    int[] arr = {1,2,3,4,5};
+    int left=0;
+    int right =arr.length-1;
+   while(left<right)
+      {
+         int temp =arr[left];
+         arr[left]=arr[right];
+         arr[right]=temp;
+         left++;
+         right--;
+    }
+
+}
+
+3.write program to enter a letter and display next five letter
+ input - capital W 
+ output- XYZab
+
+ input - small x
+ output - yzABC
+method(){
+   Scanner sc = new Scanner(System.int);
+   System.out.println("Enter the Character");
+    char ch= sc.next().charAt(0);
+    for(int i=0;i<5;i++)
+    {
+         ch++;
+         if(ch>"z")
+             {
+                 ch='A';
+                  system.out.print(ch+" ");
+               }
+        else if(ch>'Z' && ch<'a')
+              ch='a';
+               System.out.print(ch+" ");
+       else
+             System.out.print(ch+ " ");
+
+4.Find the Avarage of all positive numbers in Array
+int[] arr ={-3,-2,0,-7,25,12,-11}
+37/2 = 18.5 avg
+method(int[] arr)
+   int sum=0;
+   int count=0;
+   for(int i=0;i<arr.length;i++)
+      if(a[i]>0)
+         sum=sum+arr[i];
+          count++;
+ 
+   if(count>0)
+      double average = (double) sum/count;
+      System.out.print("Avarage of positive is " + average);
+
+5.find the sum of distinct element in array
+  int[] arr={10,15,15,20,10,30};
+  sum= 20+30=50;
+  method(int[] arr)
+    HashMap<Integer,Integer> map = new HashMap<>();
+    int sum=0;
+    for(int i=0;i<arr.length;i++)
+        if(map.containsKey(arr[i]))
+            map.put(arr[i],map.get(arr[i])+1);
+        else
+          map.put(arr[i],1);
+
+    for(int key: map.keySet())
+      if(map.get(key) ==1)
+         sum= sum+key;
+    sop(sum);
+
+6.counting frequency of element in array
+  int[] arr ={20,30,50,20,30,40};
+  method(int[] arr)
+    HashMap<Integer,Integer> map= new HashMap<>();
+    for(int i=0;i<arr.length;i++)
+        if(map.containsKey(arr[i])
+           map.put(arr[i],map.get(arr[i])+1);
+         else
+            map.put(arr[i],1);
+
+  
+                
+       
