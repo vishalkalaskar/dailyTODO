@@ -180,12 +180,20 @@ boolean method(int[]a,int[] b)
          return true;
  
 3.largest
+//maxmimum and min
 method(int[] a)
-   largest=  a[0];
+   largest=  a[0];  
   for(i=0;i<a.length)
-         if(a[i]>largest)
-             largest=a[i];
-    sop(largest);
+         if(a[i]>largest) 
+             largest=a[i]; 
+    sop(largest);         
+//min
+method(int[] a)
+   min=  a[0];  
+  for(i=0;i<a.length)
+         if(a[i]<min) 
+             min=a[i]; 
+    sop(min); 
 
 4.second largest
  method(int[] a)
