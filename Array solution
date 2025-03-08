@@ -116,4 +116,35 @@ method(int[] arr)
         else
            nums1[i--]=nums2[p2--];
                 
-       
+ 8.merging to sorted array 
+class Main {
+    public static int[] merge(int[] nums1, int[] nums2) {
+        int m = nums1.length, n = nums2.length;
+        int[] merged = new int[m + n]; // New merged array
+        int p1 = 0, p2 = 0, i = 0;
+
+        // Merge two sorted arrays
+        while (p1 < m && p2 < n) {
+            if (nums1[p1] < nums2[p2]) {
+                merged[i++] = nums1[p1++];
+            } else {
+                merged[i++] = nums2[p2++];
+            }
+        }
+
+        // Copy remaining elements
+        while (p1 < m) merged[i++] = nums1[p1++];
+        while (p2 < n) merged[i++] = nums2[p2++];
+
+        return merged; // Return the new array
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 3, 5};
+        int[] nums2 = {2, 4, 6};
+
+        int[] result = merge(nums1, nums2);
+        System.out.println(Arrays.toString(result)); // Output: [1, 2, 3, 4, 5, 6]
+    }
+}
+
