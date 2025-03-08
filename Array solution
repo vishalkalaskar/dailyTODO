@@ -30,7 +30,7 @@ method()
     int[] arr = {1,2,3,4,5};
     int left=0;
     int right =arr.length-1;
-   while(left<right)
+   while(left<right)   //add for loop and swaping element util i<n;
       {
          int temp =arr[left];
          arr[left]=arr[right];
