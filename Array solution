@@ -213,4 +213,10 @@ class Main {
     }
 }
 
-
+10. find the Missing element in array.
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,5,6};
+        int excp =(arr.length +1)*(arr.length+2)/2;
+        int actual = Arrays.stream(arr).sum();
+        System.out.println("missing number of arr "+(excp-actual));
+    }
