@@ -273,8 +273,9 @@ method(String s)
  StringBuilder ans = new StringBuiler();
  for(int i=0;i<s.length();i++)
       int index = s.charAt(i)-'a';
+       a[index] +=1;
        if(a[index]==1)
-          ans.append(c.charAt(i));
+          ans.append(s.charAt(i));
  sop(ans);
 
 10.reverse string
