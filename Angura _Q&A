@@ -1,0 +1,189 @@
+# Angular Interview Questions and Answers
+
+## Basic Angular Questions
+
+1. **What is Angular and how does it differ from AngularJS?**
+   Angular is a TypeScript-based open-source web application framework maintained by Google. It's a complete rewrite of AngularJS with better performance, mobile support, TypeScript integration, and component-based architecture.
+
+2. **Explain the main building blocks of an Angular application.**
+   Components, Modules, Templates, Directives, Services, Dependency Injection, and Routing.
+
+3. **What is a component in Angular?**
+   A component is a building block that controls a portion of the UI. It consists of a TypeScript class with a @Component decorator, an HTML template, and optional CSS styles.
+
+4. **Describe the Angular component lifecycle hooks.**
+   Main hooks include ngOnInit, ngOnChanges, ngDoCheck, ngAfterViewInit, ngAfterContentInit, ngAfterViewChecked, ngAfterContentChecked, and ngOnDestroy.
+
+5. **What is a module in Angular? What's the difference between root module and feature module?**
+   A module is a container for related components, directives, pipes, and services. The root module (AppModule) bootstraps the application, while feature modules organize code around specific functionality.
+
+6. **How do you generate a new component using Angular CLI?**
+   `ng generate component component-name` or `ng g c component-name`.
+
+7. **What are directives in Angular? Explain the different types.**
+   Directives are instructions in the DOM. Three types: Components (with templates), Structural (change DOM layout, e.g., *ngFor), and Attribute (change appearance/behavior, e.g., [ngClass]).
+
+8. **What is data binding in Angular and what are the different types?**
+   Data binding is the synchronization between model and view. Types: Interpolation {{ }}, Property binding [ ], Event binding ( ), and Two-way binding [( )].
+
+9. **What is interpolation in Angular?**
+   Interpolation uses double curly braces {{ expression }} to display component data in the view.
+
+10. **Explain property binding and event binding.**
+    Property binding [property]="expression" binds a component property to a DOM property. Event binding (event)="function()" binds a DOM event to a component method.
+
+11. **What is two-way data binding and how is it implemented?**
+    Two-way binding synchronizes data between model and view in both directions, implemented using [(ngModel)] directive.
+
+12. **What is a pipe in Angular? Name some built-in pipes.**
+    Pipes transform displayed values in templates. Built-in pipes include: DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, and DecimalPipe.
+
+13. **What is a service in Angular?**
+    A service is a reusable class that provides functionality across components, like data fetching, logging, or business logic.
+
+14. **What is dependency injection in Angular?**
+    Dependency injection is a design pattern where a class receives its dependencies from external sources rather than creating them internally.
+
+15. **How do you create and consume a service?**
+    Create with `ng g service service-name`, provide it using @Injectable() decorator, and inject it into component constructors.
+
+## Intermediate Angular Questions
+
+1. **What is Angular routing? How do you implement it?**
+   Routing enables navigation between views. Implement it using RouterModule, defining routes with path and component mappings, and using router-outlet directive.
+
+2. **What are route guards and what are the different types?**
+   Route guards control access to routes. Types: CanActivate, CanActivateChild, CanDeactivate, Resolve, and CanLoad.
+
+3. **Explain lazy loading in Angular. Why is it important?**
+   Lazy loading loads feature modules only when needed, improving initial load time. Implemented with loadChildren in route configuration.
+
+4. **What are observables in Angular? How are they different from promises?**
+   Observables handle async operations and can emit multiple values over time, while promises handle single future values. Observables support operators and are cancellable.
+
+5. **How do you handle HTTP requests in Angular?**
+   Use HttpClient module to make HTTP requests, returning observable streams that can be subscribed to.
+
+6. **What is the purpose of the HttpClient module?**
+   HttpClient provides simplified API for HTTP requests with features like typed response, request/response interception, and error handling.
+
+7. **How do you handle form validation in Angular? Compare template-driven vs reactive forms.**
+   Template-driven forms use directives in templates, while reactive forms use FormGroup/FormControl classes in components. Reactive forms offer more control, testability, and scalability.
+
+8. **What are the FormGroup and FormControl classes?**
+   FormControl tracks value and validation state of form inputs. FormGroup aggregates multiple FormControls into a cohesive unit.
+
+9. **What are validators in Angular forms?**
+   Validators are functions that check form control values against specific criteria. Angular provides built-in validators like required, minLength, and pattern.
+
+10. **What is an Angular resolver?**
+    Resolvers fetch data before activating a route, ensuring data is available before a component is loaded.
+
+11. **Explain the concept of content projection/transclusion.**
+    Content projection allows inserting external content into component templates using `<ng-content>` elements.
+
+12. **What is AOT compilation in Angular?**
+    Ahead-of-Time compilation converts Angular HTML and TypeScript code into efficient JavaScript during build, before the browser downloads it.
+
+13. **What is change detection in Angular and how does it work?**
+    Change detection determines when component views need updating based on data changes. It uses a unidirectional flow and runs after every async event.
+
+14. **What are Angular decorators? List some common decorators.**
+    Decorators are functions that modify classes. Common ones: @Component, @NgModule, @Directive, @Injectable, @Input, @Output, @HostListener.
+
+15. **What are different types of metadata in Angular?**
+    Metadata includes configurations in decorators like @Component (selector, template, styles), @NgModule (declarations, imports, providers), etc.
+
+## Advanced Angular Questions
+
+1. **What is NgZone in Angular and when would you use it?**
+   NgZone is a service for executing work inside or outside Angular's zone, used to optimize performance by controlling when change detection runs.
+
+2. **How does change detection work in Angular? Explain OnPush strategy.**
+   Default change detection checks all components on any event. OnPush strategy only triggers change detection when input references change or events occur, improving performance.
+
+3. **What is Angular Universal? What are its benefits?**
+   Angular Universal enables server-side rendering (SSR), improving SEO, performance, and social media previews by pre-rendering pages on the server.
+
+4. **Explain the concept of tree-shakable providers.**
+   Tree-shakable providers are services provided with providedIn metadata, allowing unused services to be removed during build optimization.
+
+5. **How would you optimize performance in a large Angular application?**
+   Optimization strategies: OnPush change detection, lazy loading, pure pipes, trackBy for ngFor, code splitting, AOT compilation, and tree-shaking.
+
+6. **What is the Ivy renderer in Angular? What advantages does it offer?**
+   Ivy is Angular's rendering engine with improved bundle size, better debugging, faster compilation, and incremental DOM updates.
+
+7. **How do you implement internationalization in Angular?**
+   Use Angular's i18n system with translation files, or ngx-translate library for runtime translation switching.
+
+8. **What are custom elements and how do you create them?**
+   Custom elements are reusable web components. Create them in Angular using @angular/elements package to convert components into web components.
+
+9. **How do you implement state management in Angular? Compare NgRx, Akita, and NGXS.**
+   NgRx follows Redux pattern with actions, reducers, effects, and selectors. NGXS uses a state object approach. Akita uses entity stores with less boilerplate.
+
+10. **Explain how to create dynamic components in Angular.**
+    Use ComponentFactoryResolver and ViewContainerRef to create and insert components programmatically at runtime.
+
+11. **What is Angular Element and how does it work?**
+    Angular Elements package converts Angular components into Custom Elements (Web Components) usable in non-Angular applications.
+
+12. **How would you implement micro frontends using Angular?**
+    Approaches include: module federation with Webpack 5, web components using Angular Elements, or iframe-based composition with shared services.
+
+13. **What are the difference between pure and impure pipes?**
+    Pure pipes execute only when input values change. Impure pipes execute during every change detection cycle, useful for observables or mutable data.
+
+14. **How do you test Angular applications? Explain unit testing vs E2E testing.**
+    Unit testing uses Jasmine/Karma to test components in isolation. E2E testing with Protractor/Cypress tests complete workflows from user perspective.
+
+15. **What is Ahead-of-Time (AOT) compilation and why is it important?**
+    AOT compilation converts Angular code to efficient JavaScript during build. Benefits include faster rendering, smaller package size, and better security.
+
+## Scenario-Based Questions
+
+1. **Performance Optimization:**
+   Diagnose with Chrome DevTools, implement OnPush change detection, use trackBy with ngFor, lazy load modules, optimize change detection cycles with NgZone, virtualize long lists, and use Web Workers for CPU-intensive tasks.
+
+2. **State Management:**
+   For medium e-commerce app, use NgRx with separate stores for products, cart, and user. Create selectors for derived data and effects for API calls. Consider simpler BehaviorSubject services for less complex features.
+
+3. **Component Communication:**
+   Use @Input/@Output for parent-child communication, services with observables for distant components, and NgRx/state management for complex cases. Consider EventEmitter service for specific cross-component events.
+
+4. **Form Validation:**
+   Use reactive forms with FormBuilder, group forms by steps using FormArray, implement custom validators for complex rules, create a form service for state management, and provide visual feedback at each step.
+
+5. **Authentication:**
+   Implement JWT-based auth with HttpInterceptor for token handling, store tokens in sessionStorage, create AuthGuard for protected routes, use BehaviorSubject for user state, and handle token refresh.
+
+6. **Error Handling:**
+   Create global ErrorHandler class, use HTTP interceptors for API errors, implement retry logic for transient errors, create consistent error UI components, and log errors to monitoring service.
+
+7. **Testing Strategy:**
+   Unit test components/services with Jasmine/Karma, create shallow component tests with NO_ERRORS_SCHEMA, use TestBed for integration tests, mock external dependencies, and implement E2E tests with Cypress for critical flows.
+
+8. **API Integration:**
+   Create API service with HttpClient, implement request interceptor for auth headers, use retry operators for rate limiting, cache responses with shareReplay(), and handle token refreshing.
+
+9. **Upgrading Angular:**
+   Update incrementally using ng update, address breaking changes between versions, update RxJS usage, refactor deprecated APIs, and run extensive tests at each step.
+
+10. **Accessibility:**
+    Follow WCAG guidelines, use semantic HTML, implement ARIA attributes, ensure keyboard navigation, use Angular CDK a11y module, and test with screen readers and tools like axe.
+
+11. **Code Organization:**
+    Use feature modules with lazy loading, shared module for common components, core module for singleton services, follow Angular style guide naming conventions, and implement clean architecture with separation of concerns.
+
+12. **Real-time Features:**
+    Implement WebSockets using Socket.io or SignalR client libraries, or use server-sent events. Wrap in Angular services, use RxJS to handle streams, and optimize change detection for frequent updates.
+
+13. **Mobile Responsiveness:**
+    Use Angular Material with FlexLayout, implement responsive breakpoints, create mobile-first designs, use CSS media queries, and test on multiple devices/emulators.
+
+14. **Legacy Code Integration:**
+    Create wrapper directives for jQuery components, use ngZone.runOutsideAngular() for performance, gradually replace jQuery with Angular solutions, and use Angular's renderer for DOM manipulation.
+
+15. **Deployment Strategy:**
+    Implement GitLab/GitHub CI/CD pipeline, use environments (dev/staging/prod), implement versioning strategy, configure production builds with AOT/optimization flags, and use Docker for consistent deployment.
