@@ -378,28 +378,32 @@ method(String str)
 
 //map iterate
  Map<String,Intege> map = new HashMap<>();
- for(map.Entry<String,Integer> entry = map.entrySet())
+ for(Map.Entry<String,Integer> entry : map.entrySet())
       sop(entry.getkey()+""entry.getValue());
 //java8
 map.forEach((Key,value)->{ system.out.println(keys+""+value) });
 //Given a string, find the first non-repeating character and return it. If all characters repeat, return null
  String s = "swiss";
-        
-        // Step 1: Store character frequencies in a LinkedHashMap (preserves order)
-        Map<Character, Integer> freqMap = new LinkedHashMap<>();
-        for (char c : s.toCharArray()) {
-            freqMap.put(c, freqMap.getOrDefault(c, 0) + 1);
+       // Using LinkedHashMap to maintain insertion order
+        Map<Character, Integer> map = new HashMap<>();
+
+        // Count occurrences of each character
+        for (char c : str.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
         }
-        
-        // Step 2: Find the first character with frequency 1
-        for (char c : s.toCharArray()) {
-            if (freqMap.get(c) == 1) {
-                System.out.println("First non-repeating character: " + c);
-                return; // Stop after finding the first non-repeating character
+
+        // Find the first non-repeating character
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == 1) {
+                System.out.println("First non-repeating character: " + entry.getKey());
+                return;
             }
         }
 
-        System.out.println("No non-repeating character found.");
+        // If no unique character found
+        System.out.println("No unique character found.");
+
+        
 13.write controller for user fetch from database.
    @RestController
 public class EmployeeController {
