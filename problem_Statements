@@ -1,0 +1,395 @@
+1.You are given an array of integers. Write a program to find the maximum product of two distinct elements in the array.-done.
+
+2.Write a program to find the minimum product of two distinct elements in the array
+
+Examples:
+
+Input: [1, 2, 3, 4, 5]
+Output: 2
+(Explanation: The minimum product is 1 * 2 = 2)
+Input: [-1, -3, 10, 0, 5]
+Output: -30
+(Explanation: The minimum product is -3 * 10 = -30)
+
+3.Write a program to find the maximum product of three distinct elements in an array.
+
+ Examples:
+Input: [1, 2, 3, 4, 5]
+Output: 60
+(Explanation: The maximum product is 3 * 4 * 5 = 60)
+Input: [-10, -20, 5, 1, 3]
+Output: 1000
+(Explanation: The maximum product is -10 * -20 * 5 = 1000)
+
+4.Find the maximum product of k distinct elements in an array, where k is given.
+
+Examples:
+Input: arr = [1, 10, 2, 6, 5, 3], k = 3
+Output: 300
+(Explanation: The maximum product is 10 * 6 * 5 = 300)
+Input: arr = [-1, -2, -3, -4, -5], k = 2
+Output: 20
+(Explanation: The maximum product is -4 * -5 = 20)
+
+5.You are given an array of integers. Write a program to find all the duplicate elements in the array.
+
+Input and Output:
+Input: [4, 3, 2, 7, 8, 2, 3, 1];
+Output: [2, 3];
+Input: [1, 2, 3, 4, 5];
+Output: [];
+Input: [1, 1, 1, 2, 2, 3];
+Output: [1, 2];
+
+6.You are given an array of integers and a target sum. Write a program to find all unique pairs of numbers in the array that add up to the target sum.
+
+Input and Output:
+Input: (arr = [1, 2, 3, 4, 5]), (target = 6);
+Output: [
+[1, 5],
+[2, 4],
+];
+Input: (arr = [2, 4, 3, 7, 8]), (target = 10);
+Output: [
+[2, 8],
+[3, 7],
+];
+Input: (arr = [1, 1, 1]), (target = 2);
+Output: [[1, 1]];
+
+7.You are given an array of integers. Write a program to find the majority element (the element that appears more than n / 2 times). If no such element exists, return null.
+
+Input and Output:
+Input: [3, 3, 4, 2, 4, 4, 2, 4, 4];
+Output: 4;
+Input: [1, 2, 3, 4];
+Output: null;
+
+8.Given an integer array nums and an integer k, return the k most frequent elements.
+
+Input: nums = [1, 1, 1, 2, 2, 3], k = 2
+Output: [1, 2]
+Input: nums = [4, 4, 4, 6, 6, 6, 6, 7, 8], k = 1
+Output: [6]
+
+9.Write a function to rotate an array to the right by k steps, where k is non-negative.
+
+Input: (nums = [1, 2, 3, 4, 5, 6, 7]), (k = 3);
+Output: [5, 6, 7, 1, 2, 3, 4];
+
+10.Write a function to find the smallest positive integer that is missing from an array.
+
+Input: nums = [3, 4, -1, 1];
+Output: 2;
+
+11.You are given an array of integers from 1 to n, but one number is missing. Write a program to find the missing number.
+
+Input and Output:
+Input: [1, 2, 4, 5]
+Output: 3
+Input: [3, 7, 1, 2, 8, 4, 5]
+Output: 6
+Input: [1, 2, 3, 4, 5]
+Output: null (No missing number)
+
+12.You are given an array of integers from 1 to n, but two numbers are missing. Write a program to find the two missing numbers.
+
+Input and Output:
+Input: [1, 2, 4, 6], (n = 6);
+Output: [3, 5];
+
+13.You are given an unsorted array of integers from 1 to n, but one number is missing. Find the missing number without sorting the array.
+
+Input and Output:
+Input: [4, 3, 1, 5];
+Output: 2;
+
+14.You are given an array of integers, some of which are repeated, and one number is missing. Write a program to find the missing number.
+
+Input and Output:
+Input: [1, 2, 2, 4, 5];
+Output: 3;
+
+15.You are given an array of integers where every number appears twice, except for one number that appears only once. Write a program to find that unique number. If no such number exists, return null.
+
+Examples:
+Input:
+[4, 3, 2, 4, 1, 3, 2];
+Output:
+1;
+(Explanation: Every number appears twice, except 1, which appears only once.)
+Input:
+[7, 8, 9, 8, 7];
+Output:
+9;
+(Explanation: 7 and 8 appear twice, but 9 appears only once.)
+Input:
+[5, 5, 6, 6, 7, 7];
+Output:
+Null
+
+16 You are given a string. Write a program to find the second most frequent character in the string. If there is no second most frequent character, return null.
+
+Examples:
+Input:
+"javascript";
+Output:
+"v";
+
+17.You are given an array where every number appears exactly three times, except for one number that appears only once. Write a program to find that unique number.
+
+Examples:
+Input:
+[2, 2, 3, 2];
+Output: 3
+(Explanation: The number 2 appears three times, but 3 appears only once.)
+Input:
+[5, 1, 5, 1, 5, 1, 7];
+Output:
+7
+(Explanation: 5 and 1 appear three times, but 7 appears only once.)
+Input:
+[8, 8, 8];
+Output:
+Null
+
+18.You are given a sentence. Write a program to find the most frequently occurring word in the sentence. If multiple words have the same frequency, return the first one encountered.
+
+Examples:
+Input:
+"the cat and the dog";
+Output:
+"the";
+(Explanation: "the" appears twice, which is the highest frequency.)
+Input:
+"hello world hello everyone";
+Output:
+"hello";
+
+19.You are given an array of integers, where a majority element is defined as an element that appears more than n / 2 times (where n is the size of the array). Your task is to find and return the majority element.
+
+Input:
+[3, 3, 4, 2, 3, 3, 3, 1];
+Output: 3
+
+20.You are given an array of words and a set of letters (as a string). Your task is to find all words from the array that can be formed only using the given letters. Each letter in the given set can be used only as many times as it appears.
+
+Example 1:
+Input:
+words = ["apple", "hello", "pen", "help"];
+letters = "elpoh";
+Output:
+["help"];
+Example 2:
+Input:
+words = ["dog", "good", "go", "god"];
+letters = "odg";
+
+Output:
+["dog", "go", "god"];
+
+21.Given a string containing words and numbers mixed together. Your task is to sort the words alphabetically and the numbers in ascending order while keeping them in their original positions.
+
+Example 1:
+Input: "apple 3 banana 1 orange 2";
+Output: "apple 1 banana 2 orange 3";
+Example 2:
+Input: "car 10 bus 2 truck 5";
+Output: "car 2 bus 5 truck 10";
+
+22.Given an array of words, find a word that can be formed by combining two other words from the same array. If multiple such words exist, return any one of them. If no such word is found, return null.
+
+Example 1:
+Input: ["cat", "dog", "catdog", "bird", "fish"];
+Output: "catdog";
+Example 2:
+Input: ["hello", "world", "helloworld", "hi"];
+Output: "helloworld";
+
+23.Given an unsorted array of integers. Find the length of the longest sequence of consecutive numbers that appear in any order in the array. If there are no consecutive sequences, return 1 (since each number alone counts as a sequence).
+
+Example Input & Output:
+Example 1:
+Input: [100, 4, 200, 1, 3, 2]
+Output: 4 // ( the longest consecutive sequence is [1, 2, 3, 4])
+
+Example 2:
+Input: [9, 1, 4, 7, 3, 2, 6, 5];
+Output: 7; // (The sequence is [1, 2, 3, 4, 5, 6,7])
+
+Example 3:
+Input: [10, 5, 12, 3, 55, 30];
+Output: 1; // (Each number is isolated)
+
+24.Given an array that contains both numbers and strings. Your task is to sort the array such 
+that:
+All numbers appear first, sorted in ascending order.
+All strings appear next, sorted in alphabetical order.
+
+Example 1:
+Input:
+[3, "apple", 1, "banana", 2, "cherry"];
+Output:
+[1, 2, 3, "apple", "banana", "cherry"];
+Example 2:
+Input:
+["dog", 7, "cat", 2, "bat", 5];
+
+Output:
+[2, 5, 7, "bat", "cat", "dog"];
+
+Edge Case Example:
+Input:
+["grape", "mango", "apple"]
+Output:
+["apple", "grape", "mango"]
+Input:
+[5, 1, 3, 2]
+Output:
+[1, 2, 3, 5]
+
+STRING
+1.Remove all duplicate characters from a string.
+
+Input and Output:
+Input: "javascript";
+Output: "javscript";
+
+2.Check if one string is a subsequence of another string.
+
+Input and Output:
+Input: (s1 = "abc"), (s2 = "aabbcc");
+
+YouTube (Hema Coding School)
+Instragram (Hema Coding School)
+
+Output: true;
+Input: (s1 = "aec"), (s2 = "abcde");
+Output: false;
+
+3.You are given a string. Write a program to find the first non-repeating character in the string. If all characters repeat, return null.
+
+Input: "javascript";
+Output: "j";
+Input: "aabbcc";
+Output: null;
+Input: "swiss";
+Output: "w";--done
+
+4.Write a function to count the number of vowels in a string.
+
+Input and Output:
+Input: "javascript";
+Output: 3;
+
+5.You are given a string containing letters, digits, and special characters. Write a program to reverse only the letters in the string while keeping all other characters in the same position.
+
+Examples:
+1. Input: "a1b!c"
+Output: "c1b!a"
+(Explanation: Only the letters 'a', 'b', and 'c' are reversed, while 1 and ! remain in place.)
+2. Input: "h@el#lo!"
+Output: "o@ll#eh!"
+(Explanation: 'h', 'e', 'l', 'l', 'o' are reversed, while @, #, and ! stay in their positions.)
+3. Input: "12345"
+Output: "12345"
+(Explanation: No letters to reverse, so the string remains the same.)
+
+6.Find the Longest Word in a Sentence
+
+Problem:
+You are given a sentence. Write a program to find the longest word in the sentence.
+Examples:
+Input:
+"The quick brown fox";// quick
+
+7.You are given a string. Write a program to count the occurrences of each character in the string.
+
+Input:
+"banana"; // Output: { b: 1, a: 3, n: 2 }
+
+8.Write a program to remove all vowels (a, e, i, o, u) from a given string.
+
+Input:
+"JavaScript is fun";
+
+Output:
+"JvScrpt s fn";
+
+9.You are given a string with words separated by spaces. Write a program to reverse the letters in each word while keeping the word order the same.
+
+Examples:
+
+Input: JavaScript is awesome
+output : tpircSavaJ si emosewa
+
+10.You are given a string. Write a program to find the most frequently occurring character in the string. If multiple characters have the same highest frequency, return the first one encountered.
+
+Input: "javascript"
+Output: "a"
+(Explanation: The letter "a" appears twice, which is the highest frequency.)
+Input: "apple"
+Output: "p"
+(Explanation: The letter "p" appears twice, which is the most frequent
+character.)
+Input: "hello world"
+Output: "l"
+(Explanation: The letter "l" appears three times, which is the highest
+frequency.)
+Input: "abcd"
+Output: "a"
+(Explanation: All characters appear only once, so we return the first
+character encountered.)
+
+11.You are given a sentence as a string. Your task is to find the most frequently occurring word in the sentence.
+
+Example:
+Input:
+
+"apple banana apple orange banana apple"
+Output:
+
+"apple"
+
+12.Given a string where each word has a number at the end. Sort the words based on the numbers at the end.
+
+Remove the numbers from the words.
+Return the sorted sentence as a string.
+
+Example 1:
+Input:
+"code3 love1 to2";
+Output:
+"love to code";
+Example 2:
+Input:
+"fun4 is2 learning1 JavaScript3";
+
+Output:
+"learning is JavaScript fun";
+
+Edge Case Example:
+Input:
+"hello1 world2";
+Output:
+"hello world";
+Input:
+"one4 two1 three3 four2";
+Output:
+"two four three one";
+
+13.You are given a string. Your task is to find the most frequently occurring substring of length greater than 1 and return it. If multiple substrings have the same highest frequency, return the longest one.
+
+Example 1:
+Input:
+"banana";
+Output:
+"ana";
+Explanation:
+• "an" appears twice, "ana" appears twice.
+• "ana" is longer, so we choose "ana".
+Example 2:
+Input:
+"aaaaa";
+Output:
+"aa";
