@@ -248,3 +248,20 @@ class Main {
     }
 }
 
+12. sum n to m value 
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+       int m=0;
+    int n=3;
+    int sum=0;
+    for(int i=m;i<n;i++)
+    {
+        m++;
+        sum=sum+m;
+    }
+    System.out.println("sum of 0 to 3 is " +sum);
+    }
+}
