@@ -156,7 +156,21 @@ import java.util.LinkedHashSet;
   List<Integer> num = Arrays.asList();
   Integer maxcount = num.stream().sorted(Comparator.reversOder()).skip(1).findFirst().orElse(null);
    sop(maxcount);
-  
+
+16.Given a string "Welcome", write a Java program using Streams to extract and print only the odd-indexed characters.
+Expected Output: Wloe
+   String str = "Welcome";
+
+        // Using Streams to extract odd-indexed characters
+        String result = IntStream.range(0, str.length())
+                .filter(i -> i % 2 == 0)  // Keep only even indices (0, 2, 4, ...)
+                .mapToObj(str::charAt)
+                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
+                .toString();
+
+        System.out.println(result); // Expected Output: Wloe
+
+
 6.code singleton class 
 public class Singleton
       public static Singleton  intance=new Singleton();
