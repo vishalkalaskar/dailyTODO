@@ -450,6 +450,42 @@ public Employee updateEmployee(@PathVariable String id, @RequestBody Employee em
     return employeeService.updateEmployee(id, employee);
 }
 }
+//study 
+You need to fetch employee details using an employeeId sent as a Path Parameter. Write the complete code from the Controller layer to the Service layer.
+
+Assume that Department is a separate microservice. Your EmployeeService must call it to fetch additional details using the employeeId. Focus on the
+
+ @RestController
+  public class employeecontroller
+          @Autowired
+           private EmployeeServices empservice;
+             
+           @GetMapping("/empd/{emp_id}")
+           public ResponesEntity<String> getEmp(@PathVariable Long id)
+                   return empservice.findById(id);
+
+           @GetMapping("/empd/{emp_id}")
+           public ResponesEntity<String> getEmp(@PathVariable Long id)
+                   string url = host+url.replace("id",id);
+                  Httpheader header = new HttpHeader();
+                 header.setContentType(MediayType.Application.JSON);
+                 header.add("Authorazation","Bearer"+tokenserive.getToken());
+
+                HttpEntity<String> entity = new HttpEnity<>(header); //(payload,header);
+                RestTemplate restemp = new RestTemplate();
+                String response = restemp.exchange(url,HttpMethod.GET,entity,String.class).getBody();
+                return new ResponeEntity<String>(response,HttpStatus.OK);
+
+
+
+@service
+public class EmployeeService
+     
+ @Autowired
+ private empRespo emprep;
+ 
+ pubic String findById(Long id)
+            return emprep.findById(id);
 
 14.Implement the crud operations.
   
