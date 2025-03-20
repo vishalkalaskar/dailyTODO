@@ -63,7 +63,7 @@ for(Int num:list)
           String inputString = "Java Concept Of The Day";
 
 character,length-->
-Map<Character,Long> count= inputstring.chars().maptoObj(c->(char)c).collect(Collectros.goupingBy(Function.identity(),Collectors.counting());
+Map<Character,Long> count= inputstring.chars().mapToObj(c->(char)c).collect(Collectros.goupingBy(Function.identity(),Collectors.counting());
 sop(count):
 longstring-->
 Optional<String> strlen=  stringList.stream().max(Comparator.camparingInt(String::length));
