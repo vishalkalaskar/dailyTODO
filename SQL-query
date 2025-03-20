@@ -75,3 +75,16 @@ WHERE e.salary > dept_avg.avg_salary;
 
 15.write sql query to rank employee based on salary?
 select employee_id,employee_name,salary,RANK() OVER(ORDER BY salary DESC) AS salaryRank From employee;
+
+16.SQL Query to Update DEPARTMENT_NAME and POST_HOLD of the 1000th Employee in MySQL
+UPDATE employees
+SET department_name = 'New Department',
+    post_hold = 'New Post'
+WHERE employee_id = (
+    SELECT employee_id FROM (
+        SELECT employee_id FROM employees
+        ORDER BY employee_id **ASC**
+        LIMIT 1 OFFSET 999
+    ) AS temp
+);
+
