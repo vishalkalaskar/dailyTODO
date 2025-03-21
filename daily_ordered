@@ -1,0 +1,488 @@
+1.get the list of all the products that belogns to "books" category and product price>200 using java8 features
+  Product p1 = new Product(101,"java","Books",150);
+  Product p2 = new Product(102,"spring","Books",350);
+  Product p3 = new Product(103,""aws,"Books",450);
+  Product p4 = new Product(104,"html","Books",150);
+  Product p5 = new Product(105,"css","Books",110);
+  Product p6 = new Product(106,"Nokia","Books",150);
+  Product p7 = new Product(107,"samsung","Books",150);
+
+ List<Product> product = Arrays.asList();
+ List<Product> prodlist = product.stream().filter(prod->prod.getCategory().equals("Books")&&prod.getPrice()>200).collect(Collectors.toList());
+ 
+2. find out all the numbers start with 1 using java8
+ [10,13,17,56,25,11]
+ 
+ List<Integer> numbers = Arrays.asList();
+ List<Integer> numlist = numbers.stream().filter(num->string.valueOf(numbers).startWith("1")).collect(Collectors.toList());
+
+3.find the sudent who name star with A and marks above 70.
+ student s1= new student("aryan",1,80);
+ student s2= new student("ram",1,80);
+ student s3= new student("sita",1,80);
+ student s4= new student("sham",1,80);
+ student s5= new student("ankit",1,80);
+ student s6= new student("kiran",1,80);
+
+ List<Student> student = Arrays.asList();
+ List<Student> studlist = student.stream().filter(stud->stud.getName().startWith("A")&&stud.getMarks()>70).collect(Collectors.toList());
+
+4.find hr deparment employe count and thier names.
+List<Employee> employee=new ArrayList<Employee>();
+employee.add(new employee("ABC",30,"female","HR"));
+employee.add(new employee("AB",30,"female","it"));
+employee.add(new employee("AC",30,"male","HR"));
+employee.add(new employee("ABCd",30,"male","it"));
+
+List<Employee> employee = employee.stream().filter(emp->emp.getDepartment().equals("HR")).collect(Collectors.toList());
+List<Employee> emplist = employee.forEach(emp->sytem.out.pritnln(emp.getName());
+int count = employee.stream().count().get();
+sop(count);
+
+5.odd and even for list 
+List<Integer> numbers = Arrays.asList();
+List<Integer> even = numberes.stream().filter(num->num%2==0).collect(Collectors.toList()).forEach(System.out::pritnln);
+List<Integer> odd = numbers.stram().filter(num->num%2!=0).collect(Collectors.toList()).forEach(System.out::Println);
+
+6.remove duplicate using stream api
+List<Integer> numbers = Arrays.asList();
+List<Integer> numlist = numbers.stream().distinct().collect(Collectors.toList()).forEach(System.out::pritnln);
+
+7. frequency of each character in a string using Java 8 streams?
+   
+          String inputString = "Java Concept Of The Day";
+
+character,length-->
+Map<Character,Long> count = dp.chars().maptoObj(c->(char)c).collect(Collectors.groupingBy(Function.identity(),collectors.counting());
+dp.forEach((keys,value)->{system.out.print(keys,value)});
+
+longstring-->
+Optional<String> strlen = ip.stream().max(Comparator.comparingInt(String::Length));
+sop(strlen);
+
+8. sort the given list of decimals in reverse order?
+    
+    List<Double> decimalList = Arrays.asList(12.45, 23.58, 17.13, 42.89, 33.78, 71.85, 56.98, 21.12);
+        
+    reversoder-->dl.stream().sorted(Comparator.reversOder()).collect(Collectors.toList()).forEach(System.out::print);
+    naturalorder-->dl.stream().sorted(Comparator.naturalOder()).collect(Collectors.toList()).forEach(System.out::print);
+    min->dl.stream().min().get();
+    max->dl.stream().max().get();
+    limit->dl.stream().sorted().limit(3).collect(Collectors.toList());
+
+9. Given a list of strings, join the strings with ‘[‘ as prefix, ‘]’ as suffix and ‘,’ as delimiter?
+   
+         List<String> listOfStrings = Arrays.asList("Facebook", "Twitter", "YouTube", "WhatsApp", "LinkedIn");
+        String joinedString = listOfStrings.stream().collect(Collectors.joining(", ", "[", "]"));  
+        System.out.println(joinedString);
+               
+      ListOfstring.stream().collect(Collectors.joining(",","[","]"));
+      sop(joinedstring);
+     
+10.How do you merge two unsorted arrays into single sorted array using Java 8 streams?
+        int[] a = new int[] {4, 2, 7, 1};         
+        int[] b = new int[] {8, 3, 9, 5};    
+         
+       array-->IntStream.concat(Arrays.stream(a),Arrays.stream(b)).sorted().toArray().collect(Collectors.toList()).forEach(System.out::pritnln);
+       twolist->Stream.concat(list1.stream(),list2.stream()).sorted().collect(Collectors.toList()).forEach(System.out::pritnln);
+       intersect->list1.stream().filter(list2::contains).collect(Collectors.toList()).forEach(system.out::print);
+
+11.How do you get three maximum numbers and three minimum numbers from the given list of integers?
+       List<Integer> ll= Arrays.asList(45, 12, 56, 15, 24, 75, 31, 89);
+       naturalorder,limit3-->ll.stream().sorted(Comparator.naturalOder()).collect(Collectors.toList()).forEach(System.out::println);
+       reverseoder,limit3-->ll.stream().sorted(Comparator.reversOder()).collect(Collectors.toList()).forEach(System.out::println);
+       arraycount-->int count = ll.stream().count();
+       sop(count);      
+
+12.max element in arr
+ List<Integer> numbers = Arrays.asList();
+ int maxele = numbers.stream().max(Integer::compare).get();
+ sop(maxele);
+
+13. Count duplicates for String
+    int[] array= {};
+    Map<String,Long> dp = Arrays.stream(array).collect(Collectors.groupingBy(Function.identity(),collectors.counting());
+    dp.entrySet().stream().filter(entry->entry.getKey()>1).forEach(entry->system.out.print(entry.getkey()+" "+entry.getValue());
+
+//distinct
+List<String> ele = Arrays.stream(array).distinct().collect(Collectors.toList()).forEach(System.out::pritnln);
+
+14.Optimized Way to Count 1s in ArrayList java
+List<Integer> numbers = Arrays.toList();
+int oncecount = numbers.stream().filter(num->num==1).count().get();
+sop(oncecount);
+
+15.using stream() find second high element
+List<Integer> numbers = Arrays.asList();
+Int sechigh = numbers.stream().sorted(Comparator.reverseOder()).skip(1).findfirst().orElse(null);
+sop(sechigh);
+
+//Stream -> Declare 1 list/array having 1 to 20; calculate sum of even numbers square using stream
+int sum = Intstream.rangeClose(1,20).filter(num->num%2==0).map(num->num*num).sum();
+sop(sum);
+
+6.code singleton class 
+public class Singleton 
+  public static Singeton intance = new Singleton();
+  private Singleton(){};
+  public static singleton getInstance()
+     return intance();
+
+1.intersection of array//common element
+method(int[] a,int[] b)
+  for(int i=0;i<a.length;i++)
+     for(int j=0;j<b.length;j++)
+         if(a[i]==b[j])
+             sop(a[i]);
+
+2.two array same or not
+boolean method(int[] a,int[] b)
+    for(int i=0;i<a.length;i++)
+      for(int j=0;j<b.length;j++)
+          if(a[i]!=b[j])
+               return false;
+      return true;
+
+3.largest
+
+method(int[] a)
+  max = a[0];
+  for(int i=0;i<a.length;i++)
+        if(a[i]>max)
+           max=a[i];
+   sop(max);
+
+//mini
+
+method(int[] a)
+  min =a[0];
+  for(int i=0;i<a.length;i++) 
+     if(a[i]>min)
+        min=a[i];
+   sop(min);
+ 
+4.second largest
+ method(int[] a)
+
+    int high = INTEGER.MIN_VALUE;
+    int sechigh = INTEGER.MIN_VALUE;
+
+    for(int num:a)
+       if(num > high)
+            sechigh= high;
+            high = num;
+       else if(num>sechigh &num!=high)
+              sechigh = num;
+    sop(sechigh);
+        
+5.reverse and swaping element in array logic are same.
+ method(int[] a)
+  int left = 0;
+  int right = a.length-1;
+  for(int i=0;i<a.length;i++)
+      int temp =a[left];
+      a[left] =a[left];
+      a[left]=temp;
+   left--;
+   right++;
+
+sop(Arrays.toString(a)); 
+ 
+7.two arr merging and sorting.
+method(int[] a,int[] b)
+ int n= a.length+b.lenth;
+ int[] newarr = new int[n];
+ system.arraycopy(a,0,newarr,0,a.length);
+ system.arraycopy(b,0,newarr,b.length,a.length);
+
+ for(int i=0;i<n;i++)
+  for(int j=0;j<n-i-1;j++)
+      if(newarr[j]>newarr[j+1])
+        int temp = newarr[j];
+        newarr[j]=newarr[j+1];
+        newarr[j+1] =temp;
+
+  for(int num:nearr)
+       sop(num+" ");  
+
+8.String/removing specific string
+ method(String s,char ch)
+    newstr="";
+  for(int i=0;i<s.length();i++)
+      if(s.charAt(i)!=ch)
+         newstr=newstr+s.charAt(i);
+   sop(newstr);
+
+9.counting occurance character in string more than one
+  Method(String s)
+     int[] a = new int[26];
+     for(int i=0;i<s.length();i++)
+         int index = s.charAt(i)-'a';
+         a[index] =a[index]+1;
+
+     for(int i=0;i<s.length();i++)
+         int index = s.charAt(i)-'a';
+         if(a[index] ==1)
+              sop(s.charAt(i)+" ");
+  
+10.reverse string
+ method(String s)
+   StringBuilder ans = new StringBuilder();
+
+   for(int i=s.length()-1;i>=0;i--)
+        ans.append(s.charAt(i));
+
+   sop(ans);
+    
+
+//s="hello'-->helo;   
+method(String s)
+  int[] a = new int[26];
+  StringBuilder ans = new StringBuilder();
+  for(int i=0;i<s.length();i++)
+       int index = s.charAt(i)-'a';
+       a[index] =a[index]+1;
+        if(a[index]==1)
+           ans.append(s.charAt(i));
+
+ sop(ans.toString.trim());
+
+boolean isAnagram(String str1, String str2) {
+        // Remove all white spaces and convert to lowercase
+        str1 = str1.replaceAll("\\s", "").toLowerCase();
+        str2 = str2.replaceAll("\\s", "").toLowerCase();
+
+        // Check if lengths are the same
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        // Convert to char arrays and sort
+        char[] charArray1 = str1.toCharArray();
+        char[] charArray2 = str2.toCharArray();
+        Arrays.sort(charArray1);
+        Arrays.sort(charArray2);
+
+        // Compare sorted char arrays
+        return Arrays.equals(charArray1, charArray2);
+  
+// cheking anagrram
+
+     char[] charArray1 = str1.toCharArray();
+     char[] charArray2 = str2.toCharArray();
+
+//longest substring
+int longest(String s)
+
+  if(s==null||s.isEmpty())
+       return 0;
+
+  int start=0;
+  int maxlen =0;
+ HashSet<Character> set = new HashSet<>();
+  for(int end=0;end<s.length();i++)
+     while(set.contains(s.charAt(end))
+         set.remove(s.charAt(start))
+          start++;
+      set.add(s.charAt(end));
+      maxlen = Math.max(maxlen,end-start+1);
+    return maxlen;
+      
+  
+ 
+
+//duplicat element from the array
+method(int[] a)
+  HashSet<Integer> uni = new HashSet<>();
+  for(int num:a)
+    uni.add(num);
+ 
+   int[] result = new int[uni.size()];
+   int index=0;
+   for(int n:uni)
+      result[inde++] = n;
+   
+//print odd and even string palce
+method(String s)
+  StringBuilder even = new StringBuilder();
+  StringBuilder odd = new StringBuilder();
+  
+  for(int i=0;i<s.length();i++)
+    if(i%2==0)
+         even.add(s.charAt(i));
+     else
+        odd.add(s.charAt(i));
+  
+   
+//map iterate
+Map<String,Integr> map =new HashMap<>();
+map.for(Map.Entry<String,Integer> entry : map.entrySet())
+   sop(entry.getKey()+ "" + entry.getValue());
+
+//java 8
+map.forEach((key,value)->{system.out.pritnln(key+ " "+value)});
+
+//remove string from string 
+s = "welcome hi to hi me";
+method(String s)
+   String[] words = s.split(" ");
+   StringBuilder ans = new StringBuilder();
+   LinkedHashset<String> map = new LinekdHashset<>();
+   for(String word:word)
+        if(map.add(word))
+          ans.append(word).append(" ");
+    sop(ans);
+  
+//Given a string, find the first non-repeating character and return it. If all characters repeat, return null
+s="swiss"
+method(Strign s)
+
+  LinkedHasMap<Character,Integer> map = new LinkedHashMap<>();
+  for(char ch : toCharArray())
+       map.put(ch,map.getOrDefault(ch,0)+1);
+  
+  for(Map.Entry<character,Integer> entry: map.entrySet())
+        if(entry.getValue()==1)
+          sop(entry.getKey());
+          return ;
+  
+13.write controller for user fetch from database.
+    @RestController
+     @RequestMapping("/user")
+    public class userController{
+       
+      @Autowired
+      public EmployeeService empservice;
+      
+        @GetMapping("/alluserdata")
+        public List<Employee> getAllUserData(){
+                     return empservice.findAll();
+          }
+        @PostMapping("/creatignEmployee")
+       public string CreateEmloyee(@RequestBody Employee emp)
+            empservice.save(emp);
+            return "employee created sucessfully";
+        
+       @DeleteMapping("/delete/emp/{id}")
+        pubic string DeleteEmployee(@PathVariable id)
+             empservice.deletById(id);
+          return "employee deleted";
+
+     @PutMapping("/update/employee")
+     pbulic string updateemploye(@RequestParam("id") int id,@RequestBody Employee emp)
+           empservice.updateEmployee(id,emp);
+}
+14.Implement the crud operations.
+  
+ @Service
+ pulic class curdservices{
+       @Autowired
+       public EmpRepository emprepo
+        
+        public Employee save(Employee emp){
+               return emprepo.save(emp);
+        
+         public List<User> findAll(){
+                   return emprepo.findAll();
+             }      
+         
+         public void delete(long id);
+             return emprepo.deleteById(id);  
+        pubilc employee updateEmployee(string id,Employee newempdata)
+             if(!emprepo.exitById(id)
+                 throw new RuntimeException("employee not fount with"+id);
+             newempdata.setId(i);
+            return emprepo.save(newempdata);
+ 
+}
+15.Rest controller for fileupload.
+    @RestController
+     @RequestMapping("/file")
+     public calss filecontroller {
+            @value("${same.path}")    
+            public string filedir;
+          
+            @PostMapping("/uploadfile")
+             public ResponseEntity<String> uploadfile(@RequestParam("file") Multipart file)
+            {
+                    file f=new file(filedir);
+                     if(!f.exits())
+                           f.mkdir();
+                 
+                      try{
+                            path filepath= paths.get(f,Files.separator+file.getFileOrginalname());
+                             
+                           Files.copy(file.getInputStream(),filepath,standardCopyoption.REpalce_exsting);
+                            return responsEntity.ok("file upload suceess");
+                   }
+                    catch(IoException e)
+                           e.printstackTrace();
+                           return ResponseEntity.status(HTTPStuauscode.INTERNS_serv_err).body("
+file not upload");
+}
+16.consume resapi.
+   @RestController
+    public class controller{
+            
+             @GetMapping("/somedata")
+               public ResponseEntity<String> somedat(){
+                      String url="https://somesite";
+                      RestTemplate rt= new RestTemplate();
+                      return rt.exchange(url,HTTP.GET,null,Strig.class);   (getForEntity , getForObject(url,String.class)
+           }
+  17.write integration test for restapi.
+    Annotations and Configuration:
+@SpringBootTest: Loads the application context.
+@AutoConfigureMockMVC: Enables and configures MockMVC in the test context.
+@RunWith(SpringRunner.class): Integrates JUnit with the Spring Test Framework (required for legacy JUnit versions; in JUnit 5, use @ExtendWith).
+
+     @SpringBootTest
+     @AutoConfigureMockMVC
+     @RunWith(SpringRunner.class)  
+     public class UserControllerTest{
+              @Autowired
+               public MockMVC mockmvc;
+               
+                 @Test
+                 public void testGetAllUsers() throws Exception{
+                                mockmvc.perform(get("/users"))
+                                .andExpect(status().isOK())
+                                .andExpect(content().contentType(MediaType.APPLICATION_JSON)       
+                                .andExpect(jsonpath("$").isArray());
+                    }}
+    RestTemplate--
+     @SpringBootTest(webEnvironment=SpringbootTest.WebEnvironment.RANDOM_PORT)
+      classs MyControllerTest{
+                @LocalServerPort
+                  private int port;
+                 
+                  @Autowired
+                  private TestRestTemplate restTemplate;
+               
+                  @Test
+                   void testApi(){
+                               String response=restTemplate.getForObject("https:/localhost:"+port+"/api/endpoint",String.class);
+                               assertEquals("Eexcepted Response",response):
+                  }
+}
+18.  scheduledTask
+     @Component
+       Public class taskscheduled{
+           @Scheduled(FixRate=5000)                            fixdealy--it depend on pre task.
+            public void scheduledtask()
+                   sop("running scheduled task every 5 second");
+}
+9.implment cash
+  @EnableCaching
+  @Service
+  public class userservice{
+         @Cachable("users")
+         public List<User> getdata()
+                return repo.findAll();
+
+          @CachEvict(value="user",allEntires=true)   @CacheEvict(value="user",allEntries=true)/@cachable("user")
+         public void clearcache()
+                        //clear when we need.
+
+ 
+//clear when we need.
