@@ -501,6 +501,47 @@ public class EmployeeService
  
  pubic String findById(Long id)
             return emprep.findById(id);
+//study more in details
+
+  @GetMapping("/api/details/")
+  public string GetDetails(@RequestParam("id") Int id)
+       {
+            
+          return empservice.FindById(id);
+    }
+         
+
+  @GetMapping("/api/details/")
+  public string GetDetails(@RequestParam("Name") String Name,@RequestParam("city") String city)
+       {
+            
+          return empservice.GetNameandCity(Name,city);
+    }
+
+@Service
+public class DetailsService {
+
+    @Autowired
+    private DetailsRepository detailsRepository;
+
+    public Optional<Details> getDetailsById(Long id) {
+        return detailsRepository.findById(id);
+    }
+
+    public List<Details> getDetailsByNameAndCity(String name, String city) {
+        return detailsRepository.findByNameAndCity(name, city);
+    }
+}
+
+//Repo
+@Repository
+public interface DetailsRepository extends JpaRepository<Details, Long> {
+    Optional<Details> findById(Long id);
+    List<Details> findByNameAndCity(String name, String city);
+
+  @Query(value = "SELECT * FROM details WHERE LOWER(name) = LOWER(:name) AND LOWER(city) = LOWER(:city)", nativeQuery = true)
+List<Details> findByNameAndCity(@Param("name") String name, @Param("city") String city);
+}
 
 14.Implement the crud operations.
   
