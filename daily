@@ -693,3 +693,51 @@ file not upload");
 
  
 //clear when we need.
+OneToOne  user --->profile
+
+@Entity
+public class User
+     @Id
+     @GeneratedValue(Stragry= )
+     Private Long id;
+     private String name;
+     
+    @OneToOne(cascade=CasedType.ALL)
+    @JoinColumn(value="profile_id")
+    private Profile profile;
+
+user table
+  id na,e profile_Id
+
+
+OneToMany--  department -->employee
+
+@Entity
+public class Department
+       @id
+       private Long id;
+       prvate String name;
+     
+       OneToMany(mappedBy="Department",casecade=CascadeType.ALL)
+       Private List<Employee> employee;
+
+@Entity
+public Class Employee
+       
+      ManyToOne
+      @JoinColumn(value="deparmtent_id")
+      private Department departmetn;
+
+
+ManyToMany---student -->course
+@Entity 
+public class Student
+       
+    @ManyToMany(value="Student_course",JoinColumn=@JoinColumn("student_Id"))
+     private List<course> course;
+
+  
+@Entity
+pubic class Course
+      @ManyToMany(mappendBy="course")
+       private List<Student> student;
