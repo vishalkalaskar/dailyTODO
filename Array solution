@@ -286,3 +286,19 @@ class Main {
          }
     }
 }
+
+14.string occurenace
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        String s = "apple banna apple grapes banna";
+        Map<String,Integer>  map = new HashMap<>();
+        for(String str: s.split(" "))
+        {
+            map.merge(str,1,Integer::sum);
+        }
+        System.out.println(map);
+    }
+}
