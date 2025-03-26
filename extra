@@ -60,3 +60,95 @@ WHERE e.salary > dept_avg.avg_salary;
 
 14. modify the column length sotring capcity
  ALTER TABLE table_name MODIFY column_name varchar(255);
+
+view - create View view_name as select * from table-name;
+indexing - create index-Name on table_name(columan_name);
+
+QandA
+1. When to use SQL Views? Can they be modified?
+
+    Hiding complex queries
+    Enhancing security by restricting direct table access
+    Improving performance with precomputed results
+
+Modification: Views can be modified if they don’t involve JOIN, GROUP BY, or DISTINCT.
+  CREATE VIEW EmployeeView AS SELECT id, name FROM Employees;
+
+2.Difference Between Stored Procedures and Functions
+Feature	            Stored Procedure                      	Function
+Return Type	       Can return multiple values	     Must return a single value
+Use in Queries     Cannot be used in SELECT	         Can be used in SELECT
+Exception Handling	Supports TRY...CATCH	          Limited
+
+3. Difference Between TRUNCATE, DELETE, DROP
+Command           	Deletes Data 	      Resets Identity	Rollback Possible
+DELETE	             Yes (row-wise)          	No               	Yes
+TRUNCATE	         Yes (all rows)	            Yes	                 No
+DROP	             Yes (table structure)	     N/A	             No
+
+4.Remove Leading & Trailing Spaces in SQL
+  SELECT TRIM('   Hello World   ');
+
+5.Email Validation Approach
+SELECT email FROM Users WHERE email REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$';
+
+6.Count Employees in Each Department
+//Total Number of Orders Placed by a Customer
+select department,count(*) as counthigh from employee group by department;
+
+7.Employees Who Joined After January 1, 2020
+select * from employee where joining_dat> '2020-01-01';
+
+8.Top 5 Highest-Selling Products
+select product_id,sum(quanity) as total_qunity from sale group by product_id order by total_qunity desc limit 5;
+
+9.Fetch Employee Names and Their Managers
+SELECT e.name AS Employee, m.name AS Manager FROM employees e LEFT JOIN employees m ON e.manager_id = m.id;
+
+10.Retrieve All Products with the Highest Rating
+SELECT * FROM products WHERE rating = (SELECT MAX(rating) FROM products);
+
+11.Difference Between UNION and UNION ALL
+union --remove duplicate;
+union all = include all records even duplicates;
+SELECT name FROM employees
+UNION //UNION ALL
+SELECT name FROM customers;
+
+12. What is a Self-Join?
+A self-join is when a table joins with itself.
+select e1.name as Employee ,e2.name as Manager from employee e1 join employee e2 on e1.manger_id=e2.id;
+
+13.What are Window Functions in SQL?
+Window functions perform calculations over a set of rows without grouping them.
+
+SELECT name, department, salary, RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS Rank FROM employees;
+
+14.What is a Composite Key?
+  A composite key consists of two or more columns as a unique identifier.
+
+  CREATE TABLE enrollments (
+    student_id INT,
+    course_id INT,
+    PRIMARY KEY (student_id, course_id)
+);
+
+15.What is a Recursive Query?//What is CTE (Common Table Expression)?
+A CTE is a temporary result set that can be used in a query.
+
+WITH EmployeeCTE AS (
+    SELECT id, name, department FROM employees WHERE salary > 50000
+)
+SELECT * FROM EmployeeCTE;
+
+16.What is a Deadlock?
+A deadlock occurs when two transactions block each other, preventing execution.
+Solution: Use LOCK_TIMEOUT or transaction ordering.
+
+17.Find Total Sales for Each Month
+SELECT MONTH(order_date) AS month, SUM(total_price) AS total_sales FROM sales GROUP BY month;
+
+
+
+
+
