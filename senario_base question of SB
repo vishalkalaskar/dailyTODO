@@ -1,0 +1,50 @@
+Scenario 1: You are working On a Spring Boot application and need to load different configurations for dev and prod environments. How do you achieve this?
+
+✅ Solution: Use Spring Profiles (@Profile) or application-{profile}.properties
+
+🔹 Approach 1: Using Profile-Specific Properties
+
+Create different property files for each environment:
+
+application-dev.properties
+
+application-prod.properties
+
+Example (application-dev.properties)
+
+properties
+server.port=8081
+spring.datasource.url=jdbc:mysql://localhost:3306/dev_db
+Example (application-prod.properties)
+
+properties
+
+server.port=8082
+spring.datasource.url=jdbc:mysql://prod-db-host:3306/prod_db
+Activate a Profile:
+
+Add spring.profiles.active=dev in application.properties
+
+Or set it via an environment variable:
+
+export SPRING_PROFILES_ACTIVE=prod
+✅ Best Practice: Use profiles to switch between environments dynamically.
+
+
+Scenario 2: You have a service class that needs to be injected into multiple controllers. What are the different ways to achieve this in Spring Boot?
+
+
+
+Scenario 3: You have a REST API, and when an invalid ID is provided , it should return a custom error message with a 404 Not Found status. How do you handle this?
+
+
+Scenario 4: You need to log events in your application instead of using System.out.println(). How do you do it?
+
+
+Scenario 5: You have an APl that fetches user details based on userld. How do you capture it in Spring Boot or which annotation you willuse?
+
+
+Scenario 6: You need to manually create and manage a Spring bean. How do you do it?
+
+
+Scenario 7: You are performing multiple database operations, and you want all of them to succeed or none at all (rollback on failure). How do you handle this?
