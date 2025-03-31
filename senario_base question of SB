@@ -32,19 +32,310 @@ export SPRING_PROFILES_ACTIVE=prod
 
 
 Scenario 2: You have a service class that needs to be injected into multiple controllers. What are the different ways to achieve this in Spring Boot?
+olution: Use Spring Dependency Injection (@Autowired, Constructor Injection, or @Bean)
 
+🔹 Approach 1: Constructor Injection (Recommended)
+@Service
+public class MyService {
+    public String getMessage() {
+        return "Hello from MyService";
+    }
+}
+
+@RestController
+@RequestMapping("/api")
+public class MyController {
+    private final MyService myService;
+
+    public MyController(MyService myService) {
+        this.myService = myService;
+    }
+
+    @GetMapping("/message")
+    public String getMessage() {
+        return myService.getMessage();
+    }
+}
+🔹 Approach 2: Field Injection (Less Preferred)
+@Autowired
+private MyService myService;
+
+  Approach 3 : constructor Injection.
+      private final  MyService myservice;
+
+   public Controllercalss(MyService myservice)
+{
+            this.myservice= myservice
+}
+
+ to  make denpendy mutable
+  public void setMyServices(MyServices myservices)
+   {
+                this.myservice = myservices;
+  }
+
+✅ Best Practice: Use Constructor Injection for better testability.
 
 
 Scenario 3: You have a REST API, and when an invalid ID is provided , it should return a custom error message with a 404 Not Found status. How do you handle this?
+Solution: Use @ExceptionHandler in a Global Exception Handler
 
+@ResponseStatus(HttpStatus.NOT_FOUND)
+class ResourceNotFoundException extends RuntimeException {
+    public ResourceNotFoundException(String message) {
+        super(message);
+    }
+}
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<String> handleResourceNotFound(ResourceNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+}
+✅ Best Practice: Use @RestControllerAdvice to handle exceptions globally.
 
 Scenario 4: You need to log events in your application instead of using System.out.println(). How do you do it?
+olution: Use SLF4J with Logback (LoggerFactory)
 
+java
+Copy
+Edit
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+@Service
+public class LoggingService {
+    private static final Logger logger = LoggerFactory.getLogger(LoggingService.class);
+
+    public void performAction() {
+        logger.info("Performing some action...");
+        logger.warn("This is a warning message");
+        logger.error("An error occurred");
+        logger.debug("this debug");
+    }
+}
 
 Scenario 5: You have an APl that fetches user details based on userld. How do you capture it in Spring Boot or which annotation you willuse?
+ Approach 1: Capture from Path (/users/{id})
 
+@GetMapping("/users/{id}")
+public ResponseEntity<User> getUserById(@PathVariable("id") Long userId) {
+    return ResponseEntity.ok(userService.getUserById(userId));
+}
+🔹 Approach 2: Capture from Query Param (/users?id=1)
+
+
+@GetMapping("/users")
+public ResponseEntity<User> getUserById(@RequestParam("id") Long userId) {
+    return ResponseEntity.ok(userService.getUserById(userId));
+}
+✅ Best Practice: Use @PathVariable when id is a resource identifier.
 
 Scenario 6: You need to manually create and manage a Spring bean. How do you do it?
+Solution: Use @Bean in a Configuration Class
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AppConfig {
+    @Bean
+    public MyService myService() {
+        return new MyService();
+    }
+}
+✅ Best Practice: Use @Bean in Configuration Classes for manual bean creation.
 
 
 Scenario 7: You are performing multiple database operations, and you want all of them to succeed or none at all (rollback on failure). How do you handle this?
+Solution: Use Spring Transactions (@Transactional)
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+public class BankService {
+    
+    @Transactional
+    public void transferMoney(Long fromAccount, Long toAccount, Double amount) {
+        accountRepository.debit(fromAccount, amount);
+        accountRepository.credit(toAccount, amount);
+    }
+}
+✅ Best Practice: Use @Transactional to ensure atomicity in database operations.
+
+Scenario 8: Youneed to run a job every 5 minutes (example, sending emailnotifications). How do you schedule it?
+Solution: Use Spring Scheduler (@Scheduled)
+
+🔹 Steps:
+
+Enable scheduling using @EnableScheduling.
+
+Use @Scheduled(fixedRate = 300000) or @Scheduled(cron = "0 */5 * * * *").
+
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+@Component
+public class EmailScheduler {
+    @Scheduled(cron = "0 */5 * * * *") // Runs every 5 minutes //@Scheduled(FixedRate="50000") 
+    public void sendEmails() {
+        System.out.println("Sending email notifications...");
+        // Add email logic here
+    }
+}
+✅ Alternative: Use Quartz Scheduler for more advanced scheduling.
+
+Scenario 9: Your application needs to fetch weather data from an external APl (example: OpenWeather). Howdo you make HTTP requests?
+olution: Use Spring RestTemplate or WebClient (Reactive)
+
+🔹 Using RestTemplate (Blocking - Deprecated)
+
+import org.springframework.web.client.RestTemplate;
+import org.springframework.http.ResponseEntity;
+
+public class WeatherService {
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    public String fetchWeather() {
+        String url = "https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY";
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+        return response.getBody();
+    }
+}
+
+Scenario 10: Your API returns JSON responses, but you need to hide some fields (like passwords) while exposing others. How do you doit?
+Solution: Use @JsonIgnore (Jackson) or DTO Mapping
+
+🔹 Approach 1: Use @JsonIgnore (Hides Fields in Response)
+
+java
+Copy
+Edit
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+public class User {
+    private String username;
+    
+    @JsonIgnore
+    private String password; // 🔹 This field won’t be included in JSON response
+    
+    // Getters and Setters
+}
+🔹 Approach 2: Use @JsonIgnoreProperties (For Multiple Fields)
+
+java
+Copy
+Edit
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"password", "ssn"})
+public class User {
+    private String username;
+    private String password;
+    private String ssn;
+}
+🔹 Approach 3: Use DTO (Data Transfer Object) Pattern
+
+Instead of exposing User directly, map it to a DTO that contains only necessary fields.
+
+public class UserDTO {
+    private String username;
+
+    public UserDTO(User user) {
+        this.username = user.getUsername();
+    }
+}
+✅ Best Choice: DTO Pattern for better security & maintainability.
+
+Scenario 11: You need to implement an API that allows users to upload large files. How do you handle it?
+olution: Use Spring Boot MultipartFile with Streaming
+
+🔹 Steps:
+
+Enable file uploads in application.properties.
+
+Use MultipartFile in @PostMapping.
+
+🔹 Example:
+
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.*;
+
+@RestController
+@RequestMapping("/upload")
+public class FileUploadController {
+    
+    @PostMapping
+    public String uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+        // Save file to disk or process it in chunks
+        File saveFile = new File("uploads/" + file.getOriginalFilename());
+        file.transferTo(saveFile);
+        return "File uploaded successfully: " + file.getOriginalFilename();
+    }
+}
+✅ For Large Files:
+
+Use Streaming (InputStream instead of transferTo()) to prevent OutOfMemoryError.
+
+ in application.properties
+spring.servlet.multipart.max-file-size=128KB
+spring.servlet.multipart.max-request-size=128KB
+
+Scenario 12: Your application fetches data from a slow database. How do you cache results toimprove performance?
+Solution: Use Spring Cache (@Cacheable) with Redis
+
+🔹 Steps:
+
+Enable caching with @EnableCaching.
+
+Use @Cacheable to cache method results.
+
+Use Redis for distributed caching.
+
+🔹 Example (In-Memory Caching with @Cacheable)
+
+java
+Copy
+Edit
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ProductService {
+    @Cacheable("products") // 🔹 Results are cached
+    public List<Product> getProducts() {
+        System.out.println("Fetching products from database...");
+        return fetchFromDatabase(); // Simulating DB call
+    }
+}
+🔹 Example (Using Redis for Faster Caching)
+1️⃣ Add Dependency (spring-boot-starter-data-redis)
+
+xml
+Copy
+Edit
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+2️⃣ Enable Redis Cache in application.properties
+
+properties
+
+spring.cache.type=redis
+spring.redis.host=localhost
+spring.redis.port=6379
+3️⃣ Modify Code to Use Redis Caching
+
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@EnableCaching
+public class CacheConfig { }
+✅ Best Choice: Use Redis for scalable caching in distributed systems.
