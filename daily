@@ -483,7 +483,7 @@ Assume that Department is a separate microservice. Your EmployeeService must cal
            public ResponesEntity<String> getEmp(@PathVariable Long id)
                    string url = host+url.replace("id",id);
                   Httpheader header = new HttpHeader();
-                 header.setContentType(MediayType.Application.JSON);
+                 header.setContentType(MediayType.Application_JSON);
                  header.add("Authorazation","Bearer"+tokenserive.getToken());
 
                 HttpEntity<String> entity = new HttpEnity<>(header); //(payload,header);
