@@ -741,3 +741,33 @@ public class Student
 pubic class Course
       @ManyToMany(mappendBy="course")
        private List<Student> student;
+
+Gobal Exception handling.
+public class CustomException extend RuntimeException
+{
+        public CustomeException(String Message)
+        {
+              super(Message);
+        }
+       public CustomeException(String Message,Thorwable cause)
+         {
+                 super(Message,cause);
+       }
+
+
+@RestControllerAdvice
+public class GolableExceptionHandler{
+        @ExceptionHandler(CustomException.class)
+        public ResponseEntity<String> handlerException(CustomeException ex)
+        {
+               return  new ResponseEntity<String>(ex.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+       }
+}
+
+@GetMapping("/{id}")
+public ResponseEntity<String> getEmployee(@PathVariable Long id) {
+    if (id < 0) {
+        throw new CustomeException("Employee ID " + id + " does not exist.");
+    }
+    return ResponseEntity.ok("Employee details for ID: " + id);
+}
