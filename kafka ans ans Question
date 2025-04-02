@@ -10,7 +10,7 @@ Brief Answers to Kafka Interview Questions
    Partition: A topic is split into partitions for scalability.
    Broker: Kafka server that stores messages.
    Consumer: Reads messages from Kafka topics.
-   Zookeeper: Manages metadata and leader election.
+   Zookeeper: Manages metadata,leader election  and co-ordinationing between the borkers.
 
 3.How does Kafka ensure high availability and fault tolerance?
    Kafka uses replication (leader-follower model) to store copies of data across multiple brokers. If a broker fails, a follower takes over.
