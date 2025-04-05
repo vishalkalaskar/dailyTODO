@@ -1,6 +1,6 @@
 SELECT * FROM Customers WHERE customer_id = 5;
 
-select salary from employee order by salary desc limit 1 OFFSET 1;
+select distinct salary from employee order by salary desc limit 1 OFFSET 1;
 
 //duplicate
 select column1,column2,count(*) from employee group by column1,column2 having count(*)>1;
