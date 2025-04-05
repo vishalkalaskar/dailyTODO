@@ -23,7 +23,7 @@ select department,count(*) as highestemp from employee group by department order
 
 select department,sum(salary) as dpsum from employee group by deparment;
 
-coalesce for first null value;
+coalesce for first non-null value;
 
 select year,month,sum(saleamount) as totalsales from sales group by years,month order by year,month
 
