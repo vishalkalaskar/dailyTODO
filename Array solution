@@ -302,3 +302,35 @@ class Main {
         System.out.println(map);
     }
 }
+
+15.array={"dog","cat","catdog","bird","fish"}  find a word that can be formed by combining two other words from same array in java
+
+import java.util.HashSet;
+
+public class WordCombinationFinder {
+    public static void main(String[] args) {
+        String[] words = {"dog", "cat", "catdog", "bird", "fish"};
+        System.out.println(findConcatenatedWord(words));
+    }
+
+    public static String findConcatenatedWord(String[] words) {
+        HashSet<String> wordSet = new HashSet<>();
+        for (String word : words) {
+            wordSet.add(word);
+        }
+
+        for (String word : words) {
+            int length = word.length();
+            for (int i = 1; i < length; i++) {
+                String firstPart = word.substring(0, i);
+                String secondPart = word.substring(i);
+
+                if (wordSet.contains(firstPart) && wordSet.contains(secondPart)) {
+                    return word;  // Return the first found concatenated word
+                }
+            }
+        }
+        return "No concatenated word found";
+    }
+}
+
