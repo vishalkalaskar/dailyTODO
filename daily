@@ -328,7 +328,23 @@ Write a function that reverses the order of words in a given string.
     Example:
         Input: "the sky is blue"
         Output: "blue is sky the"
-
+String method(String s)
+    if(s ==null)
+{
+       sop("String is null");
+      return "String is null";
+ }
+else
+{
+ StringBuilder ans = new StringBuilder();
+  String[] arr = s.split("");
+  for(int i=arr.length-1;i>=0;i--)
+        ans.append(arr[i]);
+       if(i!=0)
+           ans.append("");
+}
+return ans;
+ sop(ans);
 
 
 
