@@ -323,6 +323,15 @@ method(String str)
            ans.append(str.charAt(i));
      sop(ans);
 
+//resevers sentences
+Write a function that reverses the order of words in a given string.
+    Example:
+        Input: "the sky is blue"
+        Output: "blue is sky the"
+
+
+
+
 11.character element couting 
    method(String str)
        count;
