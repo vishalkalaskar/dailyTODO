@@ -99,8 +99,8 @@ sop(strlen)
 
 11.How do you get three maximum numbers and three minimum numbers from the given list of integers?
         List<Integer> ll= Arrays.asList(45, 12, 56, 15, 24, 75, 31, 89);
-       naturalorder,limit3-->ll.stream().sorted(Comaparator.nautralOder()).limit(3).collect(Collectors.asList()).forEach(System.out::println);
-       reverseoder,limit3-->ll.stream().sorted(Comparator.reversOder()).limit(3).collect(Collectors.asList()).forEach(Systme.out::println);
+       naturalorder,limit3-->ll.stream().sorted(Comaparator.nautralOder()).limit(3).forEach(System.out::println);
+       reverseoder,limit3-->ll.stream().sorted(Comparator.reversOder()).limit(3).forEach(Systme.out::println);
       arraycount--> Int count = ll.stream().count().get();
      sop(count);      
 
