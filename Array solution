@@ -221,6 +221,20 @@ class Main {
         System.out.println("missing number of arr "+(excp-actual));
     }
 
+   //missing more than one in given start and end point
+  public class numbers{
+       public static void main(String[] args)
+         {
+             int start =1,end=10;
+                int[] arr ={2,4,5,7,9};
+              HashSet<Integer> set = new HashSet<>();
+               for(int num:arr)
+                    {
+                      set.add(num);
+                  }
+              for(int i=start;i<end;i++)
+                      if(!set.contains(i)
+                             sop(i+"");
 11.highest product 
 import java.util.*;
 
