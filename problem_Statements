@@ -506,3 +506,31 @@ public class WordCombinationFinder {
     }
 }
 
+14.occurencace of number in digits
+public class DigitOccurrenceCounter {
+    public static void main(String[] args) {
+        int number = 145145; // You can change this number
+        int digitToCount = 1; // The digit to count
+        int count = 0;
+
+        // Convert number to string to iterate through each digit
+        String numberStr = Integer.toString(number);
+
+        // Iterate through each character in the string representation of the number
+        for (int i = 0; i < numberStr.length(); i++) {
+            char digitChar = numberStr.charAt(i);
+
+            // Convert character to integer
+            int digit = Character.getNumericValue(digitChar);
+
+            // Check if the digit matches the digit we are counting
+            if (digit == digitToCount) {
+                count++;
+            }
+        }
+
+        // Print the count of occurrences of the digit
+        System.out.println("Number of occurrences of digit " + digitToCount + " in " + number + " is: " + count);
+    }
+}
+
