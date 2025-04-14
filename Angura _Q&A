@@ -1,4 +1,9 @@
 # Angular Interview Questions and Answers
+ 1. how to change root component
+     to change root component have to change in below to file
+        main.ts --AppComponent to loginCoponent and index.html --<app-root> to <app-login></applogin>
+2.how laod 2 css file in page
+      use stylUrls:[],
 
 ## Basic Angular Questions
 
