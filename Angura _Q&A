@@ -5,6 +5,285 @@
 2.how laod 2 css file in page
       use stylUrls:[],
 
+3.what is Anuglar?
+  Angular is component based framework for builiding structured,scalable and single page web applications for client side.
+
+4.what are Angular advantages? / we can build single page application in javascript why we angulars.
+  Advantage
+   1. it is Relatively simple to build single page Application(component)
+   2. to make flexibale ans structured application(oops friendly)
+   3. it is Cross platfrom and open sources(free);
+   4. Resuable code
+   5. Testbilitiy(spec.ts)
+
+5.What is differences between angular and angularjs ? or what are the advantages of angular over angularjs
+   AngularJs                                                                           Angular
+ 1. it only supports js                                               it support both js and typescript   
+ 2. this frameworkd has model-view controller(MVC) architecture.      this framwork has component based architecutre.
+ 3. it does not have CLI tool                                         it has CLI tool
+ 4.it does not use Dependacy injection                                it use Dependency injection. 
+ 5. it does not support mobile broswers .                             it also support mobile browsers.
+ 6. it is not so fast                                                 it is very fast
+
+6.what is NPM?
+  NPM/Node package manger is an online repository from where you can get thousands of free libraries which can be used in your angular project.
+
+7.what is CLI tool?
+   CLI is a command-line interface tool that you use to initialized and develop angular applications.
+
+==============================
+Component & Module
+==============================
+8. What are components in Angular?
+   - Components are the basic UI building blocks in Angular. Each component has a template, class, and metadata.
+
+9. What is selector and template?
+   - Selector: Custom HTML tag that identifies a component (e.g., <app-user>).
+   - Template: Defines the HTML view of the component.
+
+10. What is Module in Angular? What is app.module.ts?
+   - Modules group related components, directives, pipes, and services.
+   - AppModule (app.module.ts) is the root module where all components are declared and bootstrapped.
+
+11. How Angular app loads?
+   - index.html loads first
+   - <app-root> is the selector for root component
+   - main.ts bootstraps the root module
+
+12. Bootstrap Modules & BootStrapped Component?
+   - Bootstrap Module: First loaded module, typically AppModule
+   - Bootstrapped Component: Root component declared inside bootstrap array
+
+==============================
+Data Binding
+==============================
+13. What is Data Binding?
+   - Mechanism to coordinate parts of a template with parts of a component.
+
+14. String Interpolation:
+   - {{ data }} — binds component property to template.
+
+15. Property Binding:
+   - [property]="value" — sets property of HTML element.
+
+16. Event Binding:
+   - (event)="handler()" — handles DOM events.
+
+17. Two-way Binding:
+   - [(ngModel)]="value" — combines property and event binding.
+
+==============================
+Directives
+==============================
+18. What are Directives?
+   - Instructions in DOM. Types: Structural (*ngIf, *ngFor), Attribute ([ngClass], [ngStyle]), Component.
+
+19. *ngIf:
+   - Adds/removes elements based on condition.
+
+20. *ngFor:
+   - Loops through array, creates DOM elements.
+
+21. *ngSwitch:
+   - Conditionally switches templates.
+
+22. [ngStyle]:
+   - Dynamically sets inline styles.
+
+23. [ngClass]:
+   - Dynamically sets CSS classes.
+
+24. Difference between Directive Types:
+   - Component: Has a view (template)
+   - Structural: Changes DOM layout
+   - Attribute: Alters DOM appearance/behavior
+
+==============================
+Decorator & Pipes
+==============================
+25. What is a Decorator?
+   - Metadata attached to classes or properties.
+
+26. Types of Decorators:
+   - @Component, @Directive, @Injectable, @Input, @Output, @NgModule
+
+27. What are Pipes?
+   - Transform data in template. Types: Built-in (date, uppercase), Custom, Parameterized.
+
+28. Chaining Pipes:
+   - Example: {{ birthday | date:'shortDate' | uppercase }}
+
+==============================
+Services & Dependency Injection
+==============================
+29. Explain Services with Example:
+   - Used for logic sharing across components. Created using ng generate service.
+
+30. How to Create a Service?
+   - ng generate service serviceName
+
+31. Use of Dependency Injection:
+   - Automatically provides service instances where required using constructors.
+
+32. Hierarchical DI:
+   - DI system is tree-structured; services can be scoped to modules/components.
+
+33. What is Provider in Angular?
+   - Defines how a service is created (in providers array).
+
+34. @Injectable Decorator:
+   - Marks a class as available to be provided and injected as a dependency.
+
+==============================
+Lifecycle Hooks
+==============================
+35. What are Parent-Child Components?
+   - Nested components with data communication via @Input() and @Output().
+
+36. Lifecycle Hooks:
+   - ngOnChanges(), ngOnInit(), ngDoCheck()
+   - ngAfterContentInit(), ngAfterContentChecked()
+   - ngAfterViewInit(), ngAfterViewChecked()
+   - ngOnDestroy()
+
+37. What is Constructor in Angular?
+   - Initializes class members, called before lifecycle hooks.
+
+38. What is ngOnInit?
+   - Called once after component's first render. Best for fetching data.
+
+39. Constructor vs ngOnInit:
+   - Constructor is for initialization; ngOnInit is for Angular-specific logic like API calls.
+
+==============================
+Observable / HttpClient / RxJS
+==============================
+40. What are Async Operations?
+   - Tasks like API calls that don't execute immediately.
+
+41. Promise vs Observable:
+   - Promise: Eager, single value
+   - Observable: Lazy, supports multiple values and cancellation
+
+42. What is RxJS?
+   - Reactive programming library used in Angular for managing streams.
+
+43. What is Observable?
+   - Provides support for passing messages/data over time.
+
+44. Role of HttpClient:
+   - Angular service to perform HTTP requests. Returns Observables.
+
+==============================
+TypeScript Basics
+==============================
+45. What is TypeScript?
+   - Superset of JavaScript with types. Safer and supports modern features.
+
+46. let vs var:
+   - let: Block scoped
+   - var: Function scoped
+
+47. Type Annotation:
+   - Specifies variable type: let age: number = 30;
+
+48. Primitive vs Non-primitive Types:
+   - Primitive: string, number, boolean, null, undefined
+   - Non-primitive: arrays, objects, interfaces, classes
+
+49. What is 'any' type?
+   - Disables type checking. Use carefully.
+
+50. What is Enum?
+   - Custom named constants:
+     enum Role { Admin, User }
+
+51. Type Assertion:
+   - Tells TypeScript the variable type:
+     let id = <number>someValue;
+
+52. Arrow Functions:
+   - Compact syntax:
+     let greet = () => console.log("Hello");
+
+
+1.can you explain the concept of lazy loading in angular?
+  Lazy loading is a design pattern in Angular that loads feature modules only when they are needed. 
+  This improves performance by reducing the initial load time of the application. It uses the Angular
+   Router to load modules asynchronously using the loadChildren property.
+
+2. what are the change detection strategies in angular?
+   Default: Checks all components from top to bottom.
+   OnPush: Checks only when input references change, offering better performance.
+
+3. how would you implement authentication and authorization in ang angular applicaton?
+
+   Authentication: Implement using a login form that communicates with a backend service. Store the token (usually JWT) in localStorage or sessionStorage.
+   Authorization: Use route guards like CanActivate to restrict access to certain routes based on roles or permissions.
+
+4. what is  the purpose of NgModuel in Angular and how it helps with organizing the application?
+   NgModule is a decorator that marks a class as an Angular module. It helps in grouping components, directives, pipes, and services, 
+   making the app more modular and maintainable. It also defines the bootstrapping mechanism for the application.
+
+5. explain the concept of dependency injection and its benefits in angulars
+    Dependency injection is a design pattern in which a class receives its dependencies from an external source rather than creating them. 
+    Benefits include improved modularity, easier testing, and reduced boilerplate.
+
+6. how to create custom pipe directive and custom component directive in angular?
+  #command for custome pipe
+       ng generate pipe customPipeName
+
+  custom pipe
+                @Pipe({ name: 'customPipe' })
+         export class CustomPipe implements PipeTransform {
+           transform(value: string): string {
+             return value.toUpperCase();
+           }
+ }
+  # cusotme pis command
+      ng generate directive customDirectiveName
+
+  custome directive
+           @Directive({ selector: '[appHighlight]' })
+     export class HighlightDirective {
+       constructor(el: ElementRef) {
+         el.nativeElement.style.backgroundColor = 'yellow';
+       }
+     }
+7. how to handle data commumincation between components that don't share a parent-child relationship?
+   Use a shared service with Subject or BehaviorSubject from RxJS to create a communication bridge between unrelated components.
+
+8. How do you handles error in angular application?
+
+   Use HttpInterceptor to catch HTTP errors globally.
+   Implement error handling in services using catchError from RxJS.
+   Show user-friendly messages using a notification service or UI component.
+
+9.explain the concepts of Observalbes and how they can be used ot handle asynchronous data?
+
+   Observables are provided by RxJS and represent streams of asynchronous data. They can be subscribed to for real-time updates and offer powerful operators for data transformation, 
+   error handling, and composition. Used with HTTP requests, forms, user input events, etc.
+
+10.how do you impliments internalization in an angular application?
+
+   Use Angular's built-in @angular/localize package.
+   Use i18n attributes in templates and extract translatable strings.
+   Generate translation files (xlf or xlf2) and provide language-specific versions.
+   Configure Angular CLI with appropriate locale settings and build commands for each language.
+
+11.what is differences betweein dependancy and devdependacy in angular?
+  devDependencies
+       These are packages only needed during development and not required in production builds.
+   dependencies
+       These are packages your application needs to run in production.
+
+
+
+
+
+ 
+
+
 ## Basic Angular Questions
 
 1. **What is Angular and how does it differ from AngularJS?**
