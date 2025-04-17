@@ -348,3 +348,35 @@ public class WordCombinationFinder {
     }
 }
 
+16. arrange 0 and 1 on left and right side
+import java.util.Arrays;
+
+public class SortZeroesAndOnes {
+
+    public static void sortBinaryArray(int[] arr) {
+        int left = 0, right = arr.length - 1;
+
+        while (left < right) {
+            while (left < right && arr[left] == 0) {
+                left++;
+            }
+            while (left < right && arr[right] == 1) {
+                right--;
+            }
+
+            if (left < right) {
+                // Swap 1 at left with 0 at right
+                arr[left] = 0;
+                arr[right] = 1;
+                left++;
+                right--;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 0, 1, 0, 1, 0};
+        sortBinaryArray(arr);
+        System.out.println(Arrays.toString(arr)); // Output: [0, 0, 0, 1, 1, 1]
+    }
+}
