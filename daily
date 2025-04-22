@@ -170,6 +170,13 @@ Expected Output: Wloe
 
         System.out.println(result); // Expected Output: Wloe
 
+17.Get the length of each word from an array of strings
+
+String[] words = {"apple", "is", "red", "fruit"};
+Arrays.stream(words).map(String::length).forEach(System.out::println);
+
+18. Print strings with length > 3
+Arrays.stream(words).filter(word -> word.length() > 3).forEach(System.out::println);
 
 6.code singleton class 
 public class Singleton
