@@ -722,7 +722,8 @@ file not upload");
           @CachEvict(value="user",allEntires=true)   @CacheEvict(value="user",allEntries=true)/@cachable("user")
          public void clearcache()
                         //clear when we need.
-
+          //Evict
+         @CacheEvict(value = "user", key = "#user.id")
  
 //clear when we need.
 OneToOne  user --->profile
