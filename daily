@@ -216,7 +216,7 @@ method(int[] a)
              min=a[i]; 
     sop(min); 
 
-4.second largest
+4.second largest// Ways to find 2nd highest value (without sorting):
  method(int[] a)
      int high= INTEGER.MIN_VALUE;
      int secHigh= INTEGER.MIN_VALUE;
