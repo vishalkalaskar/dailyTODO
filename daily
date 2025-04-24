@@ -178,6 +178,20 @@ Arrays.stream(words).map(String::length).forEach(System.out::println);
 18. Print strings with length > 3
 Arrays.stream(words).filter(word -> word.length() > 3).forEach(System.out::println);
 
+19.Count vowels in a sentence:
+
+String input = "Artificial Intelligence is Future.";
+int total = 0;
+Map<Character, Integer> map = new HashMap<>();
+for (char c : input.toLowerCase().toCharArray()) {
+    if ("aeiou".indexOf(c) != -1) {
+        total++;
+        map.put(c, map.getOrDefault(c, 0) + 1);
+    }
+}
+System.out.println("Total vowels: " + total);
+System.out.println(map);
+
 6.code singleton class 
 public class Singleton
       public static Singleton  intance=new Singleton();
