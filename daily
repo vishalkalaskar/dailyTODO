@@ -62,6 +62,9 @@ for(Int num:list)
    
           String inputString = "Java Concept Of The Day";
 
+   String input = "aabbbcc";   //both are same only their are alternative approach to each others
+   Map<Character,Long> map = input.chars().mapToOjb(c->(char)c).collect(Collectors.groupingBy(character->character,Collectors.counting());
+
 character,length-->
 Map<Character,Long> count= inputstring.chars().mapToObj(c->(char)c).collect(Collectros.goupingBy(Function.identity(),Collectors.counting());
 sop(count):
