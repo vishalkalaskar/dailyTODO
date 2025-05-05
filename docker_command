@@ -1,0 +1,50 @@
+docker build -t <Image-name>
+docker run -d -p 8080:8080 <imange-name>
+
+docker start <container_id>
+docker stop <container_id>
+docker rm <container_id>
+docker create <container_name>/<Image-name> creating container base on images.
+docker kill <container_id>
+
+# list of local image 
+docker images
+
+#running container
+docker ps 
+
+#running container + stopped
+docker p -a  // docker ps -all
+
+#inside the container
+docker exce -it <container_id>/bin/bash
+
+#inspect
+docker inspect <cotnainer_id>
+
+#logs
+docker logs <container_id>
+
+#for live logs
+
+docker logs -f <container_id>
+
+
+#remove all stopped container
+docker container prune.
+
+login into Docker
+docker login -u <user-name>
+
+publish an image to docker hub
+docker push <usernaem>/<image_name>
+
+search hub for an image
+docker search <image_name>
+
+pull and push
+docker push <image_name>
+docker pull <image_name>
+
+#logout
+docker logout
