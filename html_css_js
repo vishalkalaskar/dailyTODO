@@ -1,0 +1,117 @@
+----HTML-----------
+block level(is start on new line and take full width)--><div>
+inline level(it on some line) --<span>
+
+1.Semantic element : tag that cleary describe their meaning
+  <header><nav><article>
+  non-senmatic element : tags that do not describe cotent.
+  <div> <span>
+
+2. <!DOCTYPE> declares the HMTL version and help to render the page correctly.
+
+3. <script> : excuate Js
+   <noscript> : show when js in disabled.
+   <template> : holds reusable HTML, not rendered by default.
+
+4.data is used hold extra information about user.
+5.browser parses and render html -> it coverts HTML to a DOM tree, then applies css, runs JS
+
+5. lazy loading ="lazy" <img src="img.jps" loading='lazy'>
+
+6. <iframe> laods another webpage.
+  <embed> is used for plugin/media like pdfs.
+
+7. csp-content security policy set via <meta> tag or HTTP header to prevent XSS attacks.
+
+-----css-------------
+1. unit in css
+ px : fixed size
+ em : relative to parent
+ rem : relative to root
+ % : relative to parent container.
+
+2.Box Model : includes margin,border,padding and content.
+3. specificity - a rule's importance; inline >id> class > element selector.
+
+4. Pseduo-class - :hover,:first-child(state-based)
+   Pseduo-elements: ::before, ::after(virtual element)
+
+5.@media is allow applying style on screen size/device:
+
+6. inherit : take from parent
+   initial : reset to default
+   unset : removes set value.
+
+7. !important overrides all, inline is stronger than external,specificity defined rules priority.
+
+---------------js-------
+ 1. difference
+     var : function-scoped,hoisting
+     let :block-scoped,non-hositing
+     const : block-scoped,con't be reassigned.
+2.data type
+       primitive --string,number,boolean,null,undefined,symbol,bigint
+       non-primitive --object,array,function.
+
+3.hoisting->js moves declarations to the top of the scope during compilation.
+
+4.truthy and falsy
+  fasly : false,0,'',null,undefined,NaN.  
+  truthy : everything else is truthy.
+
+5.diff == and ===
+ 1. == loose equlity
+    Compares values, but ignores type.
+   It performs type coercion if needed.
+   console.log(5 == "5");     // true (number and string are equal after    coercion)
+console.log(null == undefined); // true (special case)
+console.log(0 == false);   // true (0 is coerced to false)
+ 2. === strict equlity
+     Compares values and types.
+     No type coercion is done.
+      console.log(5 === "5");    // false (number vs string)
+      console.log(0 === false);  // false (number vs boolean)
+      console.log(5 === 5);      // true (same type and value)
+6. even delegation ->attaching one event listener to a parent to handle events from its children.
+
+7.promise : Represents a future  value(async) with states : pending,fulfilled,rejected.
+
+8. this->refers to the context object depending on how function is called.
+
+9. higher-order function that takes/returns another function.
+
+10. debounce and throttle.
+    debounce : delays function call until after pasue.
+    throttle : limit calls to once per time interval.
+
+11.memorty leaks : unused data retained in memory due to poor management
+
+12. inheritance
+      prototypal : objects inherit from other objects via prototype chai.
+
+let fruits =['apple','banna',orange'];
+fruits.push("graphs"); //apple,banna,orange,graphs
+frit.pop(); //apple,banna,orange.
+
+let numbers = new Array(1,2,3)
+let empyt=[];
+
+  push()--adds items  at the end
+  pop() ---removes last item.
+  shift() -- remove first item
+  unshift() --add item at the beginning.
+  length --return number of items
+  indexOf() - find index of element
+  includes() -- checks if element exists
+  slice()-- return part of array
+  splice()--  add/removes elements 
+  concat()-- merges array
+   join() --join element into a string
+   reverse()-- reverses array
+  sort()
+  map()--return new array by transforming each item.
+  
+
+map(x=>[x,x*2]);
+flatMap(x=>[x,x*2]);
+      
