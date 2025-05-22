@@ -1,3 +1,5 @@
+https://github.com/CodingLyf-Fullstack/StreamsScenarios/blob/main/StreamsOnStudentData.java
+
 1.get the list of all the products that belogns to "books" category and product price>200 using java8 features
   Product p1 = new Product(101,"java","Books",150);
   Product p2 = new Product(102,"spring","Books",350);
@@ -194,6 +196,12 @@ for (char c : input.toLowerCase().toCharArray()) {
 }
 System.out.println("Total vowels: " + total);
 System.out.println(map);
+
+20.partiton by
+ new User(4,david,32)
+
+Map<Boolean,List<User>> partitioned =users.stream().collect(Collectors.partitioningBy(user->user.getAge()>18));
+sop(partitioned);
 
 6.code singleton class 
 public class Singleton
