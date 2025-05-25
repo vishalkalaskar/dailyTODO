@@ -43,7 +43,11 @@ inline level(it on some line) --<span>
    unset : removes set value.
 
 7. !important overrides all, inline is stronger than external,specificity defined rules priority.
-
+8.Box Model : a reactAngluar box wrapped around the html element.the box model used to determine the height and width of the reactangluar box
+Content:  Actual Content of the box where the text or image is placed.
+Padding: Area surrounding the content (Space between the border and content).
+Border: Area surrounding the padding.
+Margin: Area surrounding the border
 ---------------js-------
  1. difference
      var : function-scoped,hoisting
