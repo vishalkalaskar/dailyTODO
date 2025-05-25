@@ -469,6 +469,20 @@ TypeScript Basics
 
 14. **Legacy Code Integration:**
     Create wrapper directives for jQuery components, use ngZone.runOutsideAngular() for performance, gradually replace jQuery with Angular solutions, and use Angular's renderer for DOM manipulation.
-
 15. **Deployment Strategy:**
     Implement GitLab/GitHub CI/CD pipeline, use environments (dev/staging/prod), implement versioning strategy, configure production builds with AOT/optimization flags, and use Docker for consistent deployment.
+
+**Extra**
+1.what is sysncronous and asyncrnous.
+Synchronous tasks happen in order—you must complete the current task before moving on to the next. Asynchronous tasks are executed in any order or even at once
+
+2.Types of form in angular?
+
+In Angular, there are two types of forms:
+
+Template-driven forms: These forms are based on HTML templates and are easy to build and use for simple scenarios like login forms or contact forms.
+
+Reactive forms: These forms are built using reactive programming and are used for more complex scenarios like multi-step forms or forms that require validation and dynamic form controls. Reactive forms provide a more powerful and flexible approach to building forms in Angular.
+
+http.get("",{}).subscribe(conifng={},erro{});   without observable
+getdata():Observale{this.http.get("",data)}-->with observale
