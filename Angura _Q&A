@@ -8,7 +8,8 @@
 
 3.what is Anuglar?
   Angular is component based framework for builiding structured,scalable and single page web applications for client side.
-
+  #creating object 
+   let object = new ClassName();
 4.what are Angular advantages? / we can build single page application in javascript why we angulars.
   Advantage
    1. it is Relatively simple to build single page Application(component)
