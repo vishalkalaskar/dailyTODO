@@ -250,8 +250,8 @@ method(int[] a)
 
 4.second largest// Ways to find 2nd highest value (without sorting):
  method(int[] a)
-     int high= INTEGER.MIN_VALUE;
-     int secHigh= INTEGER.MIN_VALUE;
+     int high= Integer.MIN_VALUE;
+     int secHigh= Integer.MIN_VALUE;
      for(int num:a)
             if(num>high)
                  sechigh=high;
