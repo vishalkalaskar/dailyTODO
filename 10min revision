@@ -1,0 +1,353 @@
+**HIBERNATE**
+
+1.Hibernate: Java ORM framework simplifying database operations using POJOs.
+
+2.ORM: Maps Java objects to database tables.
+
+3.JPA: Java spec for ORM tools; Hibernate is an implementation.
+
+4.Persist vs Merge: persist inserts, merge updates or inserts.
+
+5.Hibernate vs JDBC: Cleaner code, HQL, auto transactions, better exception handling.
+
+6.Core Interfaces: Configuration, SessionFactory, Session, Criteria, Query, Transaction.
+
+7.Session: Interface to interact with DB.
+
+8.SessionFactory: Singleton for creating Session objects.
+
+9.Thread-safe Session?: No, it’s not thread-safe.
+
+10.First vs Second Level Cache: First per-session, second shared across sessions.
+
+11.Hibernate Config File: XML file with DB connection and mappings.
+
+12.Immutable Class: Use @Immutable or mutable="false".
+
+13.Inheritance Mapping: Strategies for mapping OOP inheritance to tables.
+
+14.SQL Injection: Hibernate not immune; use prepared statements.
+
+15.Mapping File: XML for entity-to-table mapping.
+
+16.Annotations: @Entity, @Table, @Id, etc.
+
+17.Architecture: Layers like SessionFactory, Session, Transaction, DB.
+
+18.getCurrentSession vs openSession: Current tied to context; open creates new.
+
+19.save vs saveOrUpdate: save inserts, saveOrUpdate inserts or updates.
+
+20.get vs load: get hits DB immediately, load is lazy.
+
+21.Criteria API: Programmatic query creation.
+
+22.HQL: Object-oriented SQL variant.
+
+23.One-to-Many: One entity linked to many others.
+
+24.Many-to-Many: Join table with foreign keys.
+
+25.session.lock(): Reattaches detached entity.
+
+26.Caching: Improves performance; includes 1st and 2nd level.
+
+27.merge() Usage: Updates and returns managed copy.
+
+28.Collection Mapping: Only via One-to-Many and Many-to-Many.
+
+29.setMaxResults vs setFetchSize: Limit vs fetch tuning.
+
+30.Native SQL: Supported via createSQLQuery().
+
+31.No-args Constructor: Mandatory for entity creation via reflection.
+
+32.Final Entity Class?: Not allowed; affects lazy loading.
+
+33.Entity States: Transient, Persistent, Detached.
+
+34.Query Cache: Caches result sets; requires config.
+
+35.N+1 Problem: Excess queries due to lazy loading.
+
+36.Solve N+1: Batch fetching, subselects, eager loading.
+
+37.Concurrency Strategies: Read-only, read-write, etc.
+
+38.Single Table Strategy: One table with discriminator.
+
+39.Table Per Class: Separate tables per subclass.
+
+40.Named SQL Query: SQL with aliases for reuse.
+
+41.NamedQuery Benefits: Centralized, readable, validated early.
+
+42.Callback Interfaces: Hook into object lifecycle events.
+
+43.HibernateTemplate: Simplifies Hibernate usage in Spring.
+
+44.Show SQL: Set show_sql=true in config.
+
+45.ORM Components: CRUD API, metadata, query API.
+
+46.ORM Levels: From pure SQL to full OOP mapping.
+
+47.Supported DBs: MySQL, Oracle, PostgreSQL, etc.
+
+48.Criteria in SQL: Add in query design view.
+
+49.merge vs update: merge is safer for detached objects.
+
+50.HQL Query: Use class names in queries.
+
+51.Native Query: DB-specific SQL.
+
+52.Dirty Checking: Tracks entity changes for efficient updates.
+
+53.Hibernate Tuning: Use indexes, cache, efficient fetching.
+
+54.Design Patterns: Data Mapper, Domain Model.
+
+55.Primary Key via Hibernate: @Id, composite keys with @ManyToOne.
+
+56.Hibernate Proxy: Used for lazy loading.
+
+
+**kafka**
+Basic Kafka Questions (Fundamentals)
+What is Kafka?
+Distributed event streaming platform for real-time data pipelines and applications.
+
+Main Kafka Components?
+Producer, Topic, Partition, Broker, Consumer, Zookeeper.
+
+High Availability?
+Achieved via replication (leader-follower model).
+
+Zookeeper Role?
+Coordinates brokers, manages metadata and leader election.
+
+Data Retention & Log Compaction?
+Retention by time/size; log compaction keeps latest key-value.
+
+Publish-Subscribe Model?
+Producers publish, multiple consumers subscribe independently.
+
+Horizontal Scalability?
+Achieved by topic partitioning across brokers.
+
+Kafka vs RabbitMQ?
+Kafka: log-based, scalable. RabbitMQ: queue-based, low-latency.
+
+🔹 Intermediate Kafka Questions (Implementation & Config)
+Produce/Consume in Java?
+Use KafkaProducer, KafkaConsumer, or Spring Kafka.
+
+Partition Performance Benefit?
+Enables parallel consumption → higher throughput.
+
+Consumer Crash?
+Partitions reassigned to other group members.
+
+Message Durability?
+Achieved via replication and acks configuration.
+
+What is ISR?
+In-Sync Replicas → backups for leader failover.
+
+Types of Offsets?
+Latest, Earliest, Committed.
+
+Manual Offset Commit?
+Use commitSync() / commitAsync().
+
+Delivery Semantics?
+At-most-once (loss), At-least-once (dupes), Exactly-once (safe).
+
+Monitoring Kafka?
+Tools: Prometheus, Grafana, ELK, Control Center.
+
+Kafka Security?
+SSL/SASL for auth, ACLs for access, TLS for encryption.
+
+Replication Factor?
+Number of copies → higher = better fault tolerance.
+
+Optimize Throughput?
+Use batching, compression, more partitions, async.
+
+Large Payloads?
+Compress or store externally (e.g., S3), send pointer.
+
+Consumer Groups?
+Enable load balancing across consumers.
+
+Backpressure Handling?
+Kafka buffers messages; consumers pull at their own pace.
+
+🔹 Advanced Kafka Questions (Real-World Scenarios)
+Kafka in Project?
+Used for real-time event processing (e.g., order system).
+
+Event-Driven Design with Kafka?
+Producers publish → Kafka stores → Consumers process.
+
+Implementation Challenges?
+Lag, partition imbalance, rebalancing, duplicates.
+
+Dead-Letter Queue?
+Route failed messages to DLQ for retry/analysis.
+
+Kafka Streams?
+Library for real-time stream processing.
+
+Kafka + Spring Boot?
+Use @KafkaListener and KafkaTemplate.
+
+Multi-DC Setup?
+Use MirrorMaker to replicate topics across DCs.
+
+Prod Best Practices?
+Use replication=3, monitor lag, tune configs.
+
+Debug Consumer Lag?
+Monitor lag metrics, check consumer health and offsets.
+
+Transactional Messaging?
+Ensures exactly-once using Kafka’s transaction API.
+
+Legacy System Migration?
+Use Kafka Connect and event sourcing techniques.
+
+Traffic Spike Handling?
+Add partitions, load-balanced consumers, compression.
+
+Kafka Connect?
+Tool to integrate Kafka with external systems.
+
+CDC with Kafka?
+Use Debezium to stream DB changes into Kafka.
+
+Ensure Data Consistency?
+Use transactions, schema registry, idempotent logic.
+
+Kafka Streams vs Flink?
+Kafka Streams: simple and embedded.
+Flink: powerful, standalone stream processor.
+
+Schema Registry?
+Manages schema versions for Avro/JSON/Protobuf.
+
+🔹 Hands-on / Scenario-Based Questions
+Broker Failure?
+New leader is elected, no data loss if replication ≥ 2.
+
+5 Partitions, 3 Consumers?
+Partitions are distributed unevenly (some consumers get 2).
+
+Consumer Lagging Behind?
+Causes: slow processing, too few consumers, slow polling.
+Fix: scale consumers, optimize logic, monitor lag.
+
+
+**RealTime**
+1. Kafka Broker Failure Handling
+Scenario: Kafka cluster with 3 brokers; one broker fails.
+
+Final Takeaways:
+
+Kafka uses replication and ISR (In-Sync Replicas) for fault tolerance.
+
+If the failed broker was a follower, no impact.
+If it was a leader, a new leader is elected from ISR using Zookeeper.
+No message loss if replication factor ≥ 2.
+Producer and consumer automatically reconnect to the new leader.
+When the broker recovers, it resyncs and rejoins ISR.
+
+✅ 2. Uneven Consumer Distribution
+Scenario: Kafka topic with 5 partitions and only 3 consumers.
+
+Final Takeaways:
+
+Kafka assigns 1 partition to 1 consumer within a group.
+Extra partitions are distributed among existing consumers.
+Some consumers may get more partitions, others less.
+If a consumer leaves/joins, Kafka rebalances partition assignments.
+If consumers > partitions, some will remain idle.
+
+✅ 3. Consumer Slower Than Producer
+Scenario: Consumer is lagging; can’t keep up with producer rate.
+
+Final Takeaways:
+
+Optimize processing: batch processing, async handling.
+Scale out: add more consumers to share partitions.
+Avoid blocking I/O: use async DB/API calls.
+Tune consumer settings: max.poll.records, poll.interval, offset commit.
+Monitor lag: Use tools like Kafka Lag Exporter, Burrow.
+Balance producer throughput and consumer capacity.
+
+✅ 4. Maintain Exact Message Order
+Scenario: Need to process Kafka messages in strict arrival order.
+
+Final Takeaways:
+Kafka guarantees order only within a partition.
+For global order: use 1 partition + 1 consumer (limits scalability).
+For per-entity order: partition by key (e.g., userId).
+Only one consumer per partition must process messages.
+Process sequentially, no multi-threading.
+Use Kafka transactions for exactly-once + ordered processing.
+
+5. Kafka Topic Receives High Volume, Consumers Lagging
+Final Takeaways:
+
+Monitor with Kafka Lag Exporter, kafka-consumer-groups.sh, and JMX/Prometheus.
+Tune consumers: increase max.poll.records, parallelism, and consumer count.
+Optimize producers: use compression, batching (batch.size, linger.ms), and acks.
+Scale Kafka with more partitions and consumer instances.
+Upgrade broker hardware and rebalance partitions.
+
+✅ 6. Duplicate Messages in Production
+Final Takeaways:
+
+Enable idempotent producer (enable.idempotence=true) to avoid duplicate sends.
+Manually commit offsets only after successful processing.
+Use unique keys or message IDs for deduplication (DB/Redis).
+For full protection, use Kafka Transactions for exactly-once delivery.
+
+✅ 7. Optimizing Kafka for High Throughput
+Final Takeaways:
+
+Producer: Increase batch size, use linger.ms, enable compression.
+Broker: Use SSD storage, tune thread/network settings, segment sizes.
+Consumer: Increase max.poll.records, fetch.max.bytes, and scale consumer instances.
+Increase partitions to enable parallel processing and distribute load evenly.
+
+✅ 8. Kafka Messages Out of Order
+Final Takeaways:
+
+Kafka guarantees order within a single partition only.
+Use partition keys for entity-level ordering (e.g., userId).
+Assign one consumer per partition to avoid interleaving.
+Avoid multi-threaded processing if order is critical.
+Tune poll settings to prevent rebalancing and offset rewind.
+
+✅ 9. Schema Evolution & Backward Compatibility
+Final Takeaways:
+
+Use Schema Registry with Avro, Protobuf, or JSON Schema.
+Prefer backward compatibility → add optional fields only.
+Never remove/modify existing fields in active schemas.
+If breaking changes needed: create new topic and migrate gradually.
+
+✅ 10. Kafka Producer Message Loss
+Final Takeaways:
+
+Set acks=all to ensure broker safely stores messages.
+
+Enable enable.idempotence=true to avoid duplicates on retries.
+Set retries=Integer.MAX_VALUE for resilient retries.
+Tune batch.size, buffer.memory, and linger.ms for efficiency.
+Set min.insync.replicas ≥ 2 to protect against broker failures.
+Commit offsets only after processing to prevent resends.
+Monitor broker logs and consumer lag regularly.
