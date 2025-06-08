@@ -91,3 +91,10 @@ WHERE employee_id = (
 17.SQL Query to Add a New Column
 Alter tabl_name Add column colunm_anem varchar(300);
 
+18.List top 10 policies with premium > 10,000,  given below table 
+SELECT * FROM Policy WHERE Premium > 10000 LIMIT 10;
+
+19.2. List contacts whose names do not end with "Smith" and have address in "CA" (primary key of first table to fk of second table).
+SELECT c.* FROM Contact c JOIN Address a ON c.ID = a.ContactID WHERE c.Name NOT LIKE '%Smith' AND a.State = 'CA';
+
+
