@@ -234,6 +234,31 @@ unique.removeAll(common);
 
 System.out.println(unique); // [1, 2, 5, 6]
 
+int[] a = {2,4,6,8,10,12};
+       int[] b = {1,2,3,4,5,6,7};
+      //opt int[] c ={1,3,5,8,7,10,12}
+     Map<Integer,Integer> map = new HashMap<>();
+     for(int val :a)
+     {
+         map.put(val,map.getOrDefault(val,0)+1);
+     }
+     
+     for(int val :b)
+     {
+          map.put(val,map.getOrDefault(val,0)+1);
+     }
+     
+     HashSet<Integer> set = new HashSet<>();
+     for(Map.Entry<Integer,Integer> entry : map.entrySet())
+     {
+         if(entry.getValue()==1)
+         {
+             set.add(entry.getKey());
+         }
+     }
+      
+      System.out.println(set);
+
 23.Compute division of 2 numbers irrespective of type using compile time polymorphism(method overloading)
 class Divider {
     public double divide(int a, int b) { return (double) a / b; }
