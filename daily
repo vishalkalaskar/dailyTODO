@@ -309,6 +309,12 @@ method()
   
 }
 
+26.list of string and conver in integer  in stream api.
+List<String> stringList = Arrays.asList("10", "20", "30");
+
+List<Integer> intList = stringList.stream().map(Integer::parseInt).collect(Collectors.toList());
+
+System.out.println(intList); // Output: [10, 20, 30]
 
 6.code singleton class 
 public class Singleton
