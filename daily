@@ -316,6 +316,41 @@ List<Integer> intList = stringList.stream().map(Integer::parseInt).collect(Colle
 
 System.out.println(intList); // Output: [10, 20, 30]
 
+27.give unique element and with it index using stream
+List<Integer> list = Arrays.asList(1, 0, 2, 3, 4, 5, 0, 1);
+
+        Map<Integer, Integer> uniqueWithIndex = 
+            IntStream.range(0, list.size())
+                     .boxed()
+                     .collect(Collectors.toMap(
+                         list::get,  // key = element
+                         i -> i,     // value = index
+                         (existing, newOne) -> existing // keep first index
+                     ));
+
+        uniqueWithIndex.forEach((k, v) -> System.out.println(k + " -> " + v));
+
+1 -> 0
+0 -> 1
+2 -> 2
+3 -> 3
+4 -> 4
+5 -> 5
+
+
+ // Step 1: Count frequency of each element
+        Map<Integer, Long> frequencyMap = list.stream()
+                .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+
+        // Step 2: Filter elements that occur only once and get their index
+        IntStream.range(0, list.size())
+                .filter(i -> frequencyMap.get(list.get(i)) == 1)
+                .forEach(i -> System.out.println(list.get(i) + " -> " + i));
+2 -> 2  
+3 -> 3  
+4 -> 4  
+5 -> 5
+
 6.code singleton class 
 public class Singleton
       public static Singleton  intance=new Singleton();
