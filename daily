@@ -1,4 +1,13 @@
 https://github.com/CodingLyf-Fullstack/StreamsScenarios/blob/main/StreamsOnStudentData.java
+springboot annotation -https://chatgpt.com/c/682a0801-d8f4-8005-941a-83b7894cf868
+https://chatgpt.com/c/680a0c8c-2400-8005-9a90-ef4523485b51
+https://chatgpt.com/c/67d30f3e-347c-8005-97cd-b1713e1a4968
+https://chatgpt.com/c/67c9ba5f-5d8c-8005-b532-895485deb37e
+https://claude.ai/chat/ecbf1812-0d9f-42bc-9afa-51b1a6348aaf **
+https://chatgpt.com/c/6837ea49-d658-8005-bd34-c3d7cbed69fd **
+java 8 --https://chatgpt.com/c/67d122eb-4054-8005-b154-5f8ea1a5c683
+kafka -https://chatgpt.com/c/681cbcb6-c5b4-8005-826b-124eb755b82d
+docker -https://chatgpt.com/c/680b9d11-3768-8005-bfc3-b2231e5e6ce4
 
 1.get the list of all the products that belogns to "books" category and product price>200 using java8 features
   Product p1 = new Product(101,"java","Books",150);
@@ -350,6 +359,13 @@ List<Integer> list = Arrays.asList(1, 0, 2, 3, 4, 5, 0, 1);
 3 -> 3  
 4 -> 4  
 5 -> 5
+
+Unique Char from String Array using Streams
+Arrays.stream(strArray)
+      .flatMapToInt(String::chars)
+      .distinct()
+      .mapToObj(c -> (char) c)
+      .forEach(System.out::println);
 
 6.code singleton class 
 public class Singleton
