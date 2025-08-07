@@ -380,3 +380,37 @@ public class SortZeroesAndOnes {
         System.out.println(Arrays.toString(arr)); // Output: [0, 0, 0, 1, 1, 1]
     }
 }
+
+17.ReverseOnlyAlphabets 
+public class ReverseOnlyAlphabets {
+    public static String reverseOnlyAlphabets(String s) {
+        char[] arr = s.toCharArray();
+        int left = 0, right = arr.length - 1;
+
+        while (left < right) {
+            if (!Character.isLetter(arr[left])) {
+                left++;
+            } else if (!Character.isLetter(arr[right])) {
+                right--;
+            } else {
+                // swap characters
+                char temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+                left++;
+                right--;
+            }
+        }
+
+        return new String(arr);
+    }
+
+    public static void main(String[] args) {
+        String s1 = "ab-cd";
+        String s2 = "j-khfd-Ghjk";
+
+        System.out.println(reverseOnlyAlphabets(s1));  // Output: dc-ba
+        System.out.println(reverseOnlyAlphabets(s2));  // Output: k-jhGd-fhkj
+    }
+}
+
