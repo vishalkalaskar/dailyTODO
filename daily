@@ -208,7 +208,9 @@ Arrays.stream(words).filter(word -> word.length() > 3).forEach(System.out::print
 String input = "Artificial Intelligence is Future.";
 int total = 0;
 Map<Character, Integer> map = new HashMap<>();
+ String vowels = "aeiouAEIOU";  //comparing small and captipal 
 for (char c : input.toLowerCase().toCharArray()) {
+
     if ("aeiou".indexOf(c) != -1) {
         total++;
         map.put(c, map.getOrDefault(c, 0) + 1);
