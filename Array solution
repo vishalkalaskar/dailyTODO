@@ -213,6 +213,13 @@ class Main {
     }
 }
 
+//alertenative logic
+ // Perform the rotation by splitting the array and swapping
+        int[] rotatedArr = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            rotatedArr[(i + k) % arr.length] = arr[i];
+        }
+
 10. find the Missing element in array.
     public static void main(String[] args) {
         int[] arr = {1,2,3,5,6};
