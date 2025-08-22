@@ -155,6 +155,14 @@ String[] fruits = {"apple", "apple", "banana", "grapes", "berry"};
 int sum = IntStream.rangeClosed(1, 20).filter(n -> n % 2 == 0).map(n -> n * n).sum();
 System.out.println("Sum of squares of even numbers: " + sum);
 
+14. duplication remove the duplicate and check element is present or not
+List<Integer> nums = Arrays.asList(2,3,3,3,4,4,5,7,8,9,1);
+
+List<Integer> set = Arrays.stream(nums).boxed().collect(Collectors.toSet());
+
+List<Integer> list = IntStream.rangeclosed(1,9).filter(i->!set.contains(i)).boxed().toList();
+System.out.printl(list);
+
 //remove string from string 
 import java.util.LinkedHashSet;
 
