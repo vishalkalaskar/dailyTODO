@@ -421,3 +421,31 @@ public class ReverseOnlyAlphabets {
     }
 }
 
+18. rewrite the string with their respective occurances.
+public class ExpandString {
+    public static void main(String[] args) {
+        String input = "d2m4t2a1";
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < input.length(); i++) {
+            char ch = input.charAt(i);
+
+            if (Character.isLetter(ch)) {
+                StringBuilder num = new StringBuilder();
+
+                // Collect digits after the letter
+                while (i + 1 < input.length() && Character.isDigit(input.charAt(i + 1))) {
+                    num.append(input.charAt(++i));
+                }
+
+                int count = Integer.parseInt(num.toString());
+
+                for (int j = 0; j < count; j++) {
+                    result.append(ch);
+                }
+            }
+        }
+
+        System.out.println(result.toString()); // Output: ddmmmmtta
+    }
+}
