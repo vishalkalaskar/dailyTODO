@@ -10,8 +10,17 @@ java 8 --https://chatgpt.com/c/67d122eb-4054-8005-b154-5f8ea1a5c683
 kafka -https://chatgpt.com/c/681cbcb6-c5b4-8005-826b-124eb755b82d
 docker -https://chatgpt.com/c/680b9d11-3768-8005-bfc3-b2231e5e6ce4
 
-converting list to map
+a)converting list to map
 map<String,Strign> userMap = users.stream().collect(Collectors.toMap(User::getUsername,User::getPassword,(existign,duplicate)->existing);
+
+ b) List<Employee> employees = Arrays.asList(
+            new Employee("Vishal", 50000),
+            new Employee("Pooja", 60000),
+            new Employee("Amit", 45000)
+        );
+
+    // Increase salary by 10% using Stream + forEach
+    employees.stream().forEach(emp -> emp.setSalary(emp.getSalary() * 1.10));
 
 1.get the list of all the products that belogns to "books" category and product price>200 using java8 features
   Product p1 = new Product(101,"java","Books",150);
