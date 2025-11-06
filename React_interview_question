@@ -1,0 +1,131 @@
+1. What is Lifting State Up in React?
+
+When two or more components need to share data, you move the state up to their common parent and pass it down as props.
+👉 It helps keep a single source of truth and avoids inconsistent states.
+
+2. What is React Context?
+
+Context provides a way to share data globally (like theme, user info) without passing props manually at every level.
+You create it using React.createContext() and access via useContext().
+
+3. What are different ways to add CSS in React?
+
+Inline CSS – style={{color: 'red'}}
+
+External CSS file – import './App.css'
+
+CSS Modules – import styles from './App.module.css'
+
+Styled Components – using styled-components library
+
+Tailwind / CSS-in-JS – using utility-first or dynamic styles
+
+4. What is the use of Parcel, Vite, Webpack?
+
+These are bundlers/build tools that compile and optimize React apps.
+
+Webpack – powerful, configurable bundler.
+
+Parcel – zero-config bundler, fast build time.
+
+Vite – lightning-fast dev server using ES modules and Rollup for build.
+
+5. How does create-react-app work?
+
+It uses Webpack + Babel internally to:
+
+Bundle your React code
+
+Transpile JSX → JS
+
+Start a local dev server
+
+Optimize production build automatically
+
+6. What is Tree Shaking?
+
+It’s a dead code elimination technique that removes unused code during build, reducing bundle size.
+
+7. Difference between dependency and devDependency
+
+dependencies → required in production (e.g., React, Axios)
+
+devDependencies → used only during development (e.g., Jest, Babel)
+
+8. What is npx and npm?
+
+npm (Node Package Manager) → installs packages globally or locally.
+
+npx → runs packages without installing them globally (e.g., npx create-react-app).
+
+9. Difference between package.json and package-lock.json
+
+package.json → lists dependencies and project metadata.
+
+package-lock.json → locks exact versions to ensure consistent installs.
+
+10. Difference between console.log(<HeaderComponent/>) and console.log(HeaderComponent)
+
+console.log(<HeaderComponent/>) → logs React element (JSX)
+
+console.log(HeaderComponent) → logs component function/class definition itself.
+
+11. What is React.Fragment?
+
+A wrapper component (<React.Fragment> or <> </>) used to group elements without adding extra DOM nodes.
+
+12. What is the purpose of dependency array in useEffect()?
+
+It tells React when to re-run the effect:
+
+[] → runs once (on mount).
+
+[state] → runs whenever state changes.
+
+No array → runs on every render.
+
+13. What if 2 components are given — will state change in one affect the other?
+
+No, unless they share the same state (via props, context, or lifted state). Each component has its own isolated state.
+
+14. What is the use of return in useEffect()?
+
+Used for cleanup (like removing listeners, canceling API calls).
+Example:
+
+useEffect(() => {
+  const id = setInterval(...);
+  return () => clearInterval(id); // cleanup
+}, []);
+
+15. Difference between Client-Side Routing and Server-Side Routing
+
+Client-Side: Browser doesn’t reload, handled by React Router, faster transitions.
+
+Server-Side: Every route loads a new HTML page from the server.
+
+16. Explain Code Splitting and its Benefits
+
+Code splitting means breaking code into smaller bundles using React.lazy() and Suspense.
+✅ Benefits: Faster load time, better performance.
+
+17. How does React handle Routing and Navigation?
+
+React uses React Router library to manage routes:
+<BrowserRouter>, <Route>, <Link>, etc.
+It uses the History API to switch components without page reload.
+
+18. What are Higher-Order Components (HOC)?
+
+A function that takes a component and returns a new component with added functionality.
+Example: withAuth(Component) adds authentication logic.
+
+19. What are Controlled and Uncontrolled Components?
+
+Controlled: Input managed by React state (value and onChange).
+
+Uncontrolled: Input managed by DOM itself (use ref to access).
+
+20. Explain Reconciliation in React
+
+It’s React’s process of comparing the virtual DOM with previous one (diffing) and updating only the changed parts in the real DOM for performance.
