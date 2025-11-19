@@ -1,4 +1,5 @@
 (cluad link) [https://claude.ai/chat/c072bee8-2b1a-43f9-84b2-880a7ce31c5e]
+(react-pattern)[https://github.com/krasimir/react-in-patterns],[https://github.com/DavidHDev/react-bits]
 
 # Complete Tech Interview Resources - GitHub Repositories
 
