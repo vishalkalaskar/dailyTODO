@@ -176,7 +176,7 @@ flatMap(x=>[x,x*2]);
 // 47. How Binary Search is implemented:
 // 48. Server side rendering
 
-
+https://chatgpt.com/c/69c6085e-ec24-8322-977f-2f22ed259d9b
 
 // 1. let and const is block scoped where as var is function scoped
 let cname = 'India'
