@@ -1286,3 +1286,44 @@ console.log(binarySearch(array11, target11)); // Output: 4
 
 // Overall, server-side rendering is a valuable approach for improving SEO, initial page load time, and performance in web development.
       
+-----js----
+function abc(){
+   return
+{
+       a:1;
+}
+}
+
+console.lgo(abc());---undefined
+function abc(){
+   return
+{
+       a:1;
+}
+} -->{a:1}
+
+2. let paylod={
+   name : "the coding monk",
+   ojb2: {
+           language :"js",
+        obj3:{
+             framework :"react",
+},
+    },
+};
+
+function getKeys(ojb)
+{
+    for(let key in obj)
+{
+      console.log(key)
+      if(typeOf obj[key] =='object')
+{
+         getKeys(ojb[key]);
+}
+else{
+    console.log(key)
+}
+}
+getKeys(paylod)
+       
