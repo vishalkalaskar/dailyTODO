@@ -129,3 +129,60 @@ Uncontrolled: Input managed by DOM itself (use ref to access).
 20. Explain Reconciliation in React
 
 It’s React’s process of comparing the virtual DOM with previous one (diffing) and updating only the changed parts in the real DOM for performance.
+
+21.what is react Hook Form?
+a library for handling iwth minimal re-renders. a lightweight and perfomrat libarary designed to manage form state and validation in React application.
+
+22.what happens if key is missing or duplicate.
+react may re-render incorrectly, causiing UI bugs.
+
+23. why map() is preferred for rendering lists?
+map() returns a new array and works well with JSX.
+
+24.what happend calling function directly.(use defination of function)
+ {myfunction()} excecutes thata function immediately every time the component renders.
+
+25.How to handle multiple input fields iwth one handler?
+  const handleChange=(e)=>
+{
+  setForm({...form,[e.target.name]:e.target.value})
+
+}
+
+26. setting parent value to child.
+
+  app.jsx
+   const App=()=>{
+    const [value,setValue] = useState("");
+    const handleSetValue=(val)=>setValue(val);
+  return(
+      <div>
+        <child handleSetValue={handleSetValue} ></child>
+     </div>
+    
+  )
+
+export default App; 
+
+child.jsx
+const child=({handleSetValue})=>{
+   const handleChange=(e)=>{
+      console.log(e.target.value);
+       handleSetValue(e.target.value);
+  };
+return(
+  <div>
+    <input onChange={handleChange}></input>
+ </div>
+)
+export defualt child;
+
+27.what does React.memo
+   it compare previous props and new props
+  if no change found
+  it skips the re-render
+
+ const Child=React.memo(()=>{
+    console.log("child render");
+    return <div>Child</div>
+});
