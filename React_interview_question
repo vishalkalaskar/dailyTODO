@@ -299,3 +299,44 @@ onChange={(e) => setText(e.target.value)}
 
 👉 () → run now ❌
 👉 () => → run later ✅
+
+7.pass argument to event handler
+
+ function list({items})
+     const handleClick=(items)=>{};
+  return();}
+
+8. form with controlled input and multiple controlled inputs with one handler
+
+const [form,setFomr] = usetState({username:""});  //useState({name:"",email:""});
+
+onChange=((e)=>setForm(username:e.target.value)
+
+const handleChange=(e)=>setForm({...form,[e.target.name]:e.target.value});
+onChange={handleChange}
+
+9. context
+const ThemeContext = React.createContext("light");
+
+provide context to components.
+  <ThemeContext.Provider value="dark"><Toolbar></TehemContext>
+--consue the context.
+const theme = useContext(ThemeContext);
+
+----Routes
+
+<Routes>
+  <Route path="/" element={<home/>}/>
+</Routes>
+
+Link between two page
+  <Link to="/about">about</Link>
+
+Redirect with another page
+  <Navigate to="/login> replace>
+
+
+
+
+
+
