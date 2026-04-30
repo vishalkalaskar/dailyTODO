@@ -186,3 +186,116 @@ export defualt child;
     console.log("child render");
     return <div>Child</div>
 });
+
+
+===================ReactJS coding question and solution=========================================
+
+1. create functional component that dispalys "hello world"
+  export default function App(){
+                  return <h1> Hello world</h1>
+   }
+
+2. class component that accepts anem prop and dispaly "hello {name}"
+   import React,{component} from 'react';
+
+ export default class Greeting extends Component{
+         render(){
+             return <h1>hello {this.props.name}</h1>
+        }
+.
+}
+
+---function componet for above---
+
+ export default function Greeting({name}){
+    return <h1>Hello {name}</h1>;
+}
+
+3. Render a list of items using .map().
+
+const fruites = ['banana','apple','orange'];
+export default function fruitelist(){
+          return(
+                     <ul>
+                     {
+                        fruites.map((fruit,index)=>(<li key={index}>{fruit}</li>))
+                      }
+                   </ul>
+          );
+}
+
+4. render the component conditionally
+ function User({isLoggedIn})
+{
+           return <h1> {isLoggendIn ? "Logged in" : "Guest"}</h1>;
+}
+
+5. pass data from parent to child using props.
+
+  function parent(){
+    const name="krishna";
+    return(
+         <child name={name}></child>
+    );
+}
+
+function child({name}){
+    return <p>hello {name}</p>;
+}
+
+React has one way data flow(unidirectional flow) 
+ child-->parent
+
+function parent(){
+     const getChildData=(data)=>{
+            console.log("child data",data);
+}
+return <child setData={getchidlData}/>;
+
+function child({setData})
+{
+    const handleClick=()=>{
+             console.log('this child fun tion");
+              setData("sending data");
+    }
+retunr<Button onClick={handleClikc}></Button>
+}
+
+----------normal function and arrow function------------
+ . Syntax Difference
+✅ Function Declaration
+function nameFun(name) {
+  return "Hello " + name;
+}
+✅ Arrow Function
+const nameFun = (name) => {
+  return "Hello " + name;
+};
+
+interview one line :
+  "Function declarations are hoisted and have their own this, while arrow functions are not hoisted and inherit this from their surrounding scope."
+
+ When to use what?
+Use arrow function:
+👉 callbacks, React components, short logic
+Use function declaration:
+👉 when you need this, constructor, or hoisting
+
+------------------------------------------------------------------------
+
+6. input filed updates live text
+
+function InputText(){
+   const[text,settext]=useSate("");
+    return(
+          <input onChange={(e)=>settext(e.target.value)}/>
+          <p>{text}></p>
+    );
+}
+onChange={(e) => setText(e.target.value)}
+
+👉 We use an arrow function to pass a function reference that will run later, not immediately.
+⚡ Simple memory trick
+
+👉 () → run now ❌
+👉 () => → run later ✅
