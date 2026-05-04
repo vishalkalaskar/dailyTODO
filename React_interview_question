@@ -335,6 +335,14 @@ Link between two page
 Redirect with another page
   <Navigate to="/login> replace>
 
+custome hook for fetching data.
+
+const useFetch(url){
+   const[data,setData]=useState(null);
+   useEffect(()=>{fetch(url).then(res=>res.json()).then(setData)},[url]);
+   return data;
+}
+
 
 
 
