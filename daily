@@ -393,6 +393,13 @@ Arrays.stream(strArray)
       .mapToObj(c -> (char) c)
       .forEach(System.out::println);
 
+28.reverseof Each world
+String input = "Hello world java Stream"
+String result= Arrays.stream(sentence.split(" ")).map(word->new StringBuilder(word).reverse().toString().collect(Collectors.jonining(""));
+
+29.using GroupingBy
+list<Employee> emp = employee.collect(Collectors.groupingBy(Employee::getDepartment,Collectors.summingDouble(Employee::getSalary)));
+
 6.code singleton class 
 public class Singleton
       public static Singleton  intance=new Singleton();
