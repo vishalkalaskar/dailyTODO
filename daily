@@ -25,6 +25,68 @@ map<String,Strign> userMap = users.stream().collect(Collectors.toMap(User::getUs
     // Increase salary by 10% using Stream + forEach
     employees.stream().forEach(emp -> emp.setSalary(emp.getSalary() * 1.10));
 
+Finding duplicates
+list<Integer> numbers = Arrays.asList(1,1,1,1,2,3,4,4,3,5,6,7,8,8,9);
+Set<Integer> set = new HashSet<Integer>();
+List<Integer> duplicates = numbers.filter(n=>!set.add(n)).collect(Collector.toList());
+
+first non-repeated character
+String str= "swiss";
+Optional<Character> firstNonRepeated = str.chars().mapToObj(c->(char)c)
+                                        .collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::New,collectors.counting()))
+                                        .entrySet().stream()
+                                        .filter(e->e.getValue()==1)
+                                         .map(Map.Entry::getKey)
+                                         .findFirst();
+
+priting duplicat chareacter fro string [r,g,m]
+   Set<Character> charSeen = new HashSet<>();
+Set<Character> dupChars = "programming".chars()
+    .mapToObj(c -> (char) c)
+    .filter(c -> !charSeen.add(c))
+    .collect(Collectors.toSet());
+    
+    System.out.println(dupChars);
+
+find al palindroms
+list<String> palindromes =  words.stream().filter(w->w.equals(new StringBuilder(w).reverse().toString()).collect(Collectors.toList());
+
+Method references Type
+Class :: method ---> instance method via class Employee ::salary
+obj :: method ----> instance method via object  System.out::println
+Class :: new---> constructor Employee :: new
+Class::StaticMethod --->Math :: sqrt
+
+Reverse each word
+// words = ["apple", "banana", "cherry"]
+apple--->leapp
+List<String> reversed = words.stream()
+    .map(w -> new StringBuilder(w).reverse().toString())
+    .collect(Collectors.toList());
+
+String str = "hello word";
+String reversed = new StringBuilder(str).reverse().toString();
+String str2 = Arrays.stream(str.split(" ")).mapt(w->StringBuilder(w).collect();
+//-> dlrow olleh
+
+check if list is empty using optional
+Optional<List<String>> optlist = Optional.of(words);
+boolean empty = optlist.map(List::isEmpty).orElse(true);
+
+flattern nested list
+flatMap(Collection::Stream).collect(Collectors.toList());
+
+Nth highest salary (e.g., n=2)
+int n = 2;
+Optional<Double> nthHighest = employees.stream()
+    .map(Employee::salary)
+    .distinct()
+    .sorted(Comparator.reverseOrder())
+    .skip(n - 1)
+    .findFirst();
+
+                                        
+
 1.get the list of all the products that belogns to "books" category and product price>200 using java8 features
   Product p1 = new Product(101,"java","Books",150);
   Product p2 = new Product(102,"spring","Books",350);
