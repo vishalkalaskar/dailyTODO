@@ -464,10 +464,16 @@ list<Employee> emp = employee.collect(Collectors.groupingBy(Employee::getDepartm
 
 6.code singleton class 
 public class Singleton
-      public static Singleton  intance=new Singleton();
+      public static volatile Singleton  instance;
      private Singleton(){};
      public static Singleton getInstance()
-             return intance;
+          if(instance==null)
+              synchronized(Singleton.class)
+              {
+                    if(insatance ==null)
+                       instance = new Singleton();
+                 }
+             return instance;
  
 1.intersection of array
   method(int[]a,in[]b)
