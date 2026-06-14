@@ -517,6 +517,31 @@ method(int[] a)
        els if(num>sechigh&&num!=high)
                sechigh=num;
  sop(sechigh);
+
+public static void thirdLargest(int[] arr) {
+
+    int high = Integer.MIN_VALUE;
+    int secHigh = Integer.MIN_VALUE;
+    int thirdHigh = Integer.MIN_VALUE;
+
+    for (int num : arr) {
+
+        if (num > high) {
+            thirdHigh = secHigh;
+            secHigh = high;
+            high = num;
+        }
+        else if (num > secHigh && num != high) {
+            thirdHigh = secHigh;
+            secHigh = num;
+        }
+        else if (num > thirdHigh && num != secHigh && num != high) {
+            thirdHigh = num;
+        }
+    }
+
+    System.out.println("Third Largest = " + thirdHigh);
+}
    
 
 5.reverse
