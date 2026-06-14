@@ -546,8 +546,8 @@ public static void thirdLargest(int[] arr) {
 
 5.reverse
   method(in[] a)
-    int end;
-    for(i=0;i<end.length)
+    int end = a.length-1;
+    for(i=0;i<end;i++)
         int temp=a[i];
         a[i]=a[end];
         a[end]=temp;
