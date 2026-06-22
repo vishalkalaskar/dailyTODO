@@ -480,3 +480,23 @@ output
 [eat, tea, ate]
 [tan, nat]
 [bat]
+
+****************************************String*************************************
+1. return last word length in string
+s = "hello world"
+world--5
+class Solution {
+    public int lengthOfLastWord(String s) 
+    {
+        String[] words = s.trim().split("\\s+");
+        String lastword = words[words.length-1];
+       
+            int count=0;
+            for(char ch : lastword.toLowerCase().toCharArray())
+            {
+                count++;
+            }
+  return count;
+        
+    }
+}
