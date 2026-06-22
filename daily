@@ -518,6 +518,20 @@ method(int[] a)
                sechigh=num;
  sop(sechigh);
 
+for andy k th number of smallest and largest number use PriorityQueue
+
+   smallest --> PriorityQueue<Integer> pq = new PriorityQueue<>(Collectons.reverseOder());
+   largest --> priorityQueue<Integer> pq = new PriorityQueue<>();
+
+   for(int num :nums)
+    {
+            pq.offer(num);
+          if(pq.size()>k)
+               pq.poll();
+   }
+  return pq.peek();
+    
+
 public static void thirdLargest(int[] arr) {
 
     int high = Integer.MIN_VALUE;
