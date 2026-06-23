@@ -441,6 +441,26 @@ public class ExpandString {
         System.out.println(result.toString()); // Output: ddmmmmtta
     }
 }
+// palindrome
+class Solution {
+    public boolean isPalindrome(String s) {
+
+        StringBuilder newString = new StringBuilder();
+
+        for(int i = 0; i < s.length(); i++)
+        {
+            if(Character.isLetterOrDigit(s.charAt(i)))
+            {
+                newString.append(Character.toLowerCase(s.charAt(i)));
+            }
+        }
+
+        String original = newString.toString();
+        String reversed = newString.reverse().toString();
+
+        return original.equals(reversed);
+    }
+}
 
 19. Input: ["eat","tea","tan","ate","nat","bat"]
 op 
