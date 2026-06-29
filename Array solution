@@ -259,6 +259,23 @@ class Main {
             }
         }
 
+alternative logic 
+int max = Integer.MIN_VALUE;
+
+int left = 0;
+int right = n - 1;
+
+while(left < right)
+{
+    int sum = a[left] + a[right];   condition will change  int product = nums[left] * nums[right];
+    max = Math.max(max, sum);
+
+    left++;
+    right--;
+}
+
+System.out.println(max);
+
         // Find the highest product using streams
         int highprod = newlist.stream()
                               .sorted(Comparator.reverseOrder()) // Correct method name
