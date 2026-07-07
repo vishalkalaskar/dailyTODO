@@ -397,7 +397,7 @@ public class SortZeroesAndOnes {
     }
 }
 
-17.ReverseOnlyAlphabets 
+17.ReverseOnlyAlphabets/reveirse only vowel from string
 public class ReverseOnlyAlphabets {
     public static String reverseOnlyAlphabets(String s) {
         char[] arr = s.toCharArray();
