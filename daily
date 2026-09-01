@@ -832,7 +832,7 @@ map.forEach((Key,value)->{ system.out.println(keys+""+value) });
         for (Map.Entry<Character, Integer> entry : map.entrySet()) {
             if (entry.getValue() == 1) {
                 System.out.println("First non-repeating character: " + entry.getKey());
-                return;
+                return;//brek;
             }
         }
 
@@ -858,6 +858,29 @@ class Solution {
         }
 
         return -1;
+    }
+}
+
+Second Non-Repeating Character
+String str = "swiss";
+
+Map<Character, Integer> map = new LinkedHashMap<>();
+
+for (char ch : str.toCharArray()) {
+    map.put(ch, map.getOrDefault(ch, 0) + 1);
+}
+
+int count = 0;
+
+for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+
+    if (entry.getValue() == 1) {
+        count++;
+
+        if (count == 2) {
+            System.out.println(entry.getKey());
+            break;
+        }
     }
 }
        
