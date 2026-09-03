@@ -71,6 +71,14 @@ String reversed = new StringBuilder(str).reverse().toString();
 String str2 = Arrays.stream(str.split(" ")).mapt(w->StringBuilder(w).collect();
 //-> dlrow olleh
 
+String str = "hello word";
+
+String result = Arrays.stream(str.split(" "))
+        .map(word -> new StringBuilder(word).reverse().toString())
+        .collect(Collectors.joining(" "));
+
+System.out.println(result);
+
 check if list is empty using optional
 Optional<List<String>> optlist = Optional.of(words);
 boolean empty = optlist.map(List::isEmpty).orElse(true);
