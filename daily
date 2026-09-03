@@ -183,6 +183,13 @@ for(Int num:list)
    else
          odd.add(num);
 
+ Map<Boolean, List<Integer>> result =
+                list.stream()
+                    .collect(Collectors.groupingBy(i -> i % 2 == 0));
+
+        List<Integer> even = result.get(true);
+        List<Integer> odd = result.get(false);
+
 
 6.remove duplicate using stream api
   List<Integer> num =Arrays.asList();
