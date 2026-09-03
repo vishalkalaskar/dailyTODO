@@ -271,6 +271,28 @@ String[] fruits = {"apple", "apple", "banana", "grapes", "berry"};
         System.out.println("Duplicate Elements: " + duplicates); // Output: [apple]
         Map<String,Long> count= Arrays.stream(array).collect(Collecors.groupingBy(Function.identity(),Collectors.counting());
         count.forEach((key,value)->system.out.println(key+'"+value+"occuers"));
+------------------alertnative--------
+Map<String, Long> count = Arrays.stream(fruits).collect(Collectors.groupingBy(
+                Function.identity(),
+                Collectors.counting()
+        ));
+
+count.forEach((key, value) ->
+        System.out.println(key + " occurs " + value + " times"));
+
+List<String> duplicates = Arrays.stream(fruits)
+        .collect(Collectors.groupingBy(
+                Function.identity(),
+                Collectors.counting()
+        ))
+        .entrySet()
+        .stream()
+        .filter(entry -> entry.getValue() > 1)
+        .map(Map.Entry::getKey)
+        .collect(Collectors.toList());
+
+System.out.println(duplicates);
+-----------------------------------------------------------------------
 
    //Stream -> Declare 1 list/array having 1 to 20; calculate sum of even numbers square using stream
 int sum = IntStream.rangeClosed(1, 20).filter(n -> n % 2 == 0).map(n -> n * n).sum();
