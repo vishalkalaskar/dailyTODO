@@ -553,12 +553,18 @@ public class Singleton
                 sop(a[i]);
 
 2.two array same or not
-boolean method(int[]a,int[] b)
-    for()
-       for()
-             if(a[i]!=b[i])
-                 return false;
-         return true;
+static boolean method(int[] a, int[] b) {
+
+    if (a.length != b.length)
+        return false;
+
+    for (int i = 0; i < a.length; i++) {
+        if (a[i] != b[i])
+            return false;
+    }
+
+    return true;
+}
  
 3.largest
 //maxmimum and min
