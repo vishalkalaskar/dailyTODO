@@ -40,6 +40,26 @@ Optional<Character> firstNonRepeated = str.chars().mapToObj(c->(char)c)
                                         .filter(e->e.getValue()==1)
                                          .map(Map.Entry::getKey)
                                          .findFirst();
+second highest 
+String str = "swiss";
+
+Character result =
+        str.chars()
+           .mapToObj(c -> (char) c)
+           .collect(Collectors.groupingBy(
+                   Function.identity(),
+                   LinkedHashMap::new,
+                   Collectors.counting()
+           ))
+           .entrySet()
+           .stream()
+           .filter(entry -> entry.getValue() == 1)
+           .skip(1)
+           .map(Map.Entry::getKey)
+           .findFirst()
+           .orElse(null);
+
+System.out.println(result);
 
 priting duplicat chareacter fro string [r,g,m]
    Set<Character> charSeen = new HashSet<>();
@@ -139,6 +159,16 @@ List<Employee> empplist=emp.forEach(emp->system.out.println("name"+emp.getName()
 sop(emplist);
 Int count=emp.stream().count().get();
 sop(count):
+
+//alernative 
+
+List<String> hrEmployees = employee.stream()
+        .filter(e -> e.getDepartment().equalsIgnoreCase("HR"))
+        .map(Employee::getName)
+        .collect(Collectors.toList());
+
+System.out.println("HR Count: " + hrEmployees.size());
+System.out.println("HR Employees: " + hrEmployees);
 
 5.odd and even for list 
 List<Integer> list =Arryas.asList();
