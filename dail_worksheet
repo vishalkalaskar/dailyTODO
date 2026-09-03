@@ -1,0 +1,820 @@
+====================================================================
+JAVA PRACTICE QUESTIONS — SOLVE BELOW EACH QUESTION
+====================================================================
+
+
+########################################################
+SECTION A: JAVA 8 STREAM API QUESTIONS
+########################################################
+
+--------------------------------------------------------
+A1. Convert a List<User> to Map<username, password>, handling duplicate keys.
+Expected: Map<String, String>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A2. Increase salary of each Employee by 10% using stream/forEach.
+Expected: void (list updated in place)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A3. Find duplicate elements in a list of integers.
+Input: [1,1,1,1,2,3,4,4,3,5,6,7,8,8,9]
+Expected: Set<Integer>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A4. Find the first non-repeated character in a string.
+Input: "swiss"
+Expected: Optional<Character>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A5. Find the second non-repeating character in a string.
+Input: "swiss"
+Expected: Character
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A6. Print duplicate characters from a string.
+Input: "programming"
+Expected: Set<Character>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A7. Find all palindromes from a list of words.
+Expected: List<String>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A8. Reverse each word in a list of words (keep word order).
+Input: ["apple", "banana", "cherry"]
+Expected: List<String> -> ["elppa", "ananab", "yrrehc"]
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A9. Reverse a whole sentence word-by-word using streams.
+Input: "hello word"
+Expected: String -> "olleh drow"  (note: reverse each word, keep order)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A10. Check if a list is empty using Optional.
+Expected: boolean
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A11. Flatten a nested list into a single list.
+Expected: List<T>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A12. Find the Nth highest salary from a list of employees (e.g. n=2).
+Expected: Optional<Double>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A13. Get all products in "Books" category with price > 200.
+Expected: List<Product>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A14. Find all numbers starting with "1" from a list of integers.
+Input: [10,13,17,56,25,11]
+Expected: List<Integer>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A15. Find students whose name starts with "A" and marks > 70.
+Expected: List<Student>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A16. Find count and names of employees in the HR department.
+Expected: long (count) + printed names
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A17. Split a list of integers into odd and even lists.
+Expected: List<Integer> (even), List<Integer> (odd)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A18. Remove duplicates from a list using stream API.
+Expected: List<Integer>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A19. Find frequency of each character in a string using streams.
+Input: "Java Concept Of The Day"
+Expected: Map<Character, Long>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A20. Find the longest string in a list of strings.
+Expected: Optional<String>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A21. Sort a list of decimals in reverse order and natural order; also find min, max, and top 3.
+Input: [12.45, 23.58, 17.13, 42.89, 33.78, 71.85, 56.98, 21.12]
+Expected: List<Double>, Double (min/max)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A22. Join a list of strings with "[" prefix, "]" suffix, and "," delimiter.
+Input: ["Facebook", "Twitter", "YouTube", "WhatsApp", "LinkedIn"]
+Expected: String -> "[Facebook, Twitter, YouTube, WhatsApp, LinkedIn]"
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A23. Merge two unsorted arrays into a single sorted array/list using streams.
+Input: a = {4,2,7,1}, b = {8,3,9,5}
+Expected: int[] or List<Integer>, sorted
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A24. Find intersection of two lists using streams.
+Expected: List<Integer>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A25. Get three maximum and three minimum numbers from a list.
+Input: [45, 12, 56, 15, 24, 75, 31, 89]
+Expected: List<Integer> (top 3), List<Integer> (bottom 3)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A26. Find the max element in a list using streams.
+Expected: Integer
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A27. Count duplicate elements in a String[] array and print each with its frequency.
+Input: {"apple", "apple", "banana", "grapes", "berry"}
+Expected: List<String> (duplicates), Map<String, Long> (frequency)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A28. Find the second most frequent element in a frequency map.
+Expected: Optional<Map.Entry<String, Long>>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A29. Calculate sum of squares of even numbers from 1 to 20 using IntStream.
+Expected: int
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A30. Given nums list, find numbers from 1–9 that are NOT present in the list.
+Input: [2,3,3,3,4,4,5,7,8,9,1]
+Expected: List<Integer>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A31. Count occurrences of the number 1 in a list using streams.
+Expected: long
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A32. Find the second highest element in a list using streams.
+Expected: Integer
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A33. Extract only the odd-indexed (0-based, even position) characters from a string using streams.
+Input: "Welcome"
+Expected: String -> "Wloe"
+--------------------------------------------------------
+
+
+--------------------------------------------------------
+A34. Get the length of each word in an array of strings.
+Input: {"apple", "is", "red", "fruit"}
+Expected: printed lengths (Stream<Integer>)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A35. Print strings with length greater than 3 from an array.
+Expected: printed list
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A36. Partition a list of users into adults/minors using Collectors.partitioningBy.
+Expected: Map<Boolean, List<User>>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A37. Given a Map<String,Integer> and a List<String> of keys, get the corresponding values.
+Input: map = {"a":1,"b":2,"c":3}, keys = ["a","c"]
+Expected: List<Integer> -> [1, 3]
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A38. Given two lists of integers, find the unique items across both (symmetric difference).
+Input: list1=[1,2,3,4], list2=[3,4,5,6]
+Expected: Set<Integer> -> [1, 2, 5, 6]
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A39. Given two int arrays a and b, find elements that appear in only one of them (frequency = 1 across both).
+Expected: Set<Integer>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A40. Get unique characters across a String[] array using streams.
+Expected: printed distinct chars
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A41. Group employees by department and sum their salaries.
+Expected: Map<String, Double>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A42. Get unique elements from a list along with their first occurrence index.
+Input: [1, 0, 2, 3, 4, 5, 0, 1]
+Expected: Map<Integer, Integer> (element -> first index)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A43. Find elements that occur exactly once in a list, and print them with their index.
+Expected: printed (element -> index) pairs
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A44. Find the Employee with the highest salary using streams.
+Expected: Employee (or null if list empty)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A45. Group employees by department into lists (not sum, just grouping).
+Expected: Map<String, List<Employee>>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A46. Count employees per department using streams.
+Expected: Map<String, Long>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A47. Sort a list of employees by salary (ascending) using streams.
+Expected: List<Employee>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+A48. Find employees who joined after a given year (e.g. after 2022).
+Expected: List<Employee>
+--------------------------------------------------------
+
+
+
+
+########################################################
+SECTION B: CORE JAVA / DSA CODING QUESTIONS (NO STREAMS)
+########################################################
+
+--------------------------------------------------------
+B1. Find the intersection of two arrays (plain loops).
+Expected: printed common elements
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B2. Check whether two arrays are exactly the same (same length, same values in order).
+Expected: boolean
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B3. Find the largest and smallest element in an array.
+Expected: int (largest), int (smallest)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B4. Find the second largest element in an array WITHOUT sorting.
+Expected: int
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B5. Find the third largest element in an array WITHOUT sorting.
+Expected: int
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B6. Find the Kth smallest and Kth largest element using PriorityQueue.
+Expected: int
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B7. Reverse an array in place.
+Expected: int[] (reversed)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B8. Merge two arrays into one and sort it (manual sort, no streams/Arrays.sort).
+Expected: int[] (sorted merged array)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B9. Remove a specific character from a string (plain loop).
+Expected: String
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B10. Count occurrences of each character in a string and print characters that occur MORE THAN ONCE, using int[26].
+Input: "hello"
+Expected: printed chars occurring > 1 time
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B11. Given a string, print each character but only its FIRST occurrence (remove subsequent duplicates), using int[26].
+Input: "hello" -> Expected Output: "helo"
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B12. Reverse the order of words in a sentence (plain loop, no split-based streams).
+Input: "mai hu na"
+Expected: String -> "na hu mai"
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B13. Reverse a string (plain loop, no StringBuilder.reverse()).
+Expected: String
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B14. Reverse the order of words in a sentence.
+Input: "the sky is blue"
+Expected Output: "blue is sky the"
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B15. Count characters in a string excluding commas and spaces.
+Expected: int
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B16. Check if two strings are anagrams of each other.
+Expected: boolean
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B17. Check if one string is a rotation of another.
+Input: s1 = "abcd", s2 = "cdab"
+Expected: boolean -> true
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B18. Find the length of the longest substring without repeating characters.
+Expected: int
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B19. Remove duplicate elements from an int array using HashSet.
+Expected: int[]
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B20. Remove duplicates from a SORTED int array in place (two-pointer technique), no extra HashSet.
+Input: {21,35,25,47,47,56,68}
+Expected: int[] (unique elements only)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B21. Split a string into odd-indexed and even-indexed characters (plain loop).
+Expected: String (even), String (odd)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B22. Iterate over a Map and print all key-value pairs (both classic for-loop and Java 8 forEach).
+Expected: printed pairs
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B23. Find the first non-repeating character in a string (plain HashMap, no streams). If none found, return null.
+Input: "swiss"
+Expected: Character or null
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B24. LeetCode-style: return the INDEX of the first unique character in a string (or -1 if none).
+Expected: int
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B25. Count frequency of each character in a string using a plain HashMap/LinkedHashMap (no streams).
+Input: "programming"
+Expected: Map<Character, Integer>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B26. Remove duplicate characters from a string using LinkedHashSet (preserve order).
+Input: "Programming"
+Expected: String
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B27. Find the second non-repeating character in a string using a plain LinkedHashMap (no streams).
+Expected: Character
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B28. Find duplicate elements in an int array using a HashSet (plain loop, no streams).
+Expected: List<Integer>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B29. Count total vowels in a sentence, and also count frequency of each vowel (case-insensitive).
+Input: "Artificial Intelligence is Future."
+Expected: int (total), Map<Character, Integer> (per-vowel frequency)
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+B30. Remove duplicate words from a sentence while preserving order, using LinkedHashSet.
+Input: "welcome hi to hi hello"
+Expected: String -> "welcome hi to hello"
+--------------------------------------------------------
+ 
+
+
+
+########################################################
+SECTION C: OOP / DESIGN / DATE-TIME
+########################################################
+
+--------------------------------------------------------
+C1. Implement a thread-safe Singleton class (double-checked locking).
+Expected: class Singleton with getInstance()
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+C2. Implement division of two numbers irrespective of type using method overloading (compile-time polymorphism).
+Expected: class Divider with overloaded divide() methods
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+C3. Write a date calculator: difference between two dates, and a date X days in the future.
+Expected: long (days difference), LocalDate (future date)
+--------------------------------------------------------
+
+
+
+
+########################################################
+SECTION D: SPRING BOOT / REST API QUESTIONS
+########################################################
+
+--------------------------------------------------------
+D1. Write a REST Controller with GET, POST, DELETE, PUT endpoints for Employee CRUD.
+Expected: @RestController class
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D2. Write the Service layer for the above Employee CRUD controller.
+Expected: @Service class
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D3. Fetch employee details by employeeId (path variable), where EmployeeService must call a separate
+Department microservice to fetch additional details. Write Controller + Service layer code.
+Expected: Controller + Service classes using RestTemplate
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D4. Write REST endpoints to fetch "Details" entity by id, and by name+city (query params).
+Include Controller, Service, and Repository (with a native query for name+city).
+Expected: Controller + Service + Repository
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D5. Implement a full CRUD Service (create, read, update, delete) for Employee using JpaRepository.
+Expected: @Service class
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D6. Write a REST controller for file upload (MultipartFile), saving to a configured directory.
+Expected: @RestController class
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D7. Write a method to consume an external REST API using RestTemplate.
+Expected: ResponseEntity<String>
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D8. Write an integration test for a REST API using MockMvc.
+Expected: @SpringBootTest test class
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D9. Write an integration test for a REST API using TestRestTemplate (RANDOM_PORT).
+Expected: @SpringBootTest test class
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D10. Write a scheduled task that runs every 5 seconds using @Scheduled.
+Expected: @Component class
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D11. Implement caching on a service method (@Cacheable) and clear it (@CacheEvict).
+Expected: @Service class with cache annotations
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D12. Model a OneToOne relationship between User and Profile using JPA annotations.
+Expected: @Entity classes
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D13. Model a OneToMany / ManyToOne relationship between Department and Employee using JPA annotations.
+Expected: @Entity classes
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D14. Model a ManyToMany relationship between Student and Course using JPA annotations.
+Expected: @Entity classes
+--------------------------------------------------------
+
+
+
+
+--------------------------------------------------------
+D15. Implement global exception handling using a custom exception class and @RestControllerAdvice.
+Expected: CustomException class + @RestControllerAdvice class
+--------------------------------------------------------
+
+
+
+====================================================================
+END OF QUESTIONS — 48 Stream Qs (A) | 30 Core Java Qs (B) | 3 OOP/Design Qs (C) | 15 Spring Boot Qs (D)
+====================================================================
