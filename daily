@@ -98,6 +98,11 @@ String result = Arrays.stream(str.split(" "))
         .collect(Collectors.joining(" "));
 
 System.out.println(result);
+-------
+
+java-->avaj
+String resul  = str.chars().mapToOjb(c->(char)c).collect(StringBuilder::new,StringBuilder::append,StringBuilder::append).reveser().toString();
+
 
 check if list is empty using optional
 Optional<List<String>> optlist = Optional.of(words);
