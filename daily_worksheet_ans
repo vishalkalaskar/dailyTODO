@@ -1,0 +1,1179 @@
+====================================================================
+JAVA PRACTICE QUESTIONS — ANSWER KEY
+(Matches numbering in java_practice_questions.txt exactly: A/B/C/D)
+====================================================================
+
+
+########################################################
+SECTION A: JAVA 8 STREAM API — ANSWERS
+########################################################
+
+A1. List<User> to Map<username, password>
+--------------------------------------------------------
+Map<String, String> userMap = users.stream()
+    .collect(Collectors.toMap(User::getUsername, User::getPassword,
+        (existing, duplicate) -> existing));
+
+
+A2. Increase salary by 10%
+--------------------------------------------------------
+employees.forEach(emp -> emp.setSalary(emp.getSalary() * 1.10));
+
+
+A3. Find duplicate elements in a list
+--------------------------------------------------------
+Set<Integer> seen = new HashSet<>();
+Set<Integer> duplicates = numbers.stream()
+    .filter(n -> !seen.add(n))
+    .collect(Collectors.toSet());
+
+
+A4. First non-repeated character
+--------------------------------------------------------
+Optional<Character> firstNonRepeated = str.chars()
+    .mapToObj(c -> (char) c)
+    .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+    .entrySet().stream()
+    .filter(e -> e.getValue() == 1)
+    .map(Map.Entry::getKey)
+    .findFirst();
+
+
+A5. Second non-repeating character (streams)
+--------------------------------------------------------
+List<Character> nonRepeated = str.chars()
+    .mapToObj(c -> (char) c)
+    .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+    .entrySet().stream()
+    .filter(e -> e.getValue() == 1)
+    .map(Map.Entry::getKey)
+    .collect(Collectors.toList());
+
+Character second = nonRepeated.size() > 1 ? nonRepeated.get(1) : null;
+
+
+A6. Duplicate characters in a string
+--------------------------------------------------------
+Set<Character> charSeen = new HashSet<>();
+Set<Character> dupChars = "programming".chars()
+    .mapToObj(c -> (char) c)
+    .filter(c -> !charSeen.add(c))
+    .collect(Collectors.toSet());
+
+
+A7. Palindromes from a list
+--------------------------------------------------------
+List<String> palindromes = words.stream()
+    .filter(w -> w.equals(new StringBuilder(w).reverse().toString()))
+    .collect(Collectors.toList());
+
+
+A8. Reverse each word (keep word order)
+--------------------------------------------------------
+List<String> reversed = words.stream()
+    .map(w -> new StringBuilder(w).reverse().toString())
+    .collect(Collectors.toList());
+// ["apple","banana","cherry"] -> ["elppa","ananab","yrrehc"]
+
+
+A9. Reverse each word in a sentence, keep order (string version of A8)
+--------------------------------------------------------
+String input = "hello word";
+String result = Arrays.stream(input.split(" "))
+    .map(w -> new StringBuilder(w).reverse().toString())
+    .collect(Collectors.joining(" "));
+// "olleh drow"
+
+
+A10. Check if list is empty using Optional
+--------------------------------------------------------
+Optional<List<String>> optList = Optional.of(words);
+boolean empty = optList.map(List::isEmpty).orElse(true);
+
+
+A11. Flatten a nested list
+--------------------------------------------------------
+List<Integer> flat = nestedList.stream()
+    .flatMap(Collection::stream)
+    .collect(Collectors.toList());
+
+
+A12. Nth highest salary
+--------------------------------------------------------
+int n = 2;
+Optional<Double> nthHighest = employees.stream()
+    .map(Employee::getSalary)
+    .distinct()
+    .sorted(Comparator.reverseOrder())
+    .skip(n - 1)
+    .findFirst();
+
+
+A13. Products in "Books" category, price > 200
+--------------------------------------------------------
+List<Product> result = products.stream()
+    .filter(p -> p.getCategory().equals("Books") && p.getPrice() > 200)
+    .collect(Collectors.toList());
+
+
+A14. Numbers starting with "1"
+--------------------------------------------------------
+List<Integer> result = numbers.stream()
+    .filter(n -> String.valueOf(n).startsWith("1"))
+    .collect(Collectors.toList());
+
+
+A15. Names starting with "A", marks > 70
+--------------------------------------------------------
+List<Student> result = students.stream()
+    .filter(s -> s.getName().startsWith("A") && s.getMarks() > 70)
+    .collect(Collectors.toList());
+
+
+A16. HR department employee count and names
+--------------------------------------------------------
+List<Employee> hrEmployees = employees.stream()
+    .filter(e -> e.getDepartment().equalsIgnoreCase("HR"))
+    .collect(Collectors.toList());
+
+long count = hrEmployees.size();
+List<String> names = hrEmployees.stream()
+    .map(Employee::getName)
+    .collect(Collectors.toList());
+
+System.out.println("HR Count: " + count);
+System.out.println("HR Names: " + names);
+
+
+A17. Odd/Even split
+--------------------------------------------------------
+List<Integer> even = list.stream().filter(n -> n % 2 == 0).collect(Collectors.toList());
+List<Integer> odd  = list.stream().filter(n -> n % 2 != 0).collect(Collectors.toList());
+
+
+A18. Remove duplicates using streams
+--------------------------------------------------------
+List<Integer> distinctList = numbers.stream().distinct().collect(Collectors.toList());
+
+
+A19. Character frequency using streams
+--------------------------------------------------------
+String inputString = "Java Concept Of The Day";
+Map<Character, Long> freq = inputString.chars()
+    .mapToObj(c -> (char) c)
+    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+
+A20. Longest string in a list
+--------------------------------------------------------
+Optional<String> longest = stringList.stream()
+    .max(Comparator.comparingInt(String::length));
+
+
+A21. Sort decimals, min/max, top 3
+--------------------------------------------------------
+List<Double> decimals = Arrays.asList(12.45, 23.58, 17.13, 42.89, 33.78, 71.85, 56.98, 21.12);
+
+List<Double> reverseSorted = decimals.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+List<Double> naturalSorted = decimals.stream().sorted().collect(Collectors.toList());
+Double min = decimals.stream().min(Double::compareTo).get();
+Double max = decimals.stream().max(Double::compareTo).get();
+List<Double> top3 = decimals.stream().sorted().limit(3).collect(Collectors.toList());
+
+
+A22. Join with prefix/suffix/delimiter
+--------------------------------------------------------
+List<String> listOfStrings = Arrays.asList("Facebook", "Twitter", "YouTube", "WhatsApp", "LinkedIn");
+String joinedString = listOfStrings.stream().collect(Collectors.joining(", ", "[", "]"));
+// [Facebook, Twitter, YouTube, WhatsApp, LinkedIn]
+
+
+A23. Merge two unsorted arrays, sorted
+--------------------------------------------------------
+int[] a = {4, 2, 7, 1};
+int[] b = {8, 3, 9, 5};
+
+int[] mergedArray = IntStream.concat(Arrays.stream(a), Arrays.stream(b)).sorted().toArray();
+
+// for two Lists:
+List<Integer> merged = Stream.concat(list1.stream(), list2.stream()).sorted().collect(Collectors.toList());
+
+
+A24. Intersection of two lists (streams)
+--------------------------------------------------------
+List<Integer> intersection = list1.stream().filter(list2::contains).collect(Collectors.toList());
+
+
+A25. Three max and three min numbers
+--------------------------------------------------------
+List<Integer> nums = Arrays.asList(45, 12, 56, 15, 24, 75, 31, 89);
+List<Integer> top3 = nums.stream().sorted(Comparator.reverseOrder()).limit(3).collect(Collectors.toList());
+List<Integer> bottom3 = nums.stream().sorted().limit(3).collect(Collectors.toList());
+
+
+A26. Max element in a list
+--------------------------------------------------------
+Integer max = list.stream().max(Integer::compare).get();
+
+
+A27. Count duplicates in a String[] array, with frequency
+--------------------------------------------------------
+String[] fruits = {"apple", "apple", "banana", "grapes", "berry"};
+
+Map<String, Long> freq = Arrays.stream(fruits)
+    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+List<String> duplicates = freq.entrySet().stream()
+    .filter(e -> e.getValue() > 1)
+    .map(Map.Entry::getKey)
+    .collect(Collectors.toList());
+// [apple]
+
+
+A28. Second most frequent element
+--------------------------------------------------------
+Optional<Map.Entry<String, Long>> secondMostFrequent = freqMap.entrySet().stream()
+    .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+    .skip(1)
+    .findFirst();
+
+
+A29. Sum of squares of even numbers 1-20
+--------------------------------------------------------
+int sum = IntStream.rangeClosed(1, 20)
+    .filter(n -> n % 2 == 0)
+    .map(n -> n * n)
+    .sum();
+
+
+A30. Numbers 1-9 missing from a list
+--------------------------------------------------------
+List<Integer> nums = Arrays.asList(2,3,3,3,4,4,5,7,8,9,1);
+Set<Integer> set = new HashSet<>(nums);
+List<Integer> missing = IntStream.rangeClosed(1, 9)
+    .filter(i -> !set.contains(i))
+    .boxed()
+    .collect(Collectors.toList());
+
+
+A31. Count occurrences of 1
+--------------------------------------------------------
+long onceCount = list.stream().filter(num -> num == 1).count();
+
+
+A32. Second highest element (streams)
+--------------------------------------------------------
+Integer secondHighest = list.stream()
+    .distinct()
+    .sorted(Comparator.reverseOrder())
+    .skip(1)
+    .findFirst()
+    .orElse(null);
+
+
+A33. Odd-indexed (even-position) characters, "Welcome" -> "Wloe"
+--------------------------------------------------------
+String str = "Welcome";
+String result = IntStream.range(0, str.length())
+    .filter(i -> i % 2 == 0)
+    .mapToObj(str::charAt)
+    .map(String::valueOf)
+    .collect(Collectors.joining());
+// "Wloe"
+
+
+A34. Length of each word
+--------------------------------------------------------
+String[] words = {"apple", "is", "red", "fruit"};
+Arrays.stream(words).map(String::length).forEach(System.out::println);
+
+
+A35. Strings with length > 3
+--------------------------------------------------------
+Arrays.stream(words).filter(word -> word.length() > 3).forEach(System.out::println);
+
+
+A36. Partition users by adult/minor
+--------------------------------------------------------
+Map<Boolean, List<User>> partitioned = users.stream()
+    .collect(Collectors.partitioningBy(u -> u.getAge() > 18));
+
+
+A37. Values from a Map based on a list of keys
+--------------------------------------------------------
+Map<String, Integer> map = Map.of("a", 1, "b", 2, "c", 3);
+List<String> keys = List.of("a", "c");
+
+List<Integer> values = keys.stream()
+    .map(map::get)
+    .collect(Collectors.toList());
+// [1, 3]
+
+
+A38. Unique items across two lists (symmetric difference)
+--------------------------------------------------------
+List<Integer> list1 = List.of(1, 2, 3, 4);
+List<Integer> list2 = List.of(3, 4, 5, 6);
+
+Set<Integer> unique = new HashSet<>(list1);
+unique.addAll(list2);
+
+Set<Integer> common = new HashSet<>(list1);
+common.retainAll(list2);
+
+unique.removeAll(common);
+// [1, 2, 5, 6]
+
+
+A39. Elements appearing in only one of two int arrays
+--------------------------------------------------------
+int[] a = {2,4,6,8,10,12};
+int[] b = {1,2,3,4,5,6,7};
+
+Map<Integer, Integer> countMap = new HashMap<>();
+for (int val : a) countMap.put(val, countMap.getOrDefault(val, 0) + 1);
+for (int val : b) countMap.put(val, countMap.getOrDefault(val, 0) + 1);
+
+Set<Integer> result = new HashSet<>();
+for (Map.Entry<Integer, Integer> entry : countMap.entrySet())
+    if (entry.getValue() == 1) result.add(entry.getKey());
+
+
+A40. Unique characters across a String[] array
+--------------------------------------------------------
+Arrays.stream(strArray)
+    .flatMapToInt(String::chars)
+    .distinct()
+    .mapToObj(c -> (char) c)
+    .forEach(System.out::println);
+
+
+A41. Group by department, sum salary
+--------------------------------------------------------
+Map<String, Double> deptSalary = employees.stream()
+    .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingDouble(Employee::getSalary)));
+
+
+A42. Unique element with first index
+--------------------------------------------------------
+List<Integer> list = Arrays.asList(1, 0, 2, 3, 4, 5, 0, 1);
+
+Map<Integer, Integer> uniqueWithIndex = IntStream.range(0, list.size())
+    .boxed()
+    .collect(Collectors.toMap(list::get, i -> i, (existing, newOne) -> existing));
+
+uniqueWithIndex.forEach((k, v) -> System.out.println(k + " -> " + v));
+
+
+A43. Elements occurring exactly once, with index
+--------------------------------------------------------
+Map<Integer, Long> frequencyMap = list.stream()
+    .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+
+IntStream.range(0, list.size())
+    .filter(i -> frequencyMap.get(list.get(i)) == 1)
+    .forEach(i -> System.out.println(list.get(i) + " -> " + i));
+
+
+A44. Employee with highest salary
+--------------------------------------------------------
+Employee employee = employees.stream()
+    .max(Comparator.comparingDouble(Employee::getSalary))
+    .orElse(null);
+
+System.out.println(employee);
+
+
+A45. Group employees by department (into lists)
+--------------------------------------------------------
+Map<String, List<Employee>> result = employees.stream()
+    .collect(Collectors.groupingBy(Employee::getDepartment));
+
+System.out.println(result);
+
+
+A46. Count employees per department
+--------------------------------------------------------
+Map<String, Long> result = employees.stream()
+    .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
+
+System.out.println(result);
+
+
+A47. Sort employees by salary (ascending)
+--------------------------------------------------------
+List<Employee> result = employees.stream()
+    .sorted(Comparator.comparingDouble(Employee::getSalary))
+    .collect(Collectors.toList());
+
+
+A48. Employees who joined after a given year
+--------------------------------------------------------
+List<Employee> result = employees.stream()
+    .filter(e -> e.getJoiningDate().getYear() > 2022)
+    .collect(Collectors.toList());
+
+
+
+########################################################
+SECTION B: CORE JAVA / DSA — ANSWERS
+########################################################
+
+B1. Intersection of two arrays (plain loops)
+--------------------------------------------------------
+for (int i = 0; i < a.length; i++)
+    for (int j = 0; j < b.length; j++)
+        if (a[i] == b[j]) System.out.println(a[i]);
+
+
+B2. Check whether two arrays are equal
+--------------------------------------------------------
+boolean areEqual(int[] a, int[] b) {
+    if (a.length != b.length) return false;
+    for (int i = 0; i < a.length; i++)
+        if (a[i] != b[i]) return false;
+    return true;
+}
+
+
+B3. Largest and smallest element
+--------------------------------------------------------
+int largest = a[0];
+for (int x : a) if (x > largest) largest = x;
+
+int smallest = a[0];
+for (int x : a) if (x < smallest) smallest = x;
+
+
+B4. Second largest, without sorting
+--------------------------------------------------------
+int high = Integer.MIN_VALUE;
+int secHigh = Integer.MIN_VALUE;
+for (int num : a) {
+    if (num > high) { secHigh = high; high = num; }
+    else if (num > secHigh && num != high) { secHigh = num; }
+}
+
+
+B5. Third largest, without sorting
+--------------------------------------------------------
+int high = Integer.MIN_VALUE, secHigh = Integer.MIN_VALUE, thirdHigh = Integer.MIN_VALUE;
+for (int num : arr) {
+    if (num > high) { thirdHigh = secHigh; secHigh = high; high = num; }
+    else if (num > secHigh && num != high) { thirdHigh = secHigh; secHigh = num; }
+    else if (num > thirdHigh && num != secHigh && num != high) { thirdHigh = num; }
+}
+
+
+B6. Kth smallest / largest using PriorityQueue
+--------------------------------------------------------
+// Kth smallest -> max-heap of size k
+PriorityQueue<Integer> pqSmall = new PriorityQueue<>(Collections.reverseOrder());
+for (int num : nums) {
+    pqSmall.offer(num);
+    if (pqSmall.size() > k) pqSmall.poll();
+}
+int kthSmallest = pqSmall.peek();
+
+// Kth largest -> min-heap of size k
+PriorityQueue<Integer> pqLarge = new PriorityQueue<>();
+for (int num : nums) {
+    pqLarge.offer(num);
+    if (pqLarge.size() > k) pqLarge.poll();
+}
+int kthLargest = pqLarge.peek();
+
+
+B7. Reverse an array in place
+--------------------------------------------------------
+for (int i = 0; i < arr.length / 2; i++) {
+    int temp = arr[i];
+    arr[i] = arr[arr.length - i - 1];
+    arr[arr.length - i - 1] = temp;
+}
+
+
+B8. Merge two arrays and sort (bubble sort)
+--------------------------------------------------------
+int n = a.length + b.length;
+int[] merged = new int[n];
+System.arraycopy(a, 0, merged, 0, a.length);
+System.arraycopy(b, 0, merged, a.length, b.length);
+
+for (int i = 0; i < n - 1; i++)
+    for (int j = 0; j < n - i - 1; j++)
+        if (merged[j] > merged[j + 1]) {
+            int temp = merged[j];
+            merged[j] = merged[j + 1];
+            merged[j + 1] = temp;
+        }
+
+
+B9. Remove a specific character from a string
+--------------------------------------------------------
+String method(String str, char ch) {
+    StringBuilder newStr = new StringBuilder();
+    for (int i = 0; i < str.length(); i++)
+        if (str.charAt(i) != ch) newStr.append(str.charAt(i));
+    return newStr.toString();
+}
+
+
+B10. Characters occurring MORE THAN ONCE (int[26])
+--------------------------------------------------------
+int[] freq = new int[26];
+for (int i = 0; i < str.length(); i++)
+    freq[str.charAt(i) - 'a']++;
+
+for (int i = 0; i < str.length(); i++) {
+    int index = str.charAt(i) - 'a';
+    if (freq[index] > 1) System.out.println(str.charAt(i));
+}
+
+
+B11. Keep only first occurrence of each character (int[26])
+--------------------------------------------------------
+// "hello" -> "helo"
+int[] freq = new int[26];
+StringBuilder ans = new StringBuilder();
+for (int i = 0; i < s.length(); i++) {
+    int index = s.charAt(i) - 'a';
+    freq[index]++;
+    if (freq[index] == 1) ans.append(s.charAt(i));
+}
+
+
+B12. Reverse order of words in a sentence (plain loop)
+--------------------------------------------------------
+String s = "mai hu na"; // -> "na hu mai"
+String[] word = s.trim().split("\\s+");
+StringBuilder ans = new StringBuilder();
+for (int i = word.length - 1; i >= 0; i--) {
+    ans.append(word[i]);
+    if (i != 0) ans.append(" ");
+}
+
+
+B13. Reverse a string (plain loop)
+--------------------------------------------------------
+StringBuilder ans = new StringBuilder();
+for (int i = str.length() - 1; i >= 0; i--)
+    ans.append(str.charAt(i));
+
+
+B14. Reverse word order — "the sky is blue" -> "blue is sky the"
+--------------------------------------------------------
+String s = "the sky is blue";
+String[] arr = s.trim().split("\\s+");
+StringBuilder ans = new StringBuilder();
+for (int i = arr.length - 1; i >= 0; i--) {
+    ans.append(arr[i]);
+    if (i != 0) ans.append(" ");
+}
+
+
+B15. Count characters excluding commas and spaces
+--------------------------------------------------------
+int count = 0;
+for (int i = 0; i < str.length(); i++)
+    if (str.charAt(i) != ',' && str.charAt(i) != ' ') count++;
+
+
+B16. Check Anagram
+--------------------------------------------------------
+boolean isAnagram(String str1, String str2) {
+    str1 = str1.replaceAll("\\s", "").toLowerCase();
+    str2 = str2.replaceAll("\\s", "").toLowerCase();
+    if (str1.length() != str2.length()) return false;
+
+    char[] a1 = str1.toCharArray();
+    char[] a2 = str2.toCharArray();
+    Arrays.sort(a1);
+    Arrays.sort(a2);
+    return Arrays.equals(a1, a2);
+}
+
+
+B17. Check String Rotation
+--------------------------------------------------------
+boolean areRotation(String s1, String s2) {
+    if (s1.length() != s2.length()) return false;
+    String doubled = s1 + s1;
+    return doubled.contains(s2);
+}
+// areRotation("abcd","cdab") -> true
+
+
+B18. Longest substring without repeating characters
+--------------------------------------------------------
+int lengthOfLongestSubstring(String s) {
+    if (s == null || s.isEmpty()) return 0;
+    int start = 0, maxLen = 0;
+    Set<Character> set = new HashSet<>();
+    for (int end = 0; end < s.length(); end++) {
+        while (set.contains(s.charAt(end))) {
+            set.remove(s.charAt(start));
+            start++;
+        }
+        set.add(s.charAt(end));
+        maxLen = Math.max(maxLen, end - start + 1);
+    }
+    return maxLen;
+}
+
+
+B19. Remove duplicates from int array using HashSet
+--------------------------------------------------------
+HashSet<Integer> uniqueElements = new HashSet<>();
+for (int num : arr) uniqueElements.add(num);
+
+int[] result = new int[uniqueElements.size()];
+int index = 0;
+for (int num : uniqueElements) result[index++] = num;
+
+
+B20. Remove duplicates from a SORTED array in place (two-pointer)
+--------------------------------------------------------
+int[] arr = {21,35,25,47,47,56,68};
+int j = 0;
+for (int i = 0; i < arr.length; i++) {
+    if (arr[i] != arr[j]) {
+        j++;
+        int temp = arr[j];
+        arr[j] = arr[i];
+        arr[i] = temp;
+    }
+}
+// unique elements are arr[0..j]
+
+
+B21. Split string into odd/even indexed characters (plain loop)
+--------------------------------------------------------
+StringBuilder even = new StringBuilder();
+StringBuilder odd = new StringBuilder();
+for (int i = 0; i < str.length(); i++) {
+    if (i % 2 == 0) even.append(str.charAt(i));
+    else odd.append(str.charAt(i));
+}
+
+
+B22. Iterate over a Map and print key-value pairs
+--------------------------------------------------------
+// Classic loop
+for (Map.Entry<String, Integer> entry : map.entrySet())
+    System.out.println(entry.getKey() + " " + entry.getValue());
+
+// Java 8 forEach
+map.forEach((key, value) -> System.out.println(key + " " + value));
+
+
+B23. First non-repeating character (plain HashMap, return null if none)
+--------------------------------------------------------
+Character findFirstNonRepeating(String str) {
+    Map<Character, Integer> map = new LinkedHashMap<>();
+    for (char c : str.toCharArray())
+        map.put(c, map.getOrDefault(c, 0) + 1);
+
+    for (Map.Entry<Character, Integer> entry : map.entrySet())
+        if (entry.getValue() == 1) return entry.getKey();
+
+    return null;
+}
+
+
+B24. LeetCode-style: index of first unique character
+--------------------------------------------------------
+public int firstUniqChar(String s) {
+    Map<Character, Integer> map = new HashMap<>();
+    for (char ch : s.toCharArray())
+        map.put(ch, map.getOrDefault(ch, 0) + 1);
+
+    for (int i = 0; i < s.length(); i++)
+        if (map.get(s.charAt(i)) == 1) return i;
+
+    return -1;
+}
+
+
+B25. Character frequency count (plain HashMap/LinkedHashMap)
+--------------------------------------------------------
+String str = "programming";
+Map<Character, Integer> map = new LinkedHashMap<>();
+for (char ch : str.toCharArray())
+    map.put(ch, map.getOrDefault(ch, 0) + 1);
+
+System.out.println(map);
+
+
+B26. Remove duplicate characters from a string (LinkedHashSet)
+--------------------------------------------------------
+String str = "Programming";
+LinkedHashSet<Character> set = new LinkedHashSet<>();
+for (char ch : str.toCharArray())
+    set.add(ch);
+
+StringBuilder result = new StringBuilder();
+for (char ch : set)
+    result.append(ch);
+
+System.out.println(result);
+
+
+B27. Second non-repeating character (plain LinkedHashMap)
+--------------------------------------------------------
+Map<Character, Integer> map = new LinkedHashMap<>();
+for (char ch : str.toCharArray())
+    map.put(ch, map.getOrDefault(ch, 0) + 1);
+
+int count = 0;
+for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+    if (entry.getValue() == 1) {
+        count++;
+        if (count == 2) {
+            System.out.println(entry.getKey());
+            break;
+        }
+    }
+}
+
+
+B28. Duplicate elements in an int array (HashSet, plain loop)
+--------------------------------------------------------
+Set<Integer> set = new HashSet<>();
+List<Integer> duplicates = new ArrayList<>();
+for (int num : a)
+    if (!set.add(num)) duplicates.add(num);
+
+System.out.println(duplicates);
+
+
+B29. Count vowels in a sentence (total + per-vowel frequency)
+--------------------------------------------------------
+String input = "Artificial Intelligence is Future.";
+int total = 0;
+Map<Character, Integer> map = new HashMap<>();
+
+for (char c : input.toLowerCase().toCharArray()) {
+    if ("aeiou".indexOf(c) != -1) {
+        total++;
+        map.put(c, map.getOrDefault(c, 0) + 1);
+    }
+}
+
+System.out.println("Total vowels: " + total);
+System.out.println(map);
+
+
+B30. Remove duplicate words from a sentence (LinkedHashSet, preserve order)
+--------------------------------------------------------
+String s = "welcome hi to hi hello";
+String[] words = s.split(" ");
+
+LinkedHashSet<String> uniqueWords = new LinkedHashSet<>();
+StringBuilder ans = new StringBuilder();
+
+for (String word : words) {
+    if (uniqueWords.add(word)) {
+        ans.append(word).append(" ");
+    }
+}
+
+System.out.println(ans.toString().trim());
+// Output: welcome hi to hello
+
+
+
+########################################################
+SECTION C: OOP / DESIGN / DATE-TIME — ANSWERS
+########################################################
+
+C1. Thread-safe Singleton (double-checked locking)
+--------------------------------------------------------
+public class Singleton {
+    private static volatile Singleton instance;
+
+    private Singleton() {}
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+}
+
+
+C2. Divide two numbers irrespective of type (method overloading)
+--------------------------------------------------------
+class Divider {
+    public double divide(int a, int b) { return (double) a / b; }
+    public double divide(double a, double b) { return a / b; }
+    public double divide(float a, float b) { return a / b; }
+    public double divide(long a, long b) { return (double) a / b; }
+}
+
+Divider d = new Divider();
+System.out.println(d.divide(10, 2));       // 5.0
+System.out.println(d.divide(10.5, 2.0));   // 5.25
+
+
+C3. Date calculator — difference and future date
+--------------------------------------------------------
+LocalDate date1 = LocalDate.of(2023, 1, 1);
+LocalDate date2 = LocalDate.of(2025, 6, 7);
+
+long diffDays = ChronoUnit.DAYS.between(date1, date2);
+System.out.println("Days Difference: " + diffDays);
+
+LocalDate futureDate = LocalDate.now().plusDays(50);
+System.out.println("50 days from now: " + futureDate);
+
+
+
+########################################################
+SECTION D: SPRING BOOT / REST API — ANSWERS
+########################################################
+
+D1. REST Controller — Employee CRUD
+--------------------------------------------------------
+@RestController
+public class EmployeeController {
+
+    @Autowired
+    private EmployeeService empService;
+
+    @GetMapping("/get/employeeData")
+    public List<Employee> getEmployeeData() {
+        return empService.findAll();
+    }
+
+    @PostMapping("/create/employee")
+    public String createEmployee(@RequestBody Employee employee) {
+        empService.save(employee);
+        return "Employee created successfully";
+    }
+
+    @DeleteMapping("/delete/employee")
+    public String deleteEmployee(@RequestParam("id") String id) {
+        empService.deleteById(id);
+        return "Employee deleted successfully";
+    }
+
+    @PutMapping("/update/{id}")
+    public Employee updateEmployee(@PathVariable String id, @RequestBody Employee employee) {
+        return empService.updateEmployee(id, employee);
+    }
+}
+
+
+D2. Service layer for Employee CRUD
+--------------------------------------------------------
+@Service
+public class EmployeeService {
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    public List<Employee> findAll() {
+        return employeeRepository.findAll();
+    }
+
+    public Employee save(Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+    public void deleteById(String id) {
+        employeeRepository.deleteById(id);
+    }
+
+    public Employee updateEmployee(String id, Employee newData) {
+        if (!employeeRepository.existsById(id))
+            throw new RuntimeException("Employee not found with id: " + id);
+        newData.setId(id);
+        return employeeRepository.save(newData);
+    }
+}
+
+
+D3. Fetch employee by id + call Department microservice
+--------------------------------------------------------
+@RestController
+public class EmployeeController {
+
+    @Autowired
+    private EmployeeService empService;
+
+    @GetMapping("/empd/{emp_id}")
+    public ResponseEntity<String> getEmp(@PathVariable Long emp_id) {
+        return empService.findById(emp_id);
+    }
+}
+
+@Service
+public class EmployeeService {
+
+    @Value("${department.service.url}")
+    private String host;
+
+    @Autowired
+    private TokenService tokenService;
+
+    public ResponseEntity<String> findById(Long id) {
+        String url = host.replace("{id}", String.valueOf(id));
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.add("Authorization", "Bearer " + tokenService.getToken());
+
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+        RestTemplate restTemplate = new RestTemplate();
+        String response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class).getBody();
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+}
+
+
+D4. Fetch Details by id, and by name+city (native query)
+--------------------------------------------------------
+@RestController
+public class DetailsController {
+
+    @Autowired
+    private DetailsService detailsService;
+
+    @GetMapping("/api/details")
+    public Optional<Details> getDetails(@RequestParam("id") Long id) {
+        return detailsService.getDetailsById(id);
+    }
+
+    @GetMapping("/api/details/search")
+    public List<Details> getDetailsByNameAndCity(
+            @RequestParam("name") String name,
+            @RequestParam("city") String city) {
+        return detailsService.getDetailsByNameAndCity(name, city);
+    }
+}
+
+@Service
+public class DetailsService {
+
+    @Autowired
+    private DetailsRepository detailsRepository;
+
+    public Optional<Details> getDetailsById(Long id) {
+        return detailsRepository.findById(id);
+    }
+
+    public List<Details> getDetailsByNameAndCity(String name, String city) {
+        return detailsRepository.findByNameAndCity(name, city);
+    }
+}
+
+@Repository
+public interface DetailsRepository extends JpaRepository<Details, Long> {
+    @Query(value = "SELECT * FROM details WHERE LOWER(name) = LOWER(:name) AND LOWER(city) = LOWER(:city)",
+           nativeQuery = true)
+    List<Details> findByNameAndCity(@Param("name") String name, @Param("city") String city);
+}
+
+
+D5. Full CRUD service for Employee using JpaRepository
+--------------------------------------------------------
+@Service
+public class EmployeeService {
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    public List<Employee> getAll() { return employeeRepository.findAll(); }
+
+    public Employee create(Employee employee) { return employeeRepository.save(employee); }
+
+    public Employee update(Long id, Employee newData) {
+        newData.setId(id);
+        return employeeRepository.save(newData);
+    }
+
+    public void delete(Long id) { employeeRepository.deleteById(id); }
+}
+
+
+D6. File Upload Controller
+--------------------------------------------------------
+@RestController
+@RequestMapping("/file")
+public class FileController {
+
+    @Value("${some.path}")
+    private String fileDir;
+
+    @PostMapping("/uploadfile")
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
+        File dir = new File(fileDir);
+        if (!dir.exists()) dir.mkdir();
+
+        try {
+            Path filePath = Paths.get(fileDir, file.getOriginalFilename());
+            Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+            return ResponseEntity.ok("File uploaded successfully");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File upload failed");
+        }
+    }
+}
+
+
+D7. Consume an external REST API
+--------------------------------------------------------
+@GetMapping("/somedata")
+public ResponseEntity<String> someData() {
+    String url = "https://somesite";
+    RestTemplate rt = new RestTemplate();
+    return rt.exchange(url, HttpMethod.GET, null, String.class);
+    // alternatives: rt.getForEntity(url, String.class), rt.getForObject(url, String.class)
+}
+
+
+D8. Integration test using MockMvc
+--------------------------------------------------------
+@SpringBootTest
+@AutoConfigureMockMvc
+public class UserControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    public void testGetAllUsers() throws Exception {
+        mockMvc.perform(get("/users"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$").isArray());
+    }
+}
+
+
+D9. Integration test using TestRestTemplate (RANDOM_PORT)
+--------------------------------------------------------
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class MyControllerTest {
+
+    @LocalServerPort
+    private int port;
+
+    @Autowired
+    private TestRestTemplate restTemplate;
+
+    @Test
+    void testApi() {
+        String response = restTemplate.getForObject("http://localhost:" + port + "/api/endpoint", String.class);
+        assertEquals("Expected Response", response);
+    }
+}
+
+
+D10. Scheduled Task
+--------------------------------------------------------
+@Component
+public class TaskScheduler {
+    @Scheduled(fixedRate = 5000)
+    public void scheduledTask() {
+        System.out.println("Running scheduled task every 5 seconds");
+    }
+}
+
+
+D11. Caching (@Cacheable / @CacheEvict)
+--------------------------------------------------------
+@EnableCaching
+@Service
+public class UserService {
+
+    @Cacheable("users")
+    public List<User> getData() { return repo.findAll(); }
+
+    @CacheEvict(value = "users", allEntries = true)
+    public void clearCache() { }
+
+    @CacheEvict(value = "users", key = "#user.id")
+    public void evictOne(User user) { }
+}
+
+
+D12. OneToOne relationship — User & Profile
+--------------------------------------------------------
+@Entity
+public class User {
+    @Id @GeneratedValue
+    private Long id;
+    private String name;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
+}
+
+
+D13. OneToMany / ManyToOne — Department & Employee
+--------------------------------------------------------
+@Entity
+public class Department {
+    @Id
+    private Long id;
+    private String name;
+
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    private List<Employee> employees;
+}
+
+@Entity
+public class Employee {
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+}
+
+
+D14. ManyToMany relationship — Student & Course
+--------------------------------------------------------
+@Entity
+public class Student {
+    @ManyToMany
+    @JoinTable(name = "student_course",
+        joinColumns = @JoinColumn(name = "student_id"),
+        inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private List<Course> courses;
+}
+
+@Entity
+public class Course {
+    @ManyToMany(mappedBy = "courses")
+    private List<Student> students;
+}
+
+
+D15. Global Exception Handling
+--------------------------------------------------------
+public class CustomException extends RuntimeException {
+    public CustomException(String message) { super(message); }
+    public CustomException(String message, Throwable cause) { super(message, cause); }
+}
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity<String> handleException(CustomException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+
+
+====================================================================
+END OF ANSWER KEY
+====================================================================
