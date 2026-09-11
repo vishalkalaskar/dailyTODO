@@ -307,6 +307,100 @@ A comprehensive collection of GitHub repositories for interview preparation cove
 **Total Repositories:** 80+  
 **Stars Collected:** 1M+  
 
+# DevOps + Testing Tech Interview Resources - GitHub Repositories
+
+A curated collection of GitHub repositories for interview preparation covering Kafka, Jenkins, Docker, Kubernetes, AWS, JUnit, and Mockito.
+
+---
+
+## 📚 TABLE OF CONTENTS
+
+1. [Apache Kafka](#apache-kafka)
+2. [Jenkins](#jenkins)
+3. [Docker](#docker)
+4. [Kubernetes](#kubernetes)
+5. [AWS](#aws)
+6. [JUnit & Mockito](#junit--mockito)
+
+---
+
+## 🔷 APACHE KAFKA
+
+- [rkm-ravi94/awesome-devops-interview (kafka.md)](https://github.com/rkm-ravi94/awesome-devops-interview/blob/main/kafka.md) - Kafka broker internals, log segments, replication, and other frequently asked DevOps/Kafka questions
+- [sunilsoni/interviewnotes](https://github.com/sunilsoni/interviewnotes) - Realtime interview notes covering Kafka offsets, consumer groups, ZooKeeper, partitions, replicas, alongside Java/AWS/Spring topics
+- [ViacheslavChernyshov/java-interview-questions-and-answers](https://github.com/ViacheslavChernyshov/java-interview-questions-and-answers) - 500+ Java interview Q&A with a dedicated 30-question Kafka section plus Docker/Kubernetes, in English/Russian/Ukrainian
+- [spring-projects/spring-kafka](https://github.com/spring-projects/spring-kafka) - Official Spring abstractions for Kafka; great for understanding real producer/consumer configuration patterns
+- GitHub topic search: [kafka-interview-questions](https://github.com/topics/kafka-interview-questions) - Browse all repos tagged for Kafka interview prep
+
+---
+
+## 🔶 JENKINS
+
+- [gitea.vergaracarmona.es mirror / devops-interview-questions](https://gitea.vergaracarmona.es/Repos-que-me-gustan/devops-exercises) - DevOps interview questions with a dedicated Jenkins section (plugins, master/slave/agent architecture, build triggers)
+- [rajhunter/Java-SpringBoot-Interview-Answer](https://github.com/rajhunter/Java-SpringBoot-Interview-Answer) - Covers Jenkins and CI/CD alongside Core Java, Spring Boot, Docker, Kubernetes, Ansible
+- GitHub topic search: [jenkins-interview-questions](https://github.com/topics/jenkins-interview-questions) and [devops-interview-questions](https://github.com/topics/devops-interview-questions) - Browse all tagged repos for the latest Jenkins prep material
+
+---
+
+## 🟣 DOCKER
+
+- [Devinterview-io/docker-interview-questions](https://github.com/Devinterview-io/docker-interview-questions) ⭐ **RECOMMENDED** - 55 common Docker interview questions with answers, covering architecture, images/containers, networking, and best practices
+- [ViacheslavChernyshov/java-interview-questions-and-answers](https://github.com/ViacheslavChernyshov/java-interview-questions-and-answers) - Includes a 24-question Docker/Kubernetes cluster within the broader Java Q&A set
+- [rajhunter/Java-SpringBoot-Interview-Answer](https://github.com/rajhunter/Java-SpringBoot-Interview-Answer) - Docker section with code examples alongside Kubernetes and CI/CD
+- GitHub topic search: [docker-interview-questions](https://github.com/topics/docker-interview-questions) - Browse all tagged repos
+
+---
+
+## ⚙️ KUBERNETES
+
+- [Devinterview-io/kubernetes-interview-questions](https://github.com/Devinterview-io/kubernetes-interview-questions) ⭐ **RECOMMENDED** - Kubernetes interview questions and answers covering architecture, pods, services, and design patterns
+- [ViacheslavChernyshov/java-interview-questions-and-answers](https://github.com/ViacheslavChernyshov/java-interview-questions-and-answers) - Docker/Kubernetes cluster of 24 questions within the broader Java Q&A set
+- [rajhunter/Java-SpringBoot-Interview-Answer](https://github.com/rajhunter/Java-SpringBoot-Interview-Answer) - Kubernetes section alongside Docker, load balancing, and CI/CD
+- [kubernetes/kubernetes](https://github.com/kubernetes/kubernetes) - The official K8s repo; browsing the docs/design-proposals helps with deeper architecture questions (API server, etcd, scheduler, kubelet, kube-proxy)
+- GitHub topic search: [kubernetes-interview-questions](https://github.com/topics/kubernetes-interview-questions) - Browse all tagged repos
+
+---
+
+## 🟠 AWS
+
+- [Devinterview-io/aws-interview-questions](https://github.com/Devinterview-io/aws-interview-questions) ⭐ **RECOMMENDED (227★)** - AWS interview Q&A covering EC2, S3, Lambda, IAM, and core services for technical interviews
+- [sunilsoni/interviewnotes](https://github.com/sunilsoni/interviewnotes) - AWS/AWS-S3 notes mixed with Java, Kafka, and microservices topics
+- GitHub topic search: [aws-interview-questions](https://github.com/topics/aws-interview-questions) - Browse all tagged repos
+
+---
+
+## 🔵 JUNIT & MOCKITO
+
+- [rajhunter/Java-SpringBoot-Interview-Answer](https://github.com/rajhunter/Java-SpringBoot-Interview-Answer) - Dedicated JUnit and Mockito sections alongside WireMock, Hibernate/JPA, and Java 8
+- [monikakonieczna/mockito-junit-practice](https://github.com/monikakonieczna/mockito-junit-practice) - Practical example unit tests written with JUnit 5 and Mockito — good for hands-on drilling
+- [zoechbauer/java-junit-with-mockito](https://github.com/zoechbauer/java-junit-with-mockito) - Companion repo for the "Learn Java Unit Testing with JUnit and Mockito" course (Ranga Karanam) — step-by-step examples
+- [mockito/mockito](https://github.com/mockito/mockito) - The official Mockito repo; browsing issues/docs helps with deep "how does it actually work" interview questions
+- [junit-team/junit5](https://github.com/junit-team/junit5) - Official JUnit 5 repo — check the user guide for extension model, parameterized tests, and lifecycle questions
+
+---
+
+## 📝 SUGGESTED STUDY ORDER (5-7 weeks)
+
+1. **Week 1:** Docker fundamentals (Devinterview-io/docker-interview-questions)
+2. **Week 2:** Kubernetes basics — pods, services, architecture (Devinterview-io/kubernetes-interview-questions)
+3. **Week 3:** AWS core services (Devinterview-io/aws-interview-questions)
+4. **Week 4:** Jenkins & CI/CD pipelines (devops-interview-questions repo)
+5. **Week 5:** Kafka internals (awesome-devops-interview kafka.md + spring-kafka)
+6. **Week 6-7:** JUnit + Mockito hands-on practice (mockito-junit-practice, java-junit-with-mockito)
+
+---
+
+## 💡 PRO TIPS
+
+- ⭐ Star repos for quick access, fork to track progress
+- 🐳 For Docker/Kubernetes/AWS: actually spin up containers, a local cluster (minikube/kind), or a free-tier instance while studying — hands-on beats memorization
+- 🧪 For JUnit/Mockito: write a failing test first, then make it pass — mirrors real interview coding rounds
+- 🔄 For Kafka/Jenkins: focus on "why" questions (why partitions, why pipelines-as-code) — these come up more than trivia
+
+---
+
+*Note: Verify star counts and last-updated dates directly on GitHub before relying on any repo, as activity levels change.*
+
 **Good luck with your interview preparation! 🚀**
 
 ---
