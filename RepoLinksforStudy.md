@@ -389,6 +389,12 @@ A curated collection of GitHub repositories for interview preparation covering K
 6. **Week 6-7:** JUnit + Mockito hands-on practice (mockito-junit-practice, java-junit-with-mockito)
 
 ---
+🐬 MYSQL
+Devinterview-io/sql-interview-questions ⭐ RECOMMENDED - SQL interview Q&A covering joins, indexing, normalization, and query optimization
+ChinmayKaitade/SQL-MySQL-Interview-Practice ⭐ 100+ QUESTIONS - Top 100 MySQL/SQL interview questions from fundamentals to advanced (joins, indexing, subqueries, window functions, optimization)
+Maniceraf/SQL-Interview-Prep-Question - Real MySQL interview questions sourced from companies like Facebook, Visa, and Wayfair, with tested queries
+sunilsoni/interviewnotes - MySQL notes mixed in with Java, AWS, and Kafka topics
+GitHub topic search: mysql-interview-questions and sql-interview-questions - Browse all tagged repos
 
 ## 💡 PRO TIPS
 
