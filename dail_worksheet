@@ -403,10 +403,13 @@ Expected: List<Employee>
 --------------------------------------------------------
 A48. Find employees who joined after a given year (e.g. after 2022).
 Expected: List<Employee>
+
 --------------------------------------------------------
+A49.find depart has most employee count
 
-
-
+Optional<Map.Entry<String,Long>> department = employee.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.counting())).
+                                               entrySet().stream().max(Map.Entry.ComparingByValue());
+sop(department.get());
 
 ########################################################
 SECTION B: CORE JAVA / DSA CODING QUESTIONS (NO STREAMS)
