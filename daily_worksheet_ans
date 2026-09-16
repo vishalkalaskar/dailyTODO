@@ -413,7 +413,11 @@ List<Employee> result = employees.stream()
     .filter(e -> e.getJoiningDate().getYear() > 2022)
     .collect(Collectors.toList());
 
+A49.find depart has most employee count
 
+Optional<Map.Entry<String,Long>> department = employee.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.counting())).
+                                               entrySet().stream().max(Map.Entry.ComparingByValue());
+sop(department.get());
 
 ########################################################
 SECTION B: CORE JAVA / DSA — ANSWERS
