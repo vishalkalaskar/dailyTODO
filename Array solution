@@ -556,6 +556,62 @@ class Solution
                 return s2[i];
              }
         }
+
+
+Which two number appear most?
+
+// Online Java Compiler (Editor)
+// Write and run Java online using this editor.
+import java.util.*;
+class Main {
+
+    public static  void method(int[] arr)
+    {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int num : arr)
+            {
+                map.put(num,map.getOrDefault(num,0)+1);
+            }
+
+       System.out.println(map);
+        int firstmaxcount=0;
+        int secondmaxcount=0;
+
+        int firstmaxkey=0;
+        int secondmaxkey=0;
+  
+        for(Map.Entry<Integer,Integer> entry : map.entrySet())
+            { 
+
+                int key = entry.getKey();
+                int count = entry.getValue();
+
+                 
+              
+                if(count>firstmaxcount)
+                {
+                    secondmaxcount=firstmaxcount;
+                    secondmaxkey=firstmaxkey;
+
+                    firstmaxcount=count;
+                    firstmaxkey=key;
+                    
+                }
+                else if(count> secondmaxcount)
+                {
+                       secondmaxcount=count;
+                    secondmaxkey=key;
+                }
+            }
+        System.out.println(firstmaxkey);
+        System.out.println(secondmaxkey);
+    }
+    public static void main(String[] args) 
+    {
+       int[] test = {4,1,4,2,1,4,3,2,2,2};
+       Main.method(test);
+    }
+}
         
        return s2[s2.length-1];
     }
