@@ -556,6 +556,10 @@ class Solution
                 return s2[i];
              }
         }
+          return s2[s2.length-1];
+    }
+}
+
 
 
 Which two number appear most?
@@ -612,7 +616,4 @@ class Main {
        Main.method(test);
     }
 }
-        
-       return s2[s2.length-1];
-    }
-}
+    
