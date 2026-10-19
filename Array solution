@@ -563,57 +563,45 @@ class Solution
 
 
 Which two number appear most?
-
-// Online Java Compiler (Editor)
-// Write and run Java online using this editor.
 import java.util.*;
+
 class Main {
 
-    public static  void method(int[] arr)
-    {
-        HashMap<Integer,Integer> map = new HashMap<>();
-        for(int num : arr)
-            {
-                map.put(num,map.getOrDefault(num,0)+1);
+    public static void method(int[] arr, int k) {
+
+        // Step 1: Count frequency
+        Map<Integer, Integer> freq = new HashMap<>();
+
+        for (int num : arr) {
+            freq.put(num, freq.getOrDefault(num, 0) + 1);
+        }
+
+        System.out.println("Frequency: " + freq);
+
+        // Step 2: Create a Min Heap based on frequency
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> freq.get(a) - freq.get(b));
+
+        // Step 3: Keep only the top k frequent elements
+        for (int num : freq.keySet()) {
+
+            pq.offer(num);
+
+            if (pq.size() > k) {
+                pq.poll();
             }
+        }
 
-       System.out.println(map);
-        int firstmaxcount=0;
-        int secondmaxcount=0;
-
-        int firstmaxkey=0;
-        int secondmaxkey=0;
-  
-        for(Map.Entry<Integer,Integer> entry : map.entrySet())
-            { 
-
-                int key = entry.getKey();
-                int count = entry.getValue();
-
-                 
-              
-                if(count>firstmaxcount)
-                {
-                    secondmaxcount=firstmaxcount;
-                    secondmaxkey=firstmaxkey;
-
-                    firstmaxcount=count;
-                    firstmaxkey=key;
-                    
-                }
-                else if(count> secondmaxcount)
-                {
-                       secondmaxcount=count;
-                    secondmaxkey=key;
-                }
-            }
-        System.out.println(firstmaxkey);
-        System.out.println(secondmaxkey);
+        // Step 4: Print top k elements
+        while (!pq.isEmpty()) {
+            int num = pq.poll();
+            System.out.println(num + " -> " + freq.get(num) + " times");
+        }
     }
-    public static void main(String[] args) 
-    {
-       int[] test = {4,1,4,2,1,4,3,2,2,2};
-       Main.method(test);
+
+    public static void main(String[] args) {
+        int[] arr = {4, 1, 4, 2, 1, 4, 3, 2, 2, 2};
+
+        method(arr, 1);
     }
 }
-    
+what is output for this pq now
