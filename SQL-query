@@ -1,3 +1,6 @@
+count(*),count(1),count(-1)-->returning total number of row form table including NULL
+count(id)->it return only that record where it matches id.
+
 1. Find the second highest salary from the "Employee" table:
 SELECT DISTINCT salary FROM Employee  ORDER BY salary DESC LIMIT 1 OFFSET 1;
 
@@ -5,12 +8,14 @@ SELECT DISTINCT salary FROM Employee  ORDER BY salary DESC LIMIT 1 OFFSET 1;
 2. Find all duplicate records in a table:
 SELECT column1, column2, COUNT(*) FROM TableName GROUP BY column1, column2 HAVING COUNT(*) > 1;
 
+
 3. Fetch the nth highest salary from the "Employee" table:
 SELECT DISTINCT salary FROM Employee ORDER BY salary DESC LIMIT 1 OFFSET (n-1);
 
 
 4. Display the department-wise highest salary of employees:
 SELECT department, MAX(salary) AS highest_salary FROM Employee GROUP BY department;
+
 
 5. Find employees who earn more than the average salary in their department:
 SELECT e1.* FROM Employee e1 JOIN (
@@ -96,5 +101,6 @@ SELECT * FROM Policy WHERE Premium > 10000 LIMIT 10;
 
 19.2. List contacts whose names do not end with "Smith" and have address in "CA" (primary key of first table to fk of second table).
 SELECT c.* FROM Contact c JOIN Address a ON c.ID = a.ContactID WHERE c.Name NOT LIKE '%Smith' AND a.State = 'CA';
+
 
 
