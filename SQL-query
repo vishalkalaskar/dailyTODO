@@ -1,6 +1,9 @@
 count(*),count(1),count(-1)-->returning total number of row form table including NULL
 count(id)->it return only that record where it matches id.
 
+IN use when mulitple option are their to get result.
+SELECT name, population FROM world WHERE name IN ('Sweden', 'Norway', 'Denmark');
+
 1. Find the second highest salary from the "Employee" table:
 SELECT DISTINCT salary FROM Employee  ORDER BY salary DESC LIMIT 1 OFFSET 1;
 
