@@ -15,6 +15,33 @@ docker -https://chatgpt.com/c/680b9d11-3768-8005-bfc3-b2231e5e6ce4
 redis- https://chatgpt.com/c/6a7acd19-b748-83ee-aabe-5458afe2b8b6
 system design-
 
+List<Trainer> trainers = Arrays.asList(
+    new Trainer("java", true),
+    new Trainer("sql", false),
+    new Trainer("docker", true)
+);
+
+String result = trainers.stream().map(t -> t.getSubject() +  (t.isCertified() ? "/certified" : "")).collect(Collectors.joining(", "));
+System.out.println(result);
+
+[java/Certified, sql/Certified, docker, spring]
+
+1. First question: Get only subjects (java, sql, docker, spring)
+List<String> result = trainers.stream()
+    .map(t -> t.getSubject())
+    .collect(Collectors.toList());
+
+System.out.println(result);
+
+2. Second question: Get only certified trainer subjects (java, sql)
+List<String> result = trainers.stream()
+    .filter(t -> t.isCertified())
+    .map(t -> t.getSubject())
+    .collect(Collectors.toList());
+
+System.out.println(result);
+
+
 a)converting list to map
 map<String,Strign> userMap = users.stream().collect(Collectors.toMap(User::getUsername,User::getPassword,(existign,duplicate)->existing);
 
