@@ -414,3 +414,11 @@ A curated collection of GitHub repositories for interview preparation covering K
 ---
 
 *Note: All links are verified and active as of November 2025. If you find any broken links, please check the repository name on GitHub directly.*
+---------------------------------------------------------------------------------------
+Here are all 5 websites for Spring Boot API development practice:
+Platform	Website
+1. Bugnik	https://bugnik.com/problems
+2. CodeChef	Spring Boot Projects
+3. Staffcoder	Spring Boot Exercises
+4. API Arena	https://apiarena.dev/
+5. Undeprecated	https://undeprecated.com/
