@@ -418,7 +418,7 @@ A curated collection of GitHub repositories for interview preparation covering K
 Here are all 5 websites for Spring Boot API development practice:
 Platform	Website
 1. Bugnik	https://bugnik.com/problems
-2. CodeChef	Spring Boot Projects
-3. Staffcoder	https://www.codechef.com/?utm_source=chatgpt.com
+2. CodeChef		https://www.codechef.com/?utm_source=chatgpt.com
+3. Staffcoder https://staffcoder.com/?utm_source=chatgpt.com
 4. API Arena	https://apiarena.dev/
 5. Undeprecated	https://undeprecated.com/
